@@ -179,8 +179,8 @@ function App() {
         <section id="hero" aria-label="Hero">
           <div className="container">
             <div className="hero-content">
-              <h1>AxeomLabs</h1>
-              <p className="tagline">INTELLIGENCE IS DOMINANCE.</p>
+              <h1>AXEOMLABS</h1>
+              <p className="tagline">INTELLIGENCE INFRASTRUCTURE FOR THE UNPREDICTABLE.</p>
               <div className="hero-cta reveal stagger-child">
                 <span className="scroll-prompt">SCROLL TO BEGIN</span>
               </div>
@@ -194,7 +194,7 @@ function App() {
             <div className="reveal">
               <h2 className="section-label">01 / CONTEXT</h2>
               <p className="editorial-text">
-                The current technological ecosystem is compromised. Organizations rely on fragmented, opaque architectures controlled by external monopolies. Sovereignty has been surrendered for convenience. We are taking it back.
+                High-stakes environments demand absolute clarity. When data is fragmented and systems are opaque, critical vulnerabilities emerge. We build the connective tissue between raw information and decisive action for institutions that cannot afford to fail.
               </p>
             </div>
           </div>
@@ -206,8 +206,8 @@ function App() {
             <div className="vision-grid">
               <div className="vision-text reveal">
                 <h2 className="section-label">02 / DOCTRINE</h2>
-                <h3>Absolute Verticality.</h3>
-                <p>We deploy uncompromised ecosystems. From bare metal to the execution layer, we engineer systems that grant ultimate operational supremacy. Intelligence is the core substrate.</p>
+                <h3>Centralized Intelligence.</h3>
+                <p>We deploy secure ecosystems. From bare metal to the execution layer, we engineer AI-driven analytical systems that unify disparate datasets, illuminate blind spots, and grant ultimate operational awareness.</p>
               </div>
               
               <div className="arch-stack">
@@ -237,7 +237,7 @@ function App() {
           <div className="container">
             <div className="section-header reveal">
               <h2 className="section-label">03 / THE ARSENAL</h2>
-              <h3>Unrestricted capabilities for the cognitive battlespace.</h3>
+              <h3>Defensive capabilities for the cognitive era.</h3>
             </div>
             
             <div id="products-grid" className="cards-grid" role="list">
@@ -261,9 +261,9 @@ function App() {
         <section id="philosophy" aria-label="The Philosophy">
           <div className="container">
             <div className="philosophy-content">
-              <div className="philosophy-statement" data-slam="true">WE DO NOT RENT THE FUTURE.</div>
-              <div className="philosophy-statement" data-slam="true">SUPREMACY IS NON-NEGOTIABLE.</div>
-              <div className="philosophy-statement" data-slam="true">CONTROL EVERY LAYER.</div>
+              <div className="philosophy-statement" data-slam="true">WE SECURE THE FUTURE.</div>
+              <div className="philosophy-statement" data-slam="true">CLARITY IS SECURITY.</div>
+              <div className="philosophy-statement" data-slam="true">EMPOWER THE ANALYSTS.</div>
             </div>
           </div>
         </section>
@@ -283,7 +283,7 @@ function App() {
                 </div>
               </div>
               <p className="founder-text">
-                "The era of fragile app ecosystems is over. The future belongs to those who own the infrastructure of intelligence. We are forging that foundation."
+                "The world is becoming more complex, not less. To navigate escalating risks, governments and institutions need systems that don't just store data, but understand it. Security must be architectural."
               </p>
             </div>
           </div>
@@ -323,8 +323,8 @@ function App() {
       {/* Footer */}
       <footer id="main-footer">
         <div className="container split">
-          <span className="copyright">&copy; AXEOMLABS R&D 2026</span>
-          <span className="location">BANGALORE / SECURE_ZONE</span>
+          <span className="copyright">&copy; AXEOMLABS 2026 </span>
+          <span className="location">SECURE_ZONE</span>
         </div>
       </footer>
     </div>
