@@ -119,19 +119,28 @@ function App() {
     // 5. Philosophy Slam
     const slams = gsap.utils.toArray('.philosophy-statement');
     slams.forEach(slam => {
-      gsap.to(slam, {
-        scrollTrigger: {
-          trigger: slam,
-          start: 'top 80%',
-          end: 'top 20%',
-          scrub: true,
-          onEnter: () => slam.classList.add('slam'),
-          onLeaveBack: () => slam.classList.remove('slam')
+      gsap.fromTo(slam,
+        {
+          opacity: 0.1,
+          scale: 0.95,
+          y: 30,
+          filter: 'blur(8px)',
         },
-        opacity: 1,
-        scale: 1,
-        duration: 1
-      });
+        {
+          scrollTrigger: {
+            trigger: slam,
+            start: 'top 75%',
+            end: 'bottom 25%',
+            toggleActions: 'play reverse play reverse',
+          },
+          opacity: 1,
+          scale: 1,
+          y: 0,
+          filter: 'blur(0px)',
+          duration: 1.4,
+          ease: 'back.out(2)',
+        }
+      );
     });
 
     // 6. Scroll Indicator

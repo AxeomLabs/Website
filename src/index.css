@@ -304,7 +304,7 @@ section {
 .philosophy-content {
   display: flex;
   flex-direction: column;
-  gap: var(--gap-lg);
+  gap: clamp(80px, 15vh, 160px); /* Massive responsive separation */
 }
 
 .philosophy-statement {
@@ -313,16 +313,10 @@ section {
   font-weight: 800;
   line-height: .9;
   letter-spacing: -0.04em;
-  opacity: 0.1;
   text-align: left;
   transform-origin: left center;
-  transition: color var(--duration-mid) var(--ease-out-expo);
-}
-
-.philosophy-statement.slam {
-  opacity: 1;
-  transform: scale(1.1);
   color: var(--text-primary);
+  will-change: transform, opacity, filter;
 }
 
 /* ================================================
@@ -457,6 +451,7 @@ section {
 @media (max-width: 768px) {
   .vision-grid { grid-template-columns: 1fr; }
   .philosophy-statement { font-size: 40px; }
+  .philosophy-content { gap: 80px; }
   .form-grid { grid-template-columns: 1fr; }
   .form-actions { justify-content: stretch; }
   .btn-primary { padding: 16px; width: 100%; }
