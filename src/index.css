@@ -356,23 +356,58 @@ section {
 .cta-content { max-width: 600px; }
 .cta-form { margin-top: var(--gap-lg); }
 
-.input-wrapper {
-  display: flex;
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: var(--gap-sm);
   background: var(--bg-secondary);
-  padding: 8px;
+  padding: var(--gap-lg);
   border: 1px solid var(--border);
   border-radius: 4px;
 }
 
-.cta-form input {
-  flex: 1;
-  background: transparent;
-  border: none;
+.input-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.full-width {
+  grid-column: 1 / -1;
+}
+
+.form-grid input,
+.form-grid textarea {
+  width: 100%;
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
   padding: 16px;
-  color: #fff;
+  color: var(--text-primary);
   font-family: var(--font-body);
   outline: none;
+  transition: border-color var(--duration-fast);
+  border-radius: 2px;
+}
+
+.form-grid input:focus,
+.form-grid textarea:focus {
+  border-color: var(--accent);
+}
+
+.form-grid textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.error-msg {
+  color: #ff4444;
+  margin-bottom: var(--gap-sm);
+  font-size: 14px;
+  font-family: var(--font-body);
+}
+
+.form-actions { 
+  display: flex; 
+  justify-content: flex-end; 
 }
 
 .btn-primary {
@@ -422,8 +457,9 @@ section {
 @media (max-width: 768px) {
   .vision-grid { grid-template-columns: 1fr; }
   .philosophy-statement { font-size: 40px; }
-  .input-wrapper { flex-direction: column; }
-  .btn-primary { padding: 16px; }
+  .form-grid { grid-template-columns: 1fr; }
+  .form-actions { justify-content: stretch; }
+  .btn-primary { padding: 16px; width: 100%; }
 }
 
 /* ================================================

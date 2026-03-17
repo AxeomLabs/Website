@@ -37,7 +37,7 @@ const products = [
 
 function App() {
   const container = useRef(null);
-  const [email, setEmail] = useState('');
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [formState, setFormState] = useState('idle');
 
   // GSAP Animations
@@ -154,15 +154,36 @@ function App() {
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-    if (!email) return;
+    if (!formData.name || !formData.email || !formData.message) return;
 
     setFormState('loading');
     
-    // Simulate real submission
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
-    setFormState('confirmed');
-    setEmail('');
+    try {
+      // Free Web3Forms Endpoint - Posts an email directly to your inbox without a backend
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          access_key: 'YOUR_ACCESS_KEY_HERE', // You will replace this!
+          subject: 'AxeomLabs - New Intel/Access Request',
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        })
+      });
+      
+      if (response.ok) {
+        setFormState('confirmed');
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        setFormState('error');
+      }
+    } catch (error) {
+      setFormState('error');
+    }
   };
 
   return (
@@ -297,21 +318,49 @@ function App() {
               <h3>Request an invite to the private beta.</h3>
               
               <form id="waitlist-form" className={`cta-form ${formState}`} onSubmit={handleFormSubmit}>
-                <div className="input-wrapper">
-                  <input 
-                    type="email" 
-                    id="email" 
-                    required 
-                    placeholder="Enter terminal address..." 
-                    aria-label="Email address"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
-                  <button type="submit" id="submit-btn" className="btn-primary">
-                    <span className="btn-text">REQUEST ACCESS</span>
-                    <span className="btn-loading">LINKING...</span>
-                    <span className="btn-success">CONFIRMED.</span>
-                  </button>
+                {formState === 'error' && <p className="error-msg">TRANSMISSION FAILED. VERIFY NETWORK AND KEY.</p>}
+                
+                <div className="form-grid">
+                  <div className="input-group">
+                    <input 
+                      type="text" 
+                      required 
+                      placeholder="Designation / Name" 
+                      aria-label="Name"
+                      value={formData.name}
+                      onChange={(e) => setFormData({...formData, name: e.target.value})}
+                    />
+                  </div>
+                  
+                  <div className="input-group">
+                    <input 
+                      type="email" 
+                      required 
+                      placeholder="Secure Terminal (Email)" 
+                      aria-label="Email address"
+                      value={formData.email}
+                      onChange={(e) => setFormData({...formData, email: e.target.value})}
+                    />
+                  </div>
+
+                  <div className="input-group full-width">
+                    <textarea 
+                      required 
+                      placeholder="State your operational objective..." 
+                      aria-label="Message"
+                      rows="4"
+                      value={formData.message}
+                      onChange={(e) => setFormData({...formData, message: e.target.value})}
+                    ></textarea>
+                  </div>
+
+                  <div className="form-actions full-width">
+                    <button type="submit" id="submit-btn" className="btn-primary">
+                      <span className="btn-text">INITIATE CONTACT</span>
+                      <span className="btn-loading">TRANSMITTING...</span>
+                      <span className="btn-success">CONFIRMED.</span>
+                    </button>
+                  </div>
                 </div>
               </form>
             </div>
