@@ -265,13 +265,19 @@ function App() {
           </div>
         </section>
 
-        {/* FOUNDER */}
-        <section id="founder" aria-label="The Founder">
+        {/* FOUNDERS */}
+        <section id="founders" aria-label="The Founders">
           <div className="container">
             <div className="founder-card reveal">
-              <div className="founder-meta">
-                <span className="label">LEAD ARCHITECT</span>
-                <h3 className="name">Harinandan J V</h3>
+              <div className="founders-group" style={{ display: 'flex', gap: 'var(--gap-lg)', flexWrap: 'wrap', marginBottom: 'var(--gap-md)' }}>
+                <div className="founder-meta" style={{ marginBottom: 0 }}>
+                  <span className="label">CO-FOUNDER</span>
+                  <h3 className="name">Harinandan J V</h3>
+                </div>
+                <div className="founder-meta" style={{ marginBottom: 0 }}>
+                  <span className="label">CO-FOUNDER</span>
+                  <h3 className="name">Abhishek A S</h3>
+                </div>
               </div>
               <p className="founder-text">
                 "The world doesn't need more apps. It needs more control over the ones it already has — and a new foundation for the ones it doesn't."
