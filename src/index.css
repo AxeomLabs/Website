@@ -84,9 +84,10 @@ body::after {
 h1, h2, h3 {
   font-family: var(--font-display);
   font-weight: 800;
-  line-height: 0.9;
+  line-height: 1; /* increased slightly to prevent clipping on some devices */
   text-transform: uppercase;
   letter-spacing: -0.04em;
+  overflow-wrap: break-word;
 }
 
 h1 { font-size: var(--font-size-hero); }
@@ -286,13 +287,17 @@ section {
 
 .card-title {
   font-family: var(--font-display);
-  font-size: 32px;
+  font-size: clamp(24px, 2.5vw, 32px); /* more responsive max sizing */
   margin-bottom: var(--gap-sm);
+  overflow-wrap: anywhere;
+  word-break: break-all;
+  hyphens: auto;
 }
 
 .card-tagline {
   color: var(--text-secondary);
-  font-size: 14px;
+  font-size: clamp(14px, 1.2vw, 16px);
+  line-height: 1.5;
 }
 
 /* ================================================
