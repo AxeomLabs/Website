@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://axeomlabs.com/sitemap.xml
+Sitemap: https://www.axeomlabs.in/sitemap.xml
