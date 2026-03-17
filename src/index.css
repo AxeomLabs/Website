@@ -8,17 +8,17 @@
   --bg-surface:      #12121a;
   --text-primary:    #e8e8e0;
   --text-secondary:  #8a8a90;
-  --accent:          #00aaff;       /* Single accent — do not add more */
+  --accent:          #00aaff;       
   --accent-dim:      rgba(0, 170, 255, 0.15);
   --border:          rgba(255, 255, 255, 0.08);
 
   /* Typography */
   --font-display:    'Syne', sans-serif;
   --font-body:       'IBM Plex Mono', monospace;
-  --font-size-hero:  clamp(64px, 12vw, 160px);
-  --font-size-h2:    clamp(40px, 8vw, 100px);
-  --font-size-h3:    clamp(24px, 4vw, 48px);
-  --font-size-body:  clamp(14px, 1.6vw, 16px);
+  --font-size-hero:  clamp(40px, 9vw, 120px); 
+  --font-size-h2:    clamp(32px, 6vw, 80px);
+  --font-size-h3:    clamp(24px, 4vw, 40px);
+  --font-size-body:  clamp(14px, 1.6vw, 18px);
 
   /* Spacing */
   --section-padding: clamp(100px, 15vw, 240px);
@@ -53,7 +53,7 @@ html {
   background-color: var(--bg-primary);
   color: var(--text-primary);
   font-family: var(--font-body);
-  scrollbar-width: none; /* Hide scrollbar for smooth scroll */
+  scrollbar-width: none;
 }
 
 html ::-webkit-scrollbar {
@@ -154,9 +154,7 @@ section {
 
 #hero h1 {
   margin-bottom: var(--gap-sm);
-  background: linear-gradient(to bottom, #fff, #888);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--text-primary);
 }
 
 .tagline {
@@ -186,10 +184,8 @@ section {
 .editorial-text {
   font-family: var(--font-display);
   font-size: clamp(24px, 4vw, 44px);
-  background: linear-gradient(90deg, #fff 0%, #666 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  line-height: 1.1;
+  color: var(--text-primary);
+  line-height: 1.2;
   font-weight: 700;
   letter-spacing: -0.02em;
 }
@@ -225,7 +221,6 @@ section {
 
 .arch-layer:hover {
   border-color: var(--accent);
-  transform: translateX(10px);
 }
 
 .arch-layer::before {
@@ -397,27 +392,6 @@ section {
 .cta-form.confirmed { pointer-events: none; }
 
 /* ================================================
-   CUSTOM CURSOR
-   ================================================ */
-#cursor {
-  position: fixed;
-  width: 20px;
-  height: 20px;
-  background: var(--accent);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 10000;
-  mix-blend-mode: difference;
-  transition: transform 0.15s var(--ease-out-expo);
-  display: none; /* Show only when mouse moves */
-}
-
-@media (pointer: fine) {
-  #cursor { display: block; }
-  body { cursor: none; }
-}
-
-/* ================================================
    SCROLL INDICATOR
    ================================================ */
 #scroll-indicator {
@@ -459,8 +433,6 @@ section {
   .arch-layer:hover {
     transform: none !important;
   }
-  
-  #cursor { display: none !important; }
   
   * {
     animation: none !important;

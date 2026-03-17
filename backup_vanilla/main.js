@@ -5,7 +5,6 @@ gsap.registerPlugin(ScrollTrigger);
 
 document.addEventListener('DOMContentLoaded', () => {
     initLenis();
-    initCustomCursor();
     renderProducts();
     initScrollAnimations();
     initCtaForm();
@@ -39,40 +38,7 @@ function initLenis() {
 }
 
 /* ================================================
-   3. CUSTOM CURSOR
-   ================================================ */
-function initCustomCursor() {
-    const cursor = document.getElementById('cursor');
-    if (!cursor) return;
-
-    let mouseX = 0;
-    let mouseY = 0;
-
-    window.addEventListener('mousemove', (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-        gsap.to(cursor, {
-            x: mouseX,
-            y: mouseY,
-            duration: 0.1,
-            ease: 'power2.out'
-        });
-    });
-
-    // Hover effects
-    const interactiveElements = document.querySelectorAll('button, input, a, .arch-layer, .product-card');
-    interactiveElements.forEach(el => {
-        el.addEventListener('mouseenter', () => {
-            gsap.to(cursor, { scale: 3, opacity: 0.15, duration: 0.3 });
-        });
-        el.addEventListener('mouseleave', () => {
-            gsap.to(cursor, { scale: 1, opacity: 1, duration: 0.3 });
-        });
-    });
-}
-
-/* ================================================
-   4. PRODUCT DATA & RENDERING
+   3. PRODUCT DATA & RENDERING
    ================================================ */
 const products = [
     {
@@ -115,7 +81,7 @@ function renderProducts() {
 }
 
 /* ================================================
-   5. PAGE LOAD ANIMATION
+   4. PAGE LOAD ANIMATION
    ================================================ */
 function initPageLoad() {
     const tl = gsap.timeline({
@@ -145,7 +111,7 @@ function initPageLoad() {
 }
 
 /* ================================================
-   6. SCROLL ANIMATIONS (IntersectionObserver + ScrollTrigger)
+   5. SCROLL ANIMATIONS (IntersectionObserver + ScrollTrigger)
    ================================================ */
 function initScrollAnimations() {
     // 6a. IntersectionObserver for basic reveals
@@ -210,7 +176,7 @@ function initScrollAnimations() {
 }
 
 /* ================================================
-   7. CTA FORM LOGIC
+   6. CTA FORM LOGIC
    ================================================ */
 function initCtaForm() {
     const form = document.getElementById('waitlist-form');

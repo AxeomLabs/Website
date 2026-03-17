@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AxeomLabs — Vertical Intelligence</title>
+    <meta name="description" content="AxeomLabs: Building the vertically integrated intelligent systems across AI, OS, and hardware.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Animation Libs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="loading">
+    
+    <!-- Grain Overlay -->
+    <div id="grain" aria-hidden="true"></div>
+    
+    <!-- Scroll Progress -->
+    <div id="scroll-indicator">
+        <div class="indicator-bar"></div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <main id="main-content">
+        
+        <!-- SECTION 1: HERO -->
+        <section id="hero" aria-label="Hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>AxeomLabs</h1>
+                    <p class="tagline">CONTROL IS THE ONLY SCALE.</p>
+                    <div class="hero-cta reveal stagger-child">
+                        <span class="scroll-prompt">SCROLL TO BEGIN</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: PROBLEM -->
+        <section id="problem" aria-label="The Problem">
+            <div class="container narrow">
+                <div class="reveal">
+                    <h2 class="section-label">01 / CONTEXT</h2>
+                    <p class="editorial-text">
+                        Modern computing is a house built on borrowed sand. You don't own your OS. You don't own your models. You don't own your tools. Every layer is a dependency, and every dependency is a failure point waiting to happen.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: VISION -->
+        <section id="vision" aria-label="The Vision">
+            <div class="container">
+                <div class="vision-grid">
+                    <div class="vision-text reveal">
+                        <h2 class="section-label">02 / ARCHITECTURE</h2>
+                        <h3>Vertical Integration.</h3>
+                        <p>We are rebuilding the stack from the hardware up. A unified system where intelligence is not an app, but the engine that powers every layer.</p>
+                    </div>
+                    
+                    <div class="arch-stack">
+                        <div class="arch-layer" data-layer="4">
+                            <span class="layer-label">Interface</span>
+                            <span class="layer-desc">Horizontal apps & tools</span>
+                        </div>
+                        <div class="arch-layer" data-layer="3">
+                            <span class="layer-label">Intelligence</span>
+                            <span class="layer-desc">P1 + Obscura Engine</span>
+                        </div>
+                        <div class="arch-layer" data-layer="2">
+                            <span class="layer-label">ObscuraOS</span>
+                            <span class="layer-desc">System ownership</span>
+                        </div>
+                        <div class="arch-layer" data-layer="1">
+                            <span class="layer-label">Substrate</span>
+                            <span class="layer-desc">Physical control layer</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: PRODUCTS -->
+        <section id="products" aria-label="The Products">
+            <div class="container">
+                <div class="section-header reveal">
+                    <h2 class="section-label">03 / THE ARSENAL</h2>
+                    <h3>Purpose-built tools for the inevitable.</h3>
+                </div>
+                
+                <div id="products-grid" class="cards-grid" role="list">
+                    <!-- Products injected via JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: PHILOSOPHY -->
+        <section id="philosophy" aria-label="The Philosophy">
+            <div class="container narrow">
+                <div class="philosophy-content">
+                    <div class="philosophy-statement" data-slam="true">
+                        WE BUILD SYSTEMS, NOT FEATURES.
+                    </div>
+                    <div class="philosophy-statement" data-slam="true">
+                        OWNERSHIP IS NON-NEGOTIABLE.
+                    </div>
+                    <div class="philosophy-statement" data-slam="true">
+                        THE FUTURE IS VERTICAL.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 6: FOUNDER -->
+        <section id="founder" aria-label="The Founder">
+            <div class="container">
+                <div class="founder-card reveal">
+                    <div class="founder-meta">
+                        <span class="label">LEAD ARCHITECT</span>
+                        <h3 class="name">Harinandan J V</h3>
+                    </div>
+                    <p class="founder-text">
+                        "The world doesn't need more apps. It needs more control over the ones it already has — and a new foundation for the ones it doesn't."
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 7: CTA -->
+        <section id="cta" aria-label="The Door">
+            <div class="container narrow">
+                <div class="cta-content reveal">
+                    <h2 class="section-label">04 / ACCESS</h2>
+                    <h3>Request an invite to the private beta.</h3>
+                    
+                    <form id="waitlist-form" class="cta-form">
+                        <div class="input-wrapper">
+                            <input type="email" id="email" required placeholder="Enter terminal address..." aria-label="Email address">
+                            <button type="submit" id="submit-btn" class="btn-primary">
+                                <span class="btn-text">REQUEST ACCESS</span>
+                                <span class="btn-loading">LINKING...</span>
+                                <span class="btn-success">CONFIRMED.</span>
+                            </button>
+                        </div>
+                        <p class="form-feedback"></p>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer id="main-footer">
+        <div class="container split">
+            <span class="copyright">&copy; AXEOMLABS R&D 2026</span>
+            <span class="location">BANGALORE / SECURE_ZONE</span>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="main.js"></script>
+</body>
+</html>
