@@ -1,0 +1,13 @@
+# .gitignore
+node_modules/
+.DS_Store
+*.log
+.env
+.env.local
+Thumbs.db
+
+# Internal AxeomLabs Docs — DO NOT COMMIT
+ARCHITECTURE.md
+DEVELOPMENT.md
+AI_CONTEXT.md
+AxeomLabs_Agent_Prompt.md

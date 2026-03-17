@@ -1,0 +1,29 @@
+# Internal project documents — do not publish
+ARCHITECTURE.md
+DEVELOPMENT.md
+AI_CONTEXT.md
+AxeomLabs_Agent_Prompt.md
+
+# Dependencies
+node_modules/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# Environment variables — never commit secrets
+.env
+.env.local
+.env.production
+
+# Editor directories
+.vscode/
+.idea/
+
+# Temp / build output
+dist/
+.cache/
