@@ -98,19 +98,22 @@ function App() {
     // 4. Architecture Layer Reveal (GSAP ScrollTrigger)
     const layers = gsap.utils.toArray('.arch-layer');
     if (layers.length) {
-      gsap.from(layers, {
-        scrollTrigger: {
-          trigger: '.arch-stack',
-          start: 'top 80%',
-          end: 'bottom 20%',
-          toggleActions: 'play none none reverse',
-        },
-        opacity: 0,
-        x: -40,
-        stagger: 0.15,
-        duration: 1,
-        ease: 'power3.out'
-      });
+      gsap.fromTo(layers, 
+        { opacity: 0, x: -40 },
+        {
+          scrollTrigger: {
+            trigger: '.arch-stack',
+            start: 'top 80%',
+            end: 'bottom 20%',
+            toggleActions: 'play none none reverse',
+          },
+          opacity: 1,
+          x: 0,
+          stagger: 0.15,
+          duration: 1,
+          ease: 'power3.out'
+        }
+      );
     }
 
     // 5. Philosophy Slam
@@ -165,8 +168,6 @@ function App() {
   return (
     <div ref={container}>
       <div id="grain" aria-hidden="true"></div>
-      <div className="bg-grid" aria-hidden="true"></div>
-      <div className="bg-vignette" aria-hidden="true"></div>
       
       <div id="scroll-indicator">
         <div className="indicator-bar"></div>
@@ -179,7 +180,7 @@ function App() {
           <div className="container">
             <div className="hero-content">
               <h1>AxeomLabs</h1>
-              <p className="tagline">CONTROL IS THE ONLY SCALE.</p>
+              <p className="tagline">INTELLIGENCE IS DOMINANCE.</p>
               <div className="hero-cta reveal stagger-child">
                 <span className="scroll-prompt">SCROLL TO BEGIN</span>
               </div>
@@ -193,7 +194,7 @@ function App() {
             <div className="reveal">
               <h2 className="section-label">01 / CONTEXT</h2>
               <p className="editorial-text">
-                Modern computing is a house built on borrowed sand. You don't own your OS. You don't own your models. You don't own your tools. Every layer is a dependency, and every dependency is a failure point waiting to happen.
+                The current technological ecosystem is compromised. Organizations rely on fragmented, opaque architectures controlled by external monopolies. Sovereignty has been surrendered for convenience. We are taking it back.
               </p>
             </div>
           </div>
@@ -204,9 +205,9 @@ function App() {
           <div className="container">
             <div className="vision-grid">
               <div className="vision-text reveal">
-                <h2 className="section-label">02 / ARCHITECTURE</h2>
-                <h3>Vertical Integration.</h3>
-                <p>We are rebuilding the stack from the hardware up. A unified system where intelligence is not an app, but the engine that powers every layer.</p>
+                <h2 className="section-label">02 / DOCTRINE</h2>
+                <h3>Absolute Verticality.</h3>
+                <p>We deploy uncompromised ecosystems. From bare metal to the execution layer, we engineer systems that grant ultimate operational supremacy. Intelligence is the core substrate.</p>
               </div>
               
               <div className="arch-stack">
@@ -236,7 +237,7 @@ function App() {
           <div className="container">
             <div className="section-header reveal">
               <h2 className="section-label">03 / THE ARSENAL</h2>
-              <h3>Purpose-built tools for the inevitable.</h3>
+              <h3>Unrestricted capabilities for the cognitive battlespace.</h3>
             </div>
             
             <div id="products-grid" className="cards-grid" role="list">
@@ -260,9 +261,9 @@ function App() {
         <section id="philosophy" aria-label="The Philosophy">
           <div className="container">
             <div className="philosophy-content">
-              <div className="philosophy-statement" data-slam="true">WE BUILD SYSTEMS, NOT FEATURES.</div>
-              <div className="philosophy-statement" data-slam="true">OWNERSHIP IS NON-NEGOTIABLE.</div>
-              <div className="philosophy-statement" data-slam="true">THE FUTURE IS VERTICAL.</div>
+              <div className="philosophy-statement" data-slam="true">WE DO NOT RENT THE FUTURE.</div>
+              <div className="philosophy-statement" data-slam="true">SUPREMACY IS NON-NEGOTIABLE.</div>
+              <div className="philosophy-statement" data-slam="true">CONTROL EVERY LAYER.</div>
             </div>
           </div>
         </section>
@@ -282,7 +283,7 @@ function App() {
                 </div>
               </div>
               <p className="founder-text">
-                "The world doesn't need more apps. It needs more control over the ones it already has — and a new foundation for the ones it doesn't."
+                "The era of fragile app ecosystems is over. The future belongs to those who own the infrastructure of intelligence. We are forging that foundation."
               </p>
             </div>
           </div>
