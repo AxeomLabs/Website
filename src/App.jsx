@@ -37,7 +37,7 @@ const products = [
 
 function App() {
   const container = useRef(null);
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [formData, setFormData] = useState({ name: '', email: '', message: '', botcheck: false });
   const [formState, setFormState] = useState('idle');
 
   // GSAP Animations
@@ -156,6 +156,12 @@ function App() {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.message) return;
 
+    // Honeypot check for bots
+    if (formData.botcheck) {
+      setFormState('confirmed'); // Fake success
+      return;
+    }
+
     setFormState('loading');
     
     try {
@@ -167,7 +173,7 @@ function App() {
           'Accept': 'application/json'
         },
         body: JSON.stringify({
-          access_key: 'YOUR_ACCESS_KEY_HERE', // You will replace this!
+          access_key: '8d069e2b-4ec5-4e29-94c2-0d8429647ba6', // You will replace this!
           subject: 'AxeomLabs - New Intel/Access Request',
           name: formData.name,
           email: formData.email,
@@ -321,6 +327,15 @@ function App() {
                 {formState === 'error' && <p className="error-msg">TRANSMISSION FAILED. VERIFY NETWORK AND KEY.</p>}
                 
                 <div className="form-grid">
+                  {/* Invisible Honeypot to trap automated bots */}
+                  <input 
+                    type="checkbox" 
+                    name="botcheck" 
+                    style={{ display: 'none' }} 
+                    checked={formData.botcheck}
+                    onChange={(e) => setFormData({...formData, botcheck: e.target.checked})}
+                  />
+                  
                   <div className="input-group">
                     <input 
                       type="text" 
