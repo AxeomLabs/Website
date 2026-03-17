@@ -187,7 +187,7 @@ function App() {
 
         {/* PROBLEM */}
         <section id="problem" aria-label="The Problem">
-          <div className="container narrow">
+          <div className="container">
             <div className="reveal">
               <h2 className="section-label">01 / CONTEXT</h2>
               <p className="editorial-text">
@@ -256,7 +256,7 @@ function App() {
 
         {/* PHILOSOPHY */}
         <section id="philosophy" aria-label="The Philosophy">
-          <div className="container narrow">
+          <div className="container">
             <div className="philosophy-content">
               <div className="philosophy-statement" data-slam="true">WE BUILD SYSTEMS, NOT FEATURES.</div>
               <div className="philosophy-statement" data-slam="true">OWNERSHIP IS NON-NEGOTIABLE.</div>
@@ -282,7 +282,7 @@ function App() {
 
         {/* CTA */}
         <section id="cta" aria-label="The Door">
-          <div className="container narrow">
+          <div className="container">
             <div className="cta-content reveal">
               <h2 className="section-label">04 / ACCESS</h2>
               <h3>Request an invite to the private beta.</h3>
