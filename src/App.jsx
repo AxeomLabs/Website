@@ -165,6 +165,8 @@ function App() {
   return (
     <div ref={container}>
       <div id="grain" aria-hidden="true"></div>
+      <div className="bg-grid" aria-hidden="true"></div>
+      <div className="bg-vignette" aria-hidden="true"></div>
       
       <div id="scroll-indicator">
         <div className="indicator-bar"></div>
