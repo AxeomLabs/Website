@@ -129,52 +129,75 @@ function App() {
         {
           scrollTrigger: {
             trigger: slam,
-            start: 'top 75%',
-            end: 'bottom 25%',
-            toggleActions: 'play reverse play reverse',
+            start: 'top 85%',
+            end: 'bottom 15%',
+            toggleActions: 'play none none reverse',
           },
           opacity: 1,
           scale: 1,
           y: 0,
           filter: 'blur(0px)',
-          duration: 1.4,
-          ease: 'back.out(2)',
+          duration: 0.8,
+          ease: 'power2.out',
         }
       );
     });
 
-    // 5b. Horizontal Scroll for Arsenal
+    // 5b. Horizontal Scroll for Arsenal (Heavy & Interactive)
     const productsSection = document.querySelector('#products');
     const horizontalTrack = document.querySelector('.horizontal-track');
+    const arsenalBgLabel = document.querySelector('.arsenal-bg-label');
+    
     if (productsSection && horizontalTrack) {
-      const scrollWidth = horizontalTrack.scrollWidth - window.innerWidth + (window.innerWidth * 0.1); // Add some padding
+      const scrollWidth = horizontalTrack.scrollWidth - window.innerWidth;
       
-      gsap.to(horizontalTrack, {
-        x: -scrollWidth,
-        ease: 'none',
+      const tlArsenal = gsap.timeline({
         scrollTrigger: {
           trigger: productsSection,
           pin: true,
           start: 'top top',
-          end: () => `+=${scrollWidth}`,
+          end: () => `+=${scrollWidth * 1.5}`, // Make it feel 'heavier' with longer scroll
           scrub: 1,
-          anticipatePin: 1,
           invalidateOnRefresh: true,
         }
       });
 
-      // Animate individual cards in the track
-      gsap.from('.horizontal-item', {
-        opacity: 0,
-        y: 40,
-        stagger: 0.1,
-        duration: 1,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: productsSection,
-          start: 'top bottom',
-          toggleActions: 'play none none reverse',
-        }
+      tlArsenal.to(horizontalTrack, {
+        x: -scrollWidth,
+        ease: 'none'
+      });
+
+      // Parallax background label
+      if (arsenalBgLabel) {
+        tlArsenal.to(arsenalBgLabel, {
+          x: -scrollWidth * 0.3,
+          ease: 'none'
+        }, 0);
+      }
+
+      // Individual item 'Magnetic' entry & skew
+      const items = gsap.utils.toArray('.horizontal-item');
+      items.forEach((item, i) => {
+        gsap.fromTo(item, 
+          { 
+            scale: 0.8,
+            skewY: 5,
+            opacity: 0.3
+          },
+          {
+            scale: 1,
+            skewY: 0,
+            opacity: 1,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: item,
+              containerAnimation: tlArsenal,
+              start: 'left 80%',
+              end: 'left 40%',
+              scrub: true,
+            }
+          }
+        );
       });
     }
 
@@ -313,6 +336,7 @@ function App() {
           </div>
           
           <div className="horizontal-container">
+            <div className="arsenal-bg-label" aria-hidden="true">ARSENAL</div>
             <div className="horizontal-track">
               {products.map((product, index) => (
                 <article 
