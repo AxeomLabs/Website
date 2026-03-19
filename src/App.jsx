@@ -149,31 +149,33 @@ function App() {
       const cards = gsap.utils.toArray('.product-card');
       const totalWidth = productTrack.scrollWidth - window.innerWidth + (window.innerWidth * 0.1); 
       
-      gsap.to(productTrack, {
+      const horizontalTween = gsap.to(productTrack, {
         x: -totalWidth,
         ease: 'none',
         scrollTrigger: {
           trigger: '#products',
           start: 'top top',
           end: () => `+=${productTrack.scrollWidth}`,
-          scrub: 1,
+          scrub: 0.5, // Smoother follow
           pin: true,
           invalidateOnRefresh: true,
+          id: 'horizontalScroll'
         }
       });
 
       // Card parallax effect within horizontal scroll
-      cards.forEach((card, i) => {
+      cards.forEach((card) => {
         gsap.fromTo(card,
-          { x: 50, opacity: 0.5 },
+          { scale: 0.9, opacity: 0.7, filter: 'blur(4px)' },
           {
-            x: 0,
+            scale: 1,
             opacity: 1,
+            filter: 'blur(0px)',
             scrollTrigger: {
               trigger: card,
-              containerAnimation: gsap.getById('horizontalScroll'), // If we had an ID, but scrub is enough here usually
-              start: 'left right',
-              end: 'left center',
+              containerAnimation: horizontalTween,
+              start: 'left 80%',
+              end: 'left 40%',
               scrub: true,
             }
           }
