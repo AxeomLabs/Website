@@ -12,26 +12,30 @@ const products = [
   {
     id: 'p1',
     name: 'P1',
-    tagline: 'Autonomous AI programmer agent — writes, runs, tests, and fixes code. In-situ.',
-    label: 'INTELLIGENCE'
+    label: 'INTELLIGENCE',
+    story: 'P1 is not just an agent; it\'s a cognitive force that inhabits the codebase to self-correct and evolve. Intelligence at the threshold.',
+    img: '/assets/p1.png'
   },
   {
     id: 'obscura-os',
     name: 'ObscuraOS',
-    tagline: 'A lightweight, hardened operating system built for privacy and zero-trust environments.',
-    label: 'OPERATING SYSTEM'
+    label: 'OPERATING SYSTEM',
+    story: 'The system of absolute silence. A monolithic, zero-trust substrate engineered for the most critical sovereignty. Inhabit the fortress.',
+    img: '/assets/os.png'
   },
   {
     id: 'obscura-engine',
     name: 'Obscura Engine',
-    tagline: 'Multi-source intelligence layer. The bridge between raw data and executable insight.',
-    label: 'RESEARCH'
+    label: 'RESEARCH',
+    story: 'Connecting the hidden dots. An intelligence layer that synthesizes global telemetry into actionable doctrine. The bridge from noise to clarity.',
+    img: '/assets/engine.png'
   },
   {
     id: 'zerovault',
     name: 'ZeroVault',
-    tagline: 'Post-quantum encrypted secrets management. Your data, truly yours.',
-    label: 'SECURITY'
+    label: 'SECURITY',
+    story: 'Securing the post-quantum horizon. When traditional cryptography becomes paper-thin, ZeroVault remains the only unbreakable line of defense.',
+    img: '/assets/vault.png'
   }
 ];
 
@@ -95,25 +99,38 @@ function App() {
 
     document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-    // 4. Architecture Layer Reveal (GSAP ScrollTrigger)
-    const layers = gsap.utils.toArray('.arch-layer');
-    if (layers.length) {
-      gsap.fromTo(layers, 
-        { opacity: 0, x: -40 },
-        {
-          scrollTrigger: {
-            trigger: '.arch-stack',
-            start: 'top 80%',
-            end: 'bottom 20%',
-            toggleActions: 'play none none reverse',
-          },
-          opacity: 1,
-          x: 0,
-          stagger: 0.15,
-          duration: 1,
-          ease: 'power3.out'
+    // 4. Horizontal Arsenal Scroll (GSAP ScrollTrigger)
+    const arsenalWrapper = document.querySelector('.horizontal-wrapper');
+    const sections = gsap.utils.toArray('.horizontal-slide');
+    
+    if (arsenalWrapper && sections.length) {
+      gsap.to(sections, {
+        xPercent: -100 * (sections.length - 1),
+        ease: "none",
+        scrollTrigger: {
+          trigger: "#products",
+          pin: true,
+          scrub: 0.5,
+          snap: 1 / (sections.length - 1),
+          end: () => `+=${arsenalWrapper.offsetWidth}`,
         }
-      );
+      });
+
+      // Parallax effect for slide images
+      sections.forEach(slide => {
+        const img = slide.querySelector('.slide-img');
+        gsap.fromTo(img, 
+          { x: '10%' },
+          {
+            x: '-10%',
+            scrollTrigger: {
+              trigger: slide,
+              containerAnimation: gsap.getById('horizontalScroll'), // This is tricky in useGSAP without id, let's use the tween itself or just rely on the main scrub
+              scrub: true,
+            }
+          }
+        );
+      });
     }
 
     // 5. Philosophy Slam
@@ -143,47 +160,7 @@ function App() {
       );
     });
 
-    // 6. Horizontal Product Scroll (The Arsenal)
-    const productTrack = document.querySelector('.products-track');
-    if (productTrack) {
-      const cards = gsap.utils.toArray('.product-card');
-      const totalWidth = productTrack.scrollWidth - window.innerWidth + (window.innerWidth * 0.1); 
-      
-      const horizontalTween = gsap.to(productTrack, {
-        x: -totalWidth,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: '#products',
-          start: 'top top',
-          end: () => `+=${productTrack.scrollWidth}`,
-          scrub: 0.5, // Smoother follow
-          pin: true,
-          invalidateOnRefresh: true,
-          id: 'horizontalScroll'
-        }
-      });
-
-      // Card parallax effect within horizontal scroll
-      cards.forEach((card) => {
-        gsap.fromTo(card,
-          { scale: 0.9, opacity: 0.7, filter: 'blur(4px)' },
-          {
-            scale: 1,
-            opacity: 1,
-            filter: 'blur(0px)',
-            scrollTrigger: {
-              trigger: card,
-              containerAnimation: horizontalTween,
-              start: 'left 80%',
-              end: 'left 40%',
-              scrub: true,
-            }
-          }
-        );
-      });
-    }
-
-    // 7. Scroll Indicator
+    // 6. Scroll Indicator
     gsap.to('.indicator-bar', {
       scrollTrigger: {
         trigger: document.body,
@@ -308,32 +285,31 @@ function App() {
           </div>
         </section>
 
-        {/* PRODUCTS */}
-        <section id="products" aria-label="The Products">
-          <div className="horizontal-scroll-container">
-            <div className="container">
-              <div className="section-header reveal">
-                <h2 className="section-label">03 / THE ARSENAL</h2>
-                <h3>Defensive capabilities for the cognitive era.</h3>
-              </div>
+        {/* PRODUCTS / ARSENAL */}
+        <section id="products" className="horizontal-section" aria-label="The Arsenal">
+          <div className="horizontal-sticky">
+            <div className="horizontal-header container">
+              <h2 className="section-label">03 / THE ARSENAL</h2>
+              <h3>Forging the narrative of control.</h3>
             </div>
             
-            <div className="products-track-wrapper">
-              <div id="products-grid" className="products-track" role="list">
-                {products.map((product, index) => (
-                  <article 
-                    key={product.id} 
-                    className="product-card" 
-                    role="listitem" 
-                  >
-                    <div className="card-inner">
-                      <span className="card-label">PROJECT {String(index + 1).padStart(2, '0')} // {product.label}</span>
-                      <h3 className="card-title">{product.name}</h3>
-                      <p className="card-tagline">{product.tagline}</p>
+            <div className="horizontal-wrapper">
+              {products.map((product) => (
+                <div key={product.id} className="horizontal-slide">
+                  <div className="slide-content container">
+                    <div className="slide-text">
+                      <span className="card-label">{product.label}</span>
+                      <h3 className="slide-title">{product.name}</h3>
+                      <p className="slide-story">{product.story}</p>
                     </div>
-                  </article>
-                ))}
-              </div>
+                    <div className="slide-visual">
+                      <div className="slide-img-container">
+                        <img src={product.img} alt={product.name} className="slide-img" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </section>
