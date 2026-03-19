@@ -129,71 +129,51 @@ function App() {
         {
           scrollTrigger: {
             trigger: slam,
-            start: 'top 85%',
-            end: 'bottom 15%',
-            toggleActions: 'play none none reverse',
+            start: 'top 75%',
+            end: 'bottom 25%',
+            toggleActions: 'play reverse play reverse',
           },
           opacity: 1,
           scale: 1,
           y: 0,
           filter: 'blur(0px)',
-          duration: 0.8,
-          ease: 'power2.out',
+          duration: 1.4,
+          ease: 'back.out(2)',
         }
       );
     });
 
-    // 5b. Horizontal Scroll for Arsenal (Heavy & Interactive)
-    const productsSection = document.querySelector('#products');
-    const horizontalTrack = document.querySelector('.horizontal-track');
-    const arsenalBgLabel = document.querySelector('.arsenal-bg-label');
-    
-    if (productsSection && horizontalTrack) {
-      const scrollWidth = horizontalTrack.scrollWidth - window.innerWidth;
+    // 6. Horizontal Product Scroll (The Arsenal)
+    const productTrack = document.querySelector('.products-track');
+    if (productTrack) {
+      const cards = gsap.utils.toArray('.product-card');
+      const totalWidth = productTrack.scrollWidth - window.innerWidth + (window.innerWidth * 0.1); 
       
-      const tlArsenal = gsap.timeline({
+      gsap.to(productTrack, {
+        x: -totalWidth,
+        ease: 'none',
         scrollTrigger: {
-          trigger: productsSection,
-          pin: true,
+          trigger: '#products',
           start: 'top top',
-          end: () => `+=${scrollWidth * 1.5}`, // Make it feel 'heavier' with longer scroll
+          end: () => `+=${productTrack.scrollWidth}`,
           scrub: 1,
+          pin: true,
           invalidateOnRefresh: true,
         }
       });
 
-      tlArsenal.to(horizontalTrack, {
-        x: -scrollWidth,
-        ease: 'none'
-      });
-
-      // Parallax background label
-      if (arsenalBgLabel) {
-        tlArsenal.to(arsenalBgLabel, {
-          x: -scrollWidth * 0.3,
-          ease: 'none'
-        }, 0);
-      }
-
-      // Individual item 'Magnetic' entry & skew
-      const items = gsap.utils.toArray('.horizontal-item');
-      items.forEach((item, i) => {
-        gsap.fromTo(item, 
-          { 
-            scale: 0.8,
-            skewY: 5,
-            opacity: 0.3
-          },
+      // Card parallax effect within horizontal scroll
+      cards.forEach((card, i) => {
+        gsap.fromTo(card,
+          { x: 50, opacity: 0.5 },
           {
-            scale: 1,
-            skewY: 0,
+            x: 0,
             opacity: 1,
-            ease: 'power2.out',
             scrollTrigger: {
-              trigger: item,
-              containerAnimation: tlArsenal,
-              start: 'left 80%',
-              end: 'left 40%',
+              trigger: card,
+              containerAnimation: gsap.getById('horizontalScroll'), // If we had an ID, but scrub is enough here usually
+              start: 'left right',
+              end: 'left center',
               scrub: true,
             }
           }
@@ -201,7 +181,7 @@ function App() {
       });
     }
 
-    // 6. Scroll Indicator
+    // 7. Scroll Indicator
     gsap.to('.indicator-bar', {
       scrollTrigger: {
         trigger: document.body,
@@ -326,43 +306,31 @@ function App() {
           </div>
         </section>
 
-        {/* PRODUCTS (HORIZONTAL ARSENAL) */}
+        {/* PRODUCTS */}
         <section id="products" aria-label="The Products">
-          <div className="container overflow-visible">
-            <div className="section-header reveal">
-              <h2 className="section-label">03 / THE ARSENAL</h2>
-              <h3>Defensive capabilities for the cognitive era.</h3>
+          <div className="horizontal-scroll-container">
+            <div className="container">
+              <div className="section-header reveal">
+                <h2 className="section-label">03 / THE ARSENAL</h2>
+                <h3>Defensive capabilities for the cognitive era.</h3>
+              </div>
             </div>
-          </div>
-          
-          <div className="horizontal-container">
-            <div className="arsenal-bg-label" aria-hidden="true">ARSENAL</div>
-            <div className="horizontal-track">
-              {products.map((product, index) => (
-                <article 
-                  key={product.id} 
-                  className="horizontal-item" 
-                  role="listitem"
-                >
-                  <div className="product-card-horizontal">
-                    <span className="card-label">{product.label}</span>
-                    <h3 className="card-title">{product.name}</h3>
-                    <p className="card-tagline">{product.tagline}</p>
-                    <div className="card-decoration">
-                      <div className="line"></div>
-                      <div className="dot"></div>
+            
+            <div className="products-track-wrapper">
+              <div id="products-grid" className="products-track" role="list">
+                {products.map((product, index) => (
+                  <article 
+                    key={product.id} 
+                    className="product-card" 
+                    role="listitem" 
+                  >
+                    <div className="card-inner">
+                      <span className="card-label">PROJECT {String(index + 1).padStart(2, '0')} // {product.label}</span>
+                      <h3 className="card-title">{product.name}</h3>
+                      <p className="card-tagline">{product.tagline}</p>
                     </div>
-                  </div>
-                </article>
-              ))}
-              
-              {/* Closing slide */}
-              <div className="horizontal-item end-slide">
-                <div className="end-content">
-                  <span className="card-label">CONCLUSION</span>
-                  <h3 className="card-title">Integrated Supremacy.</h3>
-                  <p className="card-tagline">Each module is a node in a unified security architecture.</p>
-                </div>
+                  </article>
+                ))}
               </div>
             </div>
           </div>
