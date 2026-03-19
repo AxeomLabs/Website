@@ -143,6 +143,41 @@ function App() {
       );
     });
 
+    // 5b. Horizontal Scroll for Arsenal
+    const productsSection = document.querySelector('#products');
+    const horizontalTrack = document.querySelector('.horizontal-track');
+    if (productsSection && horizontalTrack) {
+      const scrollWidth = horizontalTrack.scrollWidth - window.innerWidth + (window.innerWidth * 0.1); // Add some padding
+      
+      gsap.to(horizontalTrack, {
+        x: -scrollWidth,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: productsSection,
+          pin: true,
+          start: 'top top',
+          end: () => `+=${scrollWidth}`,
+          scrub: 1,
+          anticipatePin: 1,
+          invalidateOnRefresh: true,
+        }
+      });
+
+      // Animate individual cards in the track
+      gsap.from('.horizontal-item', {
+        opacity: 0,
+        y: 40,
+        stagger: 0.1,
+        duration: 1,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: productsSection,
+          start: 'top bottom',
+          toggleActions: 'play none none reverse',
+        }
+      });
+    }
+
     // 6. Scroll Indicator
     gsap.to('.indicator-bar', {
       scrollTrigger: {
@@ -268,27 +303,43 @@ function App() {
           </div>
         </section>
 
-        {/* PRODUCTS */}
+        {/* PRODUCTS (HORIZONTAL ARSENAL) */}
         <section id="products" aria-label="The Products">
-          <div className="container">
+          <div className="container overflow-visible">
             <div className="section-header reveal">
               <h2 className="section-label">03 / THE ARSENAL</h2>
               <h3>Defensive capabilities for the cognitive era.</h3>
             </div>
-            
-            <div id="products-grid" className="cards-grid" role="list">
+          </div>
+          
+          <div className="horizontal-container">
+            <div className="horizontal-track">
               {products.map((product, index) => (
                 <article 
                   key={product.id} 
-                  className="product-card reveal" 
-                  role="listitem" 
-                  style={{ '--stagger-index': index }}
+                  className="horizontal-item" 
+                  role="listitem"
                 >
-                  <span className="card-label">{product.label}</span>
-                  <h3 className="card-title">{product.name}</h3>
-                  <p className="card-tagline">{product.tagline}</p>
+                  <div className="product-card-horizontal">
+                    <span className="card-label">{product.label}</span>
+                    <h3 className="card-title">{product.name}</h3>
+                    <p className="card-tagline">{product.tagline}</p>
+                    <div className="card-decoration">
+                      <div className="line"></div>
+                      <div className="dot"></div>
+                    </div>
+                  </div>
                 </article>
               ))}
+              
+              {/* Closing slide */}
+              <div className="horizontal-item end-slide">
+                <div className="end-content">
+                  <span className="card-label">CONCLUSION</span>
+                  <h3 className="card-title">Integrated Supremacy.</h3>
+                  <p className="card-tagline">Each module is a node in a unified security architecture.</p>
+                </div>
+              </div>
             </div>
           </div>
         </section>
