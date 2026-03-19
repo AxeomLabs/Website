@@ -274,7 +274,7 @@ section {
 
 .horizontal-header {
   position: absolute;
-  top: 10vh;
+  top: 15vh; /* Pushed down more to avoid 03 index */
   left: 0;
   right: 0;
   z-index: 20;
@@ -282,9 +282,9 @@ section {
 }
 
 .horizontal-header h3 {
-  font-size: 1rem;
-  letter-spacing: 0.5em;
-  opacity: 0.3;
+  font-size: 0.7rem;
+  letter-spacing: 0.8em;
+  opacity: 0.15;
   text-transform: uppercase;
 }
 
@@ -295,6 +295,15 @@ section {
   will-change: transform;
 }
 
+@media (max-width: 768px) {
+  .horizontal-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+  }
+}
+
 .horizontal-slide {
   width: 100vw;
   height: 100vh;
@@ -303,6 +312,13 @@ section {
   flex-shrink: 0;
   padding: 0 var(--gap-lg);
   position: relative;
+}
+
+@media (max-width: 768px) {
+  .horizontal-slide {
+    height: auto;
+    padding: var(--gap-lg) var(--gap-md);
+  }
 }
 
 /* Background numbers for storytelling feel */
@@ -320,22 +336,35 @@ section {
 
 .slide-content {
   display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: var(--gap-lg);
+  grid-template-columns: 1fr 1fr;
+  gap: 10vw; /* Increased gap significantly */
   align-items: center;
+  width: 100%;
+  max-width: 1400px; /* Constrain content width */
+  margin: 0 auto;
+}
+
+@media (max-width: 1024px) {
+  .slide-content {
+    grid-template-columns: 1fr;
+    gap: var(--gap-lg);
+    margin-top: 15vh;
+  }
 }
 
 .slide-text {
-  max-width: 500px;
+  max-width: 450px;
+  z-index: 2;
 }
 
 .slide-title {
   font-family: var(--font-display);
-  font-size: clamp(40px, 8vw, 120px);
+  font-size: clamp(32px, 5vw, 80px); /* Tighter font for long titles */
   margin-bottom: var(--gap-md);
-  line-height: 0.9;
+  line-height: 0.95;
   letter-spacing: -0.05em;
   color: var(--text-primary);
+  word-break: normal;
 }
 
 .slide-story {
@@ -545,6 +574,14 @@ section {
   .form-grid { grid-template-columns: 1fr; }
   .form-actions { justify-content: stretch; }
   .btn-primary { padding: 16px; width: 100%; }
+
+  /* Section specific overrides for mobile cleanup */
+  .horizontal-section { height: auto; overflow: visible; }
+  .horizontal-sticky { height: auto; padding-top: 5vh; }
+  .horizontal-header { position: relative; top: 0; margin-bottom: var(--gap-lg); padding: 0 var(--gap-md); }
+  .horizontal-header h3 { font-size: 1.2rem; opacity: 1; letter-spacing: 0.1em; color: var(--accent); }
+  .slide-visual { order: -1; height: 30vh; margin-bottom: var(--gap-md); }
+  .slide-story { max-width: 100%; border-left: none; border-top: 1px solid var(--border); padding-left: 0; padding-top: var(--gap-md); }
 }
 
 /* ================================================
