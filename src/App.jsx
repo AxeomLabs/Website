@@ -103,35 +103,44 @@ function App() {
     const arsenalWrapper = document.querySelector('.horizontal-wrapper');
     const sections = gsap.utils.toArray('.horizontal-slide');
     
-    if (arsenalWrapper && sections.length) {
-      gsap.to(sections, {
-        xPercent: -100 * (sections.length - 1),
-        ease: "none",
-        scrollTrigger: {
-          trigger: "#products",
-          pin: true,
-          scrub: 0.5,
-          snap: 1 / (sections.length - 1),
-          end: () => `+=${arsenalWrapper.offsetWidth}`,
-        }
-      });
+    // Create matchMedia for desktop version only
+    let mm = gsap.matchMedia();
 
-      // Parallax effect for slide images
-      sections.forEach(slide => {
-        const img = slide.querySelector('.slide-img');
-        gsap.fromTo(img, 
-          { x: '10%' },
-          {
-            x: '-10%',
-            scrollTrigger: {
-              trigger: slide,
-              containerAnimation: gsap.getById('horizontalScroll'), // This is tricky in useGSAP without id, let's use the tween itself or just rely on the main scrub
-              scrub: true,
-            }
+    mm.add("(min-width: 769px)", () => {
+      if (arsenalWrapper && sections.length) {
+        gsap.to(sections, {
+          xPercent: -100 * (sections.length - 1),
+          ease: "none",
+          scrollTrigger: {
+            trigger: "#products",
+            pin: true,
+            scrub: 0.5,
+            snap: 1 / (sections.length - 1),
+            end: () => `+=${arsenalWrapper.offsetWidth}`,
           }
-        );
-      });
-    }
+        });
+
+        // Parallax effect for slide images
+        sections.forEach(slide => {
+          const img = slide.querySelector('.slide-img');
+          gsap.fromTo(img, 
+            { x: '10%' },
+            {
+              x: '-10%',
+              scrollTrigger: {
+                trigger: slide,
+                containerAnimation: gsap.getById('horizontalScroll'), // Reference the main tween
+                scrub: true,
+              }
+            }
+          );
+        });
+      }
+    });
+
+    return () => {
+      mm.revert(); // Cleanup GSAP matchMedia
+    };
 
     // 5. Philosophy Slam
     const slams = gsap.utils.toArray('.philosophy-statement');
