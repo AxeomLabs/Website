@@ -274,11 +274,18 @@ section {
 
 .horizontal-header {
   position: absolute;
-  top: var(--section-padding);
+  top: 10vh;
   left: 0;
   right: 0;
-  z-index: 10;
+  z-index: 20;
   pointer-events: none;
+}
+
+.horizontal-header h3 {
+  font-size: 1rem;
+  letter-spacing: 0.5em;
+  opacity: 0.3;
+  text-transform: uppercase;
 }
 
 .horizontal-wrapper {
@@ -324,18 +331,20 @@ section {
 
 .slide-title {
   font-family: var(--font-display);
-  font-size: clamp(40px, 6vw, 80px);
+  font-size: clamp(40px, 8vw, 120px);
   margin-bottom: var(--gap-md);
-  line-height: 1;
+  line-height: 0.9;
+  letter-spacing: -0.05em;
   color: var(--text-primary);
 }
 
 .slide-story {
-  font-size: clamp(16px, 1.2vw, 20px);
+  font-size: clamp(14px, 1vw, 18px);
   line-height: 1.6;
   color: var(--text-secondary);
   border-left: 2px solid var(--accent);
   padding-left: var(--gap-md);
+  max-width: 400px;
 }
 
 .slide-visual {
@@ -352,6 +361,15 @@ section {
   border-radius: 4px;
   box-shadow: 0 40px 100px rgba(0,0,0,0.8), 0 0 20px rgba(0,170,255,0.1);
   border: 1px solid var(--border);
+  position: relative;
+}
+
+.slide-img-container::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, var(--bg-primary) 0%, transparent 50%);
+  pointer-events: none;
 }
 
 .slide-img {
