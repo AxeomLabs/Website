@@ -1,9 +1,16 @@
 import { useRef } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
+import useSEO from '../hooks/useSEO';
 
 function Founders() {
   const container = useRef(null);
+
+  useSEO(
+    'Our Founders | AxeomLabs — Harinandan J V & Abhishek A S',
+    'Meet Harinandan J V and Abhishek A S, the co-founders of AxeomLabs — the team building autonomous drones, robotics platforms, and intelligent hardware from India.',
+    'https://www.axeomlabs.in/founders'
+  );
 
   useGSAP(() => {
     gsap.from('.page-hero h1', { opacity: 0, y: 50, duration: 1, ease: 'expo.out', delay: 0.1 });

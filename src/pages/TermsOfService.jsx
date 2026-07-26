@@ -1,3 +1,5 @@
+import useSEO from '../hooks/useSEO';
+
 const EFFECTIVE_DATE = '26 July 2025';
 const COMPANY = 'AxeomLabs';
 const EMAIL = 'founder@axeomlabs.in';
@@ -26,6 +28,11 @@ function LegalPage({ title, label, children }) {
 }
 
 function TermsOfService() {
+  useSEO(
+    'Terms of Service | AxeomLabs',
+    'Read the AxeomLabs Terms of Service. By using axeomlabs.in you agree to these terms governing use of our website and services.',
+    'https://www.axeomlabs.in/terms'
+  );
   return (
     <LegalPage title="Terms of Service" label="LEGAL DOCUMENTATION">
       <h2>1. Acceptance of Terms</h2>

@@ -2,6 +2,7 @@ import { useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
+import useSEO from '../hooks/useSEO';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -21,6 +22,12 @@ const osTable = [
 
 function Systems() {
   const container = useRef(null);
+
+  useSEO(
+    'Systems & Software | AxeomLabs — Embedded Firmware & Full-Stack Engineering',
+    'AxeomLabs engineers embedded software, real-time operating systems, bare-metal firmware, and full-stack software platforms optimised for deterministic performance.',
+    'https://www.axeomlabs.in/systems'
+  );
 
   useGSAP(() => {
     const tl = gsap.timeline({ delay: 0.1 });

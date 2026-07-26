@@ -2,11 +2,18 @@ import { useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
+import useSEO from '../hooks/useSEO';
 
 gsap.registerPlugin(ScrollTrigger);
 
 function Research() {
   const container = useRef(null);
+
+  useSEO(
+    'Applied Research | AxeomLabs — Robotics, Vision & Autonomous Systems',
+    'AxeomLabs conducts applied research in robotics, computer vision, materials science, and autonomous navigation. Translating scientific breakthroughs into deployable products.',
+    'https://www.axeomlabs.in/research'
+  );
 
   useGSAP(() => {
     const tl = gsap.timeline({ delay: 0.1 });

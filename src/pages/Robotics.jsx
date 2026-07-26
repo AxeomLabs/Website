@@ -2,6 +2,7 @@ import { useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
+import useSEO from '../hooks/useSEO';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -13,6 +14,12 @@ const roboticsSystems = [
 
 function Robotics() {
   const container = useRef(null);
+
+  useSEO(
+    'Robotics Platforms | AxeomLabs — Ground, Aerial & Aquatic Robots',
+    'AxeomLabs builds ground, aerial, and aquatic robotics platforms with tactile sensing, real-time navigation, and edge AI for complex unstructured environments.',
+    'https://www.axeomlabs.in/robotics'
+  );
 
   useGSAP(() => {
     const tl = gsap.timeline({ delay: 0.1 });

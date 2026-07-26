@@ -419,7 +419,7 @@ section {
 
 #hero h1 .word-accent {
   color: transparent;
-  -webkit-text-stroke: 1px rgba(255,255,255,0.25);
+  -webkit-text-stroke: 1px rgba(228,228,228,0.45);
 }
 
 .hero-desc {

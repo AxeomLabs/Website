@@ -239,7 +239,7 @@ function App() {
 
       {/* DIVISIONS */}
       <section id="divisions" aria-label="What we do">
-        <div className="container" style={{ padding: 'calc(var(--unit) * 16) var(--margin)' }}>
+        <div className="container" style={{ padding: '0 var(--margin)' }}>
           <div className="section-header reveal">
             <div>
               <div className="section-label">01 // WHAT WE DO</div>
@@ -315,7 +315,7 @@ function App() {
 
       {/* CAPABILITIES */}
       <section id="directives" aria-label="Core capabilities">
-        <div className="container" style={{ padding: 'calc(var(--unit) * 16) var(--margin)' }}>
+        <div className="container" style={{ padding: '0 var(--margin)' }}>
           <div className="section-header reveal">
             <div>
               <div className="section-label">03 // CAPABILITIES</div>
@@ -338,7 +338,7 @@ function App() {
 
       {/* CONTACT */}
       <section id="cta" aria-label="Contact us">
-        <div className="container" style={{ padding: 'calc(var(--unit) * 16) var(--margin)' }}>
+        <div className="container" style={{ padding: '0 var(--margin)' }}>
           <div className="cta-layout">
             <div className="cta-left reveal-left">
               <div className="cta-label">04 // CONTACT</div>

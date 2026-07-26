@@ -1,6 +1,10 @@
+import { useEffect } from 'react';
+import useSEO from '../hooks/useSEO';
+
 const EFFECTIVE_DATE = '26 July 2025';
 const COMPANY = 'AxeomLabs';
 const EMAIL = 'founder@axeomlabs.in';
+
 
 function LegalPage({ title, label, children }) {
   return (
@@ -25,6 +29,11 @@ function LegalPage({ title, label, children }) {
 }
 
 function PrivacyPolicy() {
+  useSEO(
+    'Privacy Policy | AxeomLabs',
+    'Read the AxeomLabs Privacy Policy. We only collect information voluntarily provided through our contact form and do not sell or share data with third parties without consent.',
+    'https://www.axeomlabs.in/privacy'
+  );
   return (
     <LegalPage title="Privacy Policy" label="LEGAL DOCUMENTATION">
       <h2>1. Introduction</h2>

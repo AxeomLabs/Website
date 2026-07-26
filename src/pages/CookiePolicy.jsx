@@ -1,3 +1,5 @@
+import useSEO from '../hooks/useSEO';
+
 const EFFECTIVE_DATE = '26 July 2025';
 const EMAIL = 'founder@axeomlabs.in';
 
@@ -24,6 +26,11 @@ function LegalPage({ title, label, children }) {
 }
 
 function CookiePolicy() {
+  useSEO(
+    'Cookie Policy | AxeomLabs',
+    'Read the AxeomLabs Cookie Policy. We use essential cookies only. Analytics and advertising cookies require your explicit consent.',
+    'https://www.axeomlabs.in/cookies'
+  );
   return (
     <LegalPage title="Cookie Policy" label="LEGAL DOCUMENTATION">
       <h2>1. What Are Cookies</h2>
