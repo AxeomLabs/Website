@@ -1,42 +1,52 @@
 import { useRef, useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
-import Lenis from 'lenis';
-
-import './index.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const products = [
-  {
-    id: 'p1',
-    name: 'P1',
-    label: 'INTELLIGENCE',
-    story: 'P1 is not just an agent; it\'s a cognitive force that inhabits the codebase to self-correct and evolve. Intelligence at the threshold.',
-    img: '/assets/p1.png'
-  },
-  {
-    id: 'obscura-os',
-    name: 'ObscuraOS',
-    label: 'OPERATING SYSTEM',
-    story: 'The system of absolute silence. A monolithic, zero-trust substrate engineered for the most critical sovereignty. Inhabit the fortress.',
-    img: '/assets/os.png'
-  },
-  {
-    id: 'obscura-engine',
-    name: 'Obscura Engine',
-    label: 'RESEARCH',
-    story: 'Connecting the hidden dots. An intelligence layer that synthesizes global telemetry into actionable doctrine. The bridge from noise to clarity.',
-    img: '/assets/engine.png'
-  },
-  {
-    id: 'zerovault',
-    name: 'ZeroVault',
-    label: 'SECURITY',
-    story: 'Securing the post-quantum horizon. When traditional cryptography becomes paper-thin, ZeroVault remains the only unbreakable line of defense.',
-    img: '/assets/vault.png'
-  }
+// Live counter that animates to a target value
+function Counter({ target, suffix = '', decimals = 0 }) {
+  const [value, setValue] = useState(0);
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        const start = Date.now();
+        const duration = 1800;
+        const tick = () => {
+          const elapsed = Date.now() - start;
+          const progress = Math.min(elapsed / duration, 1);
+          const ease = 1 - Math.pow(1 - progress, 3);
+          setValue(+(target * ease).toFixed(decimals));
+          if (progress < 1) requestAnimationFrame(tick);
+          else setValue(target);
+        };
+        requestAnimationFrame(tick);
+        observer.disconnect();
+      }
+    }, { threshold: 0.5 });
+    if (el) observer.observe(el);
+    return () => observer.disconnect();
+  }, [target, decimals]);
+
+  return (
+    <span ref={ref}>
+      {decimals > 0 ? value.toFixed(decimals) : value}{suffix}
+    </span>
+  );
+}
+
+const directives = [
+  { num: '01', title: 'AUTONOMOUS INTELLIGENCE', desc: 'Self-modifying agent architectures operating at the boundary of instruction and inference.' },
+  { num: '02', title: 'SUBSTRATE ENGINEERING', desc: 'Custom silicon and firmware stacks optimized for deterministic real-time computation.' },
+  { num: '03', title: 'KINEMATIC SYSTEMS', desc: 'Robotics platforms bridging algorithmic cognition with precise physical articulation.' },
+  { num: '04', title: 'SECURITY PROTOCOLS', desc: 'Zero-trust architectures and adversarial resilience for autonomous infrastructure.' },
+  { num: '05', title: 'VERTICAL INTEGRATION', desc: 'From electron to interface — controlling the full stack eliminates emergent failure modes.' },
+  { num: '06', title: 'INEVITABLE SYSTEMS', desc: 'Technology that becomes infrastructure. The kind of progress that cannot be undone.' },
 ];
 
 function App() {
@@ -44,392 +54,333 @@ function App() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '', botcheck: false });
   const [formState, setFormState] = useState('idle');
 
-  // GSAP Animations
   useGSAP(() => {
-    // 1. Lenis Smooth Scroll
-    const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      direction: 'vertical',
-      smooth: true,
-    });
+    // Hero entrance
+    const tl = gsap.timeline({ delay: 0.1 });
+    tl.from('.hero-eyebrow', { opacity: 0, y: 12, duration: 0.6, ease: 'expo.out' })
+      .from('#hero h1 .word-line', { opacity: 0, y: 60, duration: 1.0, ease: 'expo.out', stagger: 0.12 }, '-=0.3')
+      .from('.hero-desc', { opacity: 0, y: 16, duration: 0.7, ease: 'expo.out' }, '-=0.4')
+      .from('.hero-cta-row', { opacity: 0, y: 12, duration: 0.5, ease: 'expo.out' }, '-=0.4')
+      .from('.hero-hud', { opacity: 0, x: 20, duration: 0.7, ease: 'expo.out' }, '-=0.6');
 
-    lenis.on('scroll', ScrollTrigger.update);
-
-    gsap.ticker.add((time) => {
-      lenis.raf(time * 1000);
-    });
-
-    gsap.ticker.lagSmoothing(0);
-
-    // 2. Initial Page Load Animation
-    const tl = gsap.timeline({
-      onComplete: () => {
-        document.body.classList.remove('loading');
-      }
-    });
-
-    tl.from('#hero h1', {
-      opacity: 0,
-      y: 60,
-      duration: 2,
-      ease: 'expo.out'
-    })
-    .from('.tagline', {
-      opacity: 0,
-      y: 20,
-      duration: 1.5,
-      ease: 'power2.out'
-    }, '-=1.2')
-    .from('.scroll-prompt', {
-      opacity: 0,
-      y: 20,
-      duration: 1.5,
-      ease: 'power2.out'
-    }, '-=1');
-
-    // 3. Scroll Reveals (using vanilla IntersectionObserver within React)
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.15 });
-
-    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-
-    // 4. Horizontal Arsenal Scroll (GSAP ScrollTrigger)
-    const arsenalWrapper = document.querySelector('.horizontal-wrapper');
-    const sections = gsap.utils.toArray('.horizontal-slide');
-    
-    // Create matchMedia for desktop version only
-    let mm = gsap.matchMedia();
-
-    mm.add("(min-width: 769px)", () => {
-      if (arsenalWrapper && sections.length) {
-        gsap.to(sections, {
-          xPercent: -100 * (sections.length - 1),
-          ease: "none",
-          scrollTrigger: {
-            trigger: "#products",
-            pin: true,
-            scrub: 0.5,
-            snap: 1 / (sections.length - 1),
-            end: () => `+=${arsenalWrapper.offsetWidth}`,
-          }
-        });
-
-        // Parallax effect for slide images
-        sections.forEach(slide => {
-          const img = slide.querySelector('.slide-img');
-          gsap.fromTo(img, 
-            { x: '10%' },
-            {
-              x: '-10%',
-              scrollTrigger: {
-                trigger: slide,
-                containerAnimation: gsap.getById('horizontalScroll'), // Reference the main tween
-                scrub: true,
-              }
-            }
-          );
-        });
-      }
-    });
-
-    return () => {
-      mm.revert(); // Cleanup GSAP matchMedia
-    };
-
-    // 5. Philosophy Slam
-    const slams = gsap.utils.toArray('.philosophy-statement');
-    slams.forEach(slam => {
-      gsap.fromTo(slam,
-        {
-          opacity: 0.1,
-          scale: 0.95,
-          y: 30,
-          filter: 'blur(8px)',
-        },
-        {
-          scrollTrigger: {
-            trigger: slam,
-            start: 'top 75%',
-            end: 'bottom 25%',
-            toggleActions: 'play reverse play reverse',
-          },
-          opacity: 1,
-          scale: 1,
-          y: 0,
-          filter: 'blur(0px)',
-          duration: 1.4,
-          ease: 'back.out(2)',
-        }
-      );
-    });
-
-    // 6. Scroll Indicator
+    // Scroll indicator bar
     gsap.to('.indicator-bar', {
-      scrollTrigger: {
-        trigger: document.body,
-        start: 'top top',
-        end: 'bottom bottom',
-        scrub: 0.3
-      },
-      width: '100%'
+      width: '100%', ease: 'none',
+      scrollTrigger: { trigger: document.body, start: 'top top', end: 'bottom bottom', scrub: 0.2 }
     });
 
-    return () => {
-      lenis.destroy();
-      gsap.ticker.remove(lenis.raf);
-      revealObserver.disconnect();
-    };
+    // Philosophy statements — clip reveal on scroll
+    document.querySelectorAll('.philosophy-stmt').forEach((stmt) => {
+      ScrollTrigger.create({
+        trigger: stmt,
+        start: 'top 85%',
+        onEnter: () => stmt.classList.add('visible'),
+      });
+    });
+
+    // Intersection observer for .reveal elements
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal, .reveal-left').forEach(el => obs.observe(el));
+
+    return () => obs.disconnect();
   }, { scope: container });
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.message) return;
-
-    // Honeypot check for bots
-    if (formData.botcheck) {
-      setFormState('confirmed'); // Fake success
-      return;
-    }
-
+    if (formData.botcheck) { setFormState('confirmed'); return; }
     setFormState('loading');
-    
     try {
-      // Free Web3Forms Endpoint - Posts an email directly to your inbox without a backend
       const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify({
-          access_key: '8d069e2b-4ec5-4e29-94c2-0d8429647ba6', // You will replace this!
-          subject: 'AxeomLabs - New Intel/Access Request',
-          name: formData.name,
-          email: formData.email,
-          message: formData.message,
-        })
+          access_key: '8d069e2b-4ec5-4e29-94c2-0d8429647ba6',
+          subject: 'AxeomLabs — New Access Request',
+          name: formData.name, email: formData.email, message: formData.message,
+        }),
       });
-      
-      if (response.ok) {
-        setFormState('confirmed');
-        setFormData({ name: '', email: '', message: '' });
-      } else {
-        setFormState('error');
-      }
-    } catch (error) {
-      setFormState('error');
-    }
+      if (response.ok) { setFormState('confirmed'); setFormData({ name: '', email: '', message: '' }); }
+      else { setFormState('error'); }
+    } catch { setFormState('error'); }
   };
 
   return (
     <div ref={container}>
-      <div id="grain" aria-hidden="true"></div>
-      
-      <div id="scroll-indicator">
-        <div className="indicator-bar"></div>
-      </div>
+      {/* ── HERO ── */}
+      <section id="hero" aria-label="Hero">
+        <div className="hero-bg-grid" aria-hidden="true" />
 
-      <main id="main-content">
-        
-        {/* HERO */}
-        <section id="hero" aria-label="Hero">
-          <div className="container">
-            <div className="hero-content">
-              <h1>AXEOMLABS</h1>
-              <p className="tagline">INTELLIGENCE INFRASTRUCTURE FOR THE UNPREDICTABLE.</p>
-              <div className="hero-cta reveal stagger-child">
-                <span className="scroll-prompt">SCROLL TO BEGIN</span>
+        <div className="hero-content">
+          <div className="hero-left">
+            <div className="hero-eyebrow">[ AXEOM PROTOCOL : STABLE ]</div>
+
+            <h1>
+              <span className="word-line" style={{ display: 'block' }}>INTELLIGENCE</span>
+              <span className="word-line" style={{ display: 'block', color: 'transparent', WebkitTextStroke: '1px rgba(255,255,255,0.2)' }}>INFRASTRUCTURE.</span>
+            </h1>
+
+            <p className="hero-desc">
+              Engineering the substrate for autonomous systems, generative models, and the next generation
+              of computational environments. We build the foundations others will build upon.
+            </p>
+
+            <div className="hero-cta-row">
+              <button
+                className="btn-primary"
+                onClick={() => document.getElementById('divisions').scrollIntoView({ behavior: 'smooth' })}
+              >
+                ENTER LABORATORY <span aria-hidden="true">→</span>
+              </button>
+              <Link to="/#cta" className="btn-ghost">REQUEST ACCESS</Link>
+            </div>
+          </div>
+
+          {/* Live telemetry HUD */}
+          <div className="hero-hud" role="status" aria-label="System telemetry">
+            <div className="hud-header">
+              SYS.TELEMETRY
+              <span className="hud-live">
+                <span className="hud-live-dot" aria-hidden="true" />
+                LIVE
+              </span>
+            </div>
+            <div className="hud-row">
+              <span className="hud-label">UPTIME</span>
+              <span className="hud-value accent">99.999%</span>
+            </div>
+            <div className="hud-row">
+              <span className="hud-label">LATENCY</span>
+              <span className="hud-value accent">&lt;0.5ms</span>
+            </div>
+            <div className="hud-row">
+              <span className="hud-label">NODES ACTIVE</span>
+              <span className="hud-value"><Counter target={247} /></span>
+            </div>
+            <div className="hud-row">
+              <span className="hud-label">INFERENCE/SEC</span>
+              <span className="hud-value"><Counter target={14380} /></span>
+            </div>
+            <div className="hud-row">
+              <span className="hud-label">SYS.STATUS</span>
+              <span className="hud-value accent">NOMINAL</span>
+            </div>
+          </div>
+        </div>
+
+        <div className="hero-scroll-prompt" aria-hidden="true">
+          <span>SCROLL</span>
+          <div className="hero-scroll-line" />
+        </div>
+      </section>
+
+      {/* ── DIVISIONS ── */}
+      <section id="divisions" aria-label="Laboratory Divisions">
+        <div className="container" style={{ padding: 'calc(var(--unit) * 16) var(--margin)' }}>
+          <div className="section-header reveal">
+            <div>
+              <div className="section-label">01 // OPERATIONS</div>
+              <h2 style={{ color: 'var(--on-bg)', marginTop: 8 }}>LABORATORY DIVISIONS</h2>
+            </div>
+            <span className="section-counter">THREE ACTIVE DIVISIONS</span>
+          </div>
+
+          <div className="divisions-grid">
+            {/* Robotics */}
+            <Link to="/robotics" className="division-card reveal">
+              <img
+                src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&q=80"
+                alt="Robotics & AI division"
+                className="division-card-img"
+              />
+              <div className="division-card-body">
+                <div className="division-card-info">
+                  <div className="division-card-code">DIV.01 // KINETICS</div>
+                  <h3>ROBOTICS & AI</h3>
+                  <p>Kinematic autonomy and physical world translation layers. Bridging algorithmic cognition with physical articulation.</p>
+                </div>
+                <span className="division-card-arrow">ENTER <span aria-hidden="true">↗</span></span>
+              </div>
+            </Link>
+
+            {/* Systems */}
+            <Link to="/systems" className="division-card reveal">
+              <img
+                src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80"
+                alt="Software & Systems division"
+                className="division-card-img"
+              />
+              <div className="division-card-body">
+                <div className="division-card-info">
+                  <div className="division-card-code">DIV.02 // CORE</div>
+                  <h3>SOFTWARE & SYSTEMS</h3>
+                  <p>Deterministic logic protocols governing decentralized agent infrastructure. Extremely low-latency environments.</p>
+                </div>
+                <span className="division-card-arrow">ENTER <span aria-hidden="true">↗</span></span>
+              </div>
+            </Link>
+
+            {/* Research — full width */}
+            <Link to="/research" className="division-card division-card-full reveal">
+              <img
+                src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1400&q=80"
+                alt="Advanced Research division"
+                className="division-card-img"
+              />
+              <div className="division-card-body">
+                <div className="division-card-info">
+                  <div className="division-card-code">DIV.03 // DISCOVERY</div>
+                  <h3>ADVANCED RESEARCH</h3>
+                  <p>Theoretical boundaries and fundamental physics simulations. Exploring the molecular and cosmic limits of matter, alongside the cultural and aesthetic resonance of human endeavor.</p>
+                </div>
+                <span className="division-card-arrow">ENTER <span aria-hidden="true">↗</span></span>
+              </div>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ── PHILOSOPHY ── */}
+      <section id="philosophy" aria-label="Core Directives">
+        <div className="container">
+          <div className="philosophy-label">02 // DOCTRINE</div>
+          <div className="philosophy-statements">
+            {[
+              'WE BUILD WHAT OTHERS CONSIDER IMPOSSIBLE.',
+              'INTELLIGENCE IS THE ONLY MOAT WORTH BUILDING.',
+              'VERTICAL INTEGRATION IS NOT A STRATEGY — IT IS A NECESSITY.',
+              'THE FUTURE IS ALREADY WRITTEN IN PHYSICS.',
+            ].map((stmt, i) => (
+              <div key={i} className="philosophy-stmt">
+                <span className="stmt-inner">
+                  <span className="stmt-num" aria-hidden="true">0{i + 1}</span>
+                  {stmt}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── CORE DIRECTIVES ── */}
+      <section id="directives" aria-label="Core Directives">
+        <div className="container" style={{ padding: 'calc(var(--unit) * 16) var(--margin)' }}>
+          <div className="section-header reveal">
+            <div>
+              <div className="section-label">03 // ARCHITECTURE</div>
+              <h2 style={{ color: 'var(--on-bg)', marginTop: 8 }}>CORE DIRECTIVES</h2>
+            </div>
+            <span className="section-counter">SIX PILLARS</span>
+          </div>
+
+          <div className="directives-grid">
+            {directives.map((d) => (
+              <div key={d.num} className="directive-card reveal">
+                <div className="directive-num">{d.num}</div>
+                <h3>{d.title}</h3>
+                <p>{d.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── CTA ── */}
+      <section id="cta" aria-label="Access Portal">
+        <div className="container" style={{ padding: 'calc(var(--unit) * 16) var(--margin)' }}>
+          <div className="cta-layout">
+            <div className="cta-left reveal-left">
+              <div className="cta-label">04 // ACCESS PORTAL</div>
+              <h2>REQUEST<br />ACCESS.</h2>
+              <p>Submit your credentials for private beta evaluation. We assess operational objectives, not résumés.</p>
+              <div className="cta-manifest">
+                <div className="manifest-item">ENCRYPTED TRANSMISSION</div>
+                <div className="manifest-item">72HR RESPONSE SLA</div>
+                <div className="manifest-item">PRIVATE BETA EVALUATION</div>
+                <div className="manifest-item">NDA ON ACCEPTANCE</div>
               </div>
             </div>
-          </div>
-        </section>
 
-        {/* PROBLEM */}
-        <section id="problem" aria-label="The Problem">
-          <div className="container">
-            <div className="reveal">
-              <h2 className="section-label">01 / CONTEXT</h2>
-              <p className="editorial-text">
-                High-stakes environments demand absolute clarity. When data is fragmented and systems are opaque, critical vulnerabilities emerge. We build the connective tissue between raw information and decisive action for institutions that cannot afford to fail.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* VISION */}
-        <section id="vision" aria-label="The Vision">
-          <div className="container">
-            <div className="vision-grid">
-              <div className="vision-text reveal">
-                <h2 className="section-label">02 / DOCTRINE</h2>
-                <h3>Centralized Intelligence.</h3>
-                <p>We deploy secure ecosystems. From bare metal to the execution layer, we engineer AI-driven analytical systems that unify disparate datasets, illuminate blind spots, and grant ultimate operational awareness.</p>
+            <div className="terminal-form reveal">
+              <div className="terminal-header" aria-hidden="true">
+                <div className="terminal-dot red" />
+                <div className="terminal-dot amber" />
+                <div className="terminal-dot green" />
+                <span className="terminal-title">axeom-access — secure-terminal</span>
               </div>
-              
-              <div className="arch-stack">
-                <div className="arch-layer" data-layer="4">
-                  <span className="layer-label">Interface</span>
-                  <span className="layer-desc">Horizontal apps & tools</span>
+              <div className="terminal-body">
+                <div className="terminal-prompt">
+                  <span>axeom@secure:~$</span> initiate_contact --encrypted
                 </div>
-                <div className="arch-layer" data-layer="3">
-                  <span className="layer-label">Intelligence</span>
-                  <span className="layer-desc">P1 + Obscura Engine</span>
-                </div>
-                <div className="arch-layer" data-layer="2">
-                  <span className="layer-label">ObscuraOS</span>
-                  <span className="layer-desc">System ownership</span>
-                </div>
-                <div className="arch-layer" data-layer="1">
-                  <span className="layer-label">Substrate</span>
-                  <span className="layer-desc">Physical control layer</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* PRODUCTS / ARSENAL */}
-        <section id="products" className="horizontal-section" aria-label="The Arsenal">
-          <div className="horizontal-sticky">
-            <div className="horizontal-header container">
-              <h2 className="section-label">03 / THE ARSENAL</h2>
-              <h3>Forging the narrative of control.</h3>
-            </div>
-            
-            <div className="horizontal-wrapper">
-              {products.map((product) => (
-                <div key={product.id} className="horizontal-slide">
-                  <div className="slide-content container">
-                    <div className="slide-text">
-                      <span className="card-label">{product.label}</span>
-                      <h3 className="slide-title">{product.name}</h3>
-                      <p className="slide-story">{product.story}</p>
-                    </div>
-                    <div className="slide-visual">
-                      <div className="slide-img-container">
-                        <img src={product.img} alt={product.name} className="slide-img" />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* PHILOSOPHY */}
-        <section id="philosophy" aria-label="The Philosophy">
-          <div className="container">
-            <div className="philosophy-content">
-              <div className="philosophy-statement" data-slam="true">WE SECURE THE FUTURE.</div>
-              <div className="philosophy-statement" data-slam="true">CLARITY IS SECURITY.</div>
-              <div className="philosophy-statement" data-slam="true">EMPOWER THE ANALYSTS.</div>
-            </div>
-          </div>
-        </section>
-
-        {/* FOUNDERS */}
-        <section id="founders" aria-label="The Founders">
-          <div className="container">
-            <div className="founder-card reveal">
-              <div className="founders-group" style={{ display: 'flex', gap: 'var(--gap-lg)', flexWrap: 'wrap', marginBottom: 'var(--gap-md)' }}>
-                <div className="founder-meta" style={{ marginBottom: 0 }}>
-                  <span className="label">CO-FOUNDER</span>
-                  <h3 className="name">Harinandan J V</h3>
-                </div>
-                <div className="founder-meta" style={{ marginBottom: 0 }}>
-                  <span className="label">CO-FOUNDER</span>
-                  <h3 className="name">Abhishek A S</h3>
-                </div>
-              </div>
-              <p className="founder-text">
-                "The world is becoming more complex, not less. To navigate escalating risks, governments and institutions need systems that don't just store data, but understand it. Security must be architectural."
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* CTA */}
-        <section id="cta" aria-label="The Door">
-          <div className="container">
-            <div className="cta-content reveal">
-              <h2 className="section-label">04 / ACCESS</h2>
-              <h3>Request an invite to the private beta.</h3>
-              
-              <form id="waitlist-form" className={`cta-form ${formState}`} onSubmit={handleFormSubmit}>
-                {formState === 'error' && <p className="error-msg">TRANSMISSION FAILED. VERIFY NETWORK AND KEY.</p>}
-                
-                <div className="form-grid">
-                  {/* Invisible Honeypot to trap automated bots */}
-                  <input 
-                    type="checkbox" 
-                    name="botcheck" 
-                    style={{ display: 'none' }} 
+                {formState === 'error' && (
+                  <p className="error-msg">[ TRANSMISSION FAILED — VERIFY NETWORK ]</p>
+                )}
+                <form
+                  id="waitlist-form"
+                  className={`cta-form ${formState}`}
+                  onSubmit={handleFormSubmit}
+                  aria-label="Access request form"
+                >
+                  <input
+                    type="checkbox"
+                    name="botcheck"
+                    style={{ display: 'none' }}
                     checked={formData.botcheck}
-                    onChange={(e) => setFormData({...formData, botcheck: e.target.checked})}
+                    onChange={(e) => setFormData({ ...formData, botcheck: e.target.checked })}
                   />
-                  
-                  <div className="input-group">
-                    <input 
-                      type="text" 
-                      required 
-                      placeholder="Designation / Name" 
+                  <div className="t-field">
+                    <div className="t-label">DESIGNATION / NAME</div>
+                    <input
+                      type="text"
+                      className="t-input"
+                      required
+                      placeholder="John Axeom"
                       aria-label="Name"
                       value={formData.name}
-                      onChange={(e) => setFormData({...formData, name: e.target.value})}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     />
                   </div>
-                  
-                  <div className="input-group">
-                    <input 
-                      type="email" 
-                      required 
-                      placeholder="Secure Terminal (Email)" 
-                      aria-label="Email address"
+                  <div className="t-field">
+                    <div className="t-label">SECURE TERMINAL (EMAIL)</div>
+                    <input
+                      type="email"
+                      className="t-input"
+                      required
+                      placeholder="operator@domain.io"
+                      aria-label="Email"
                       value={formData.email}
-                      onChange={(e) => setFormData({...formData, email: e.target.value})}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     />
                   </div>
-
-                  <div className="input-group full-width">
-                    <textarea 
-                      required 
-                      placeholder="State your operational objective..." 
+                  <div className="t-field">
+                    <div className="t-label">OPERATIONAL OBJECTIVE</div>
+                    <textarea
+                      className="t-input"
+                      required
+                      placeholder="State your mission parameters..."
                       aria-label="Message"
                       rows="4"
                       value={formData.message}
-                      onChange={(e) => setFormData({...formData, message: e.target.value})}
-                    ></textarea>
+                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                    />
                   </div>
-
-                  <div className="form-actions full-width">
+                  <div className="terminal-actions">
                     <button type="submit" id="submit-btn" className="btn-primary">
-                      <span className="btn-text">INITIATE CONTACT</span>
+                      <span className="btn-text">INITIATE CONTACT <span aria-hidden="true">→</span></span>
                       <span className="btn-loading">TRANSMITTING...</span>
-                      <span className="btn-success">CONFIRMED.</span>
+                      <span className="btn-success">[ CONFIRMED ]</span>
                     </button>
                   </div>
-                </div>
-              </form>
+                </form>
+              </div>
             </div>
           </div>
-        </section>
-
-      </main>
-
-      {/* Footer */}
-      <footer id="main-footer">
-        <div className="container split">
-          <span className="copyright">&copy; AXEOMLABS 2026 </span>
-          <span className="location">SECURE_ZONE</span>
         </div>
-      </footer>
+      </section>
     </div>
   );
 }
