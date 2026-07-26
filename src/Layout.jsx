@@ -44,7 +44,7 @@ function GrainOverlay() {
 }
 
 /* ------------------------------------------------
-   Cursor glow
+   Cursor glow (desktop only)
 ------------------------------------------------ */
 function CursorGlow() {
   const ref = useRef(null);
@@ -138,11 +138,85 @@ const NAV_LINKS = [
   { label: 'FOUNDERS', path: '/founders', num: '05' },
 ];
 
+/* ------------------------------------------------
+   Mobile nav overlay
+------------------------------------------------ */
+function MobileNav({ open, onClose }) {
+  const location = useLocation();
+
+  useEffect(() => { onClose(); }, [location.pathname]);
+
+  return (
+    <>
+      {/* Backdrop */}
+      <div
+        className={`mobile-nav-backdrop${open ? ' open' : ''}`}
+        onClick={onClose}
+        aria-hidden="true"
+      />
+      {/* Drawer */}
+      <div
+        className={`mobile-nav${open ? ' open' : ''}`}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Mobile navigation"
+      >
+        <div className="mobile-nav-header">
+          <Link to="/" className="nav-logo" onClick={onClose} aria-label="AxeomLabs home">
+            <span className="nav-logo-dot" aria-hidden="true" />
+            <span className="nav-logo-text">AXEOMLABS</span>
+          </Link>
+          <button className="mobile-nav-close" onClick={onClose} aria-label="Close menu">
+            <span aria-hidden="true" />
+            <span aria-hidden="true" />
+          </button>
+        </div>
+
+        <nav className="mobile-nav-links" aria-label="Mobile navigation">
+          {NAV_LINKS.map((link, i) => (
+            <Link
+              key={link.path + link.label}
+              to={link.path}
+              className="mobile-nav-link"
+              onClick={onClose}
+              style={{ '--i': i }}
+            >
+              <span className="mobile-nav-link-num">{link.num}</span>
+              <span>{link.label}</span>
+            </Link>
+          ))}
+          <Link
+            to="/contact"
+            className="mobile-nav-link mobile-nav-cta"
+            onClick={onClose}
+            style={{ '--i': NAV_LINKS.length }}
+          >
+            <span className="mobile-nav-link-num">06</span>
+            <span>CONTACT</span>
+          </Link>
+        </nav>
+
+        <div className="mobile-nav-footer">
+          <a href="mailto:founder@axeomlabs.in" className="mobile-nav-email">
+            founder@axeomlabs.in
+          </a>
+          <span className="mobile-nav-status">SYS.STATUS: NOMINAL</span>
+        </div>
+      </div>
+    </>
+  );
+}
+
+/* ------------------------------------------------
+   Layout
+------------------------------------------------ */
 function Layout() {
   const location = useLocation();
   const lenisRef = useRef(null);
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
+  // Smooth scroll init
   useEffect(() => {
     const lenis = new Lenis({ lerp: 0.09, smoothWheel: true, wheelMultiplier: 0.9, touchMultiplier: 1.8 });
     lenis.on('scroll', ScrollTrigger.update);
@@ -152,18 +226,27 @@ function Layout() {
     return () => lenis.destroy();
   }, []);
 
+  // Scroll-to-top + refresh on route change
   useEffect(() => {
     window.scrollTo(0, 0);
     if (lenisRef.current) lenisRef.current.scrollTo(0, { immediate: true });
     ScrollTrigger.getAll().forEach(t => t.kill());
     ScrollTrigger.refresh();
+    setMenuOpen(false);
   }, [location.pathname]);
 
+  // Scroll state for nav background
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
+
+  // Lock body scroll when mobile menu open
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [menuOpen]);
 
   const isActive = (path) => {
     if (path.startsWith('/#')) return location.pathname === '/';
@@ -184,6 +267,7 @@ function Layout() {
             <ScrambleLogo text="AXEOMLABS" />
           </Link>
 
+          {/* Desktop nav */}
           <nav className="nav-links" aria-label="Primary navigation">
             {NAV_LINKS.map(link => (
               <Link
@@ -195,12 +279,27 @@ function Layout() {
                 {link.label}
               </Link>
             ))}
-            <Link to="/#cta" className="nav-portal">CONTACT</Link>
+            <Link to="/contact" className="nav-portal">CONTACT</Link>
           </nav>
+
+          {/* Hamburger (mobile only) */}
+          <button
+            className={`nav-hamburger${menuOpen ? ' open' : ''}`}
+            onClick={() => setMenuOpen(v => !v)}
+            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={menuOpen}
+          >
+            <span aria-hidden="true" />
+            <span aria-hidden="true" />
+            <span aria-hidden="true" />
+          </button>
         </div>
 
         <Ticker />
       </header>
+
+      {/* Mobile nav overlay */}
+      <MobileNav open={menuOpen} onClose={() => setMenuOpen(false)} />
 
       <main id="main-content">
         <Outlet />
@@ -231,7 +330,7 @@ function Layout() {
             <div className="footer-nav-title">COMPANY</div>
             <Link to="/research" className="footer-nav-link">Research</Link>
             <Link to="/founders" className="footer-nav-link">Founders</Link>
-            <Link to="/#cta" className="footer-nav-link">Contact</Link>
+            <Link to="/contact" className="footer-nav-link">Contact</Link>
           </nav>
 
           <nav className="footer-nav-col" aria-label="Legal">
