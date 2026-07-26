@@ -4,26 +4,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
 
 :root {
-  /* Core Surface */
-  --bg:              #08090a;
-  --bg-secondary:    #0d0f11;
-  --bg-card:         #111316;
-  --bg-glass:        rgba(13, 15, 17, 0.72);
+  /* Core Surface — pure neutral blacks */
+  --bg:              #0a0a0a;
+  --bg-secondary:    #0f0f0f;
+  --bg-card:         #151515;
+  --bg-glass:        rgba(10, 10, 10, 0.82);
 
-  /* Typography */
-  --on-bg:           #e8eaed;
-  --on-bg-dim:       #8b9199;
-  --on-bg-muted:     #4a5260;
+  /* Typography — clean near-white */
+  --on-bg:           #e4e4e4;
+  --on-bg-dim:       #707070;
+  --on-bg-muted:     #363636;
 
-  /* Accent — single signal color */
-  --accent:          #00f5c8;
-  --accent-dim:      rgba(0, 245, 200, 0.12);
-  --accent-glow:     rgba(0, 245, 200, 0.25);
+  /* Accent — muted steel blue. Reads almost grey, feels colored */
+  --accent:          #7d9db5;
+  --accent-dim:      rgba(125, 157, 181, 0.11);
+  --accent-glow:     rgba(125, 157, 181, 0.20);
 
-  /* Borders */
+  /* Borders — pure neutral */
   --border:          rgba(255, 255, 255, 0.07);
-  --border-bright:   rgba(255, 255, 255, 0.14);
-  --border-accent:   rgba(0, 245, 200, 0.3);
+  --border-bright:   rgba(255, 255, 255, 0.13);
+  --border-accent:   rgba(125, 157, 181, 0.30);
 
   /* Fonts */
   --font-display: 'Space Grotesk', sans-serif;
@@ -139,7 +139,7 @@ section {
   width: 400px;
   height: 400px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(0, 245, 200, 0.055) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(125, 157, 181, 0.06) 0%, transparent 70%);
   pointer-events: none;
   z-index: 9997;
   transform: translate(-50%, -50%);
@@ -269,7 +269,7 @@ section {
   letter-spacing: 0.14em !important;
   position: relative !important;
   overflow: hidden !important;
-  box-shadow: 0 0 16px rgba(0, 245, 200, 0.25), inset 0 0 0 1px rgba(255,255,255,0.15);
+  box-shadow: 0 0 16px rgba(125, 157, 181, 0.22), inset 0 0 0 1px rgba(255,255,255,0.12);
   transition: box-shadow var(--duration-fast), transform var(--duration-fast) !important;
 }
 .nav-portal::before {
@@ -286,7 +286,7 @@ section {
 .nav-portal::after { display: none !important; }
 .nav-portal:hover {
   transform: translateY(-1px) !important;
-  box-shadow: 0 0 28px rgba(0, 245, 200, 0.45), inset 0 0 0 1px rgba(255,255,255,0.2) !important;
+  box-shadow: 0 0 28px rgba(125, 157, 181, 0.40), inset 0 0 0 1px rgba(255,255,255,0.18) !important;
 }
 
 /* Telemetry ticker strip */
@@ -456,7 +456,7 @@ section {
   transition: transform var(--duration-fast) var(--ease-out),
               box-shadow var(--duration-fast) var(--ease-out),
               opacity var(--duration-fast);
-  box-shadow: 0 0 24px rgba(0, 245, 200, 0.25);
+  box-shadow: 0 0 24px rgba(125, 157, 181, 0.22);
   position: relative;
   overflow: hidden;
 }
@@ -468,7 +468,7 @@ section {
   transform: translateX(-100%);
   transition: transform 0.3s var(--ease-out);
 }
-.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 40px rgba(0, 245, 200, 0.4); }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 40px rgba(125, 157, 181, 0.36); }
 .btn-primary:hover::before { transform: translateX(0); }
 .btn-primary:active { transform: translateY(0); }
 
@@ -775,7 +775,7 @@ section {
    ================================================ */
 #directives {
   background: var(--bg);
-  padding: calc(var(--unit) * 16) 0;
+  padding: calc(var(--unit) * 8) 0;
 }
 
 .directives-grid {
