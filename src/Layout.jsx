@@ -3,11 +3,12 @@ import { Outlet, Link, useLocation } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Lenis from 'lenis';
+import CookieBanner from './components/CookieBanner.jsx';
 
 gsap.registerPlugin(ScrollTrigger);
 
 /* ------------------------------------------------
-   Grain canvas — keeps the site feeling tactile
+   Grain canvas
 ------------------------------------------------ */
 function GrainOverlay() {
   const canvasRef = useRef(null);
@@ -64,8 +65,7 @@ function CursorGlow() {
 }
 
 /* ------------------------------------------------
-   Scramble logo — text shuffles through random
-   chars before resolving on mouseenter
+   Scramble logo
 ------------------------------------------------ */
 const CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#@!';
 
@@ -103,23 +103,20 @@ function ScrambleLogo({ text }) {
 }
 
 /* ------------------------------------------------
-   Telemetry ticker data
+   Telemetry ticker
 ------------------------------------------------ */
 const TICKER_ITEMS = [
   { key: 'SYS.STATUS', val: 'NOMINAL' },
-  { key: 'UPTIME', val: '99.999%' },
-  { key: 'NODES', val: '247 ACTIVE' },
-  { key: 'LATENCY', val: '<0.5MS' },
-  { key: 'INFERENCE/SEC', val: '14,380' },
-  { key: 'KERNEL', val: 'AXEOM-RT v0.2.5' },
-  { key: 'SECTOR', val: 'CLASSIFIED' },
-  { key: 'THREAT LEVEL', val: 'CONTAINED' },
+  { key: 'UPTIME', val: '99.9%' },
+  { key: 'DRONES', val: '12 BUILT' },
+  { key: 'ROBOTS', val: '5 ACTIVE' },
+  { key: 'DIVISION', val: 'R+D / HARDWARE / SOFTWARE' },
+  { key: 'BASE', val: 'INDIA' },
   { key: 'BUILD', val: 'STABLE' },
-  { key: 'ARCH', val: 'ARM64 / x86_64' },
+  { key: 'PROJECTS', val: '27 SHIPPED' },
 ];
 
 function Ticker() {
-  // Duplicate items for seamless infinite scroll
   const items = [...TICKER_ITEMS, ...TICKER_ITEMS];
   return (
     <div className="nav-ticker" aria-hidden="true">
@@ -140,10 +137,11 @@ function Ticker() {
    Nav link definitions
 ------------------------------------------------ */
 const NAV_LINKS = [
-  { label: 'ROBOTICS', path: '/robotics', num: '01' },
-  { label: 'AI', path: '/#directives', num: '02' },
+  { label: 'DRONES', path: '/robotics', num: '01' },
+  { label: 'ROBOTICS', path: '/robotics', num: '02' },
   { label: 'SYSTEMS', path: '/systems', num: '03' },
   { label: 'RESEARCH', path: '/research', num: '04' },
+  { label: 'FOUNDERS', path: '/founders', num: '05' },
 ];
 
 function Layout() {
@@ -151,7 +149,6 @@ function Layout() {
   const lenisRef = useRef(null);
   const [scrolled, setScrolled] = useState(false);
 
-  /* Smooth scroll */
   useEffect(() => {
     const lenis = new Lenis({ lerp: 0.09, smoothWheel: true, wheelMultiplier: 0.9, touchMultiplier: 1.8 });
     lenis.on('scroll', ScrollTrigger.update);
@@ -161,7 +158,6 @@ function Layout() {
     return () => lenis.destroy();
   }, []);
 
-  /* Reset scroll on route change */
   useEffect(() => {
     window.scrollTo(0, 0);
     if (lenisRef.current) lenisRef.current.scrollTo(0, { immediate: true });
@@ -169,7 +165,6 @@ function Layout() {
     ScrollTrigger.refresh();
   }, [location.pathname]);
 
-  /* Scrolled state for nav border */
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', onScroll, { passive: true });
@@ -189,7 +184,6 @@ function Layout() {
 
       {/* NAV */}
       <header id="global-nav" className={scrolled ? 'scrolled' : ''}>
-        {/* Main bar */}
         <div className="container nav-container">
           <Link to="/" className="nav-logo" aria-label="AxeomLabs home">
             <span className="nav-logo-dot" aria-hidden="true" />
@@ -199,7 +193,7 @@ function Layout() {
           <nav className="nav-links" aria-label="Primary navigation">
             {NAV_LINKS.map(link => (
               <Link
-                key={link.path}
+                key={link.path + link.label}
                 to={link.path}
                 className={isActive(link.path) ? 'nav-active' : ''}
               >
@@ -207,11 +201,10 @@ function Layout() {
                 {link.label}
               </Link>
             ))}
-            <Link to="/#cta" className="nav-portal">ACCESS</Link>
+            <Link to="/#cta" className="nav-portal">CONTACT</Link>
           </nav>
         </div>
 
-        {/* Live telemetry strip */}
         <Ticker />
       </header>
 
@@ -219,20 +212,60 @@ function Layout() {
         <Outlet />
       </main>
 
+      {/* FOOTER */}
       <footer id="main-footer">
-        <div className="container footer-content">
-          <div className="footer-left">
+        <div className="container footer-top">
+          <div className="footer-brand-col">
             <span className="footer-brand">AXEOMLABS</span>
-            <div className="footer-sep" aria-hidden="true" />
-            <span className="footer-meta">PROTOCOLS ACTIVE</span>
-            <div className="footer-sep" aria-hidden="true" />
-            <span className="footer-meta">STATUS: NOMINAL</span>
+            <p className="footer-tagline">
+              Building intelligent systems across drones, robotics, software, and hardware.
+            </p>
+            <a href="mailto:founder@axeomlabs.in" className="footer-email">
+              founder@axeomlabs.in
+            </a>
           </div>
-          <div className="footer-right">
-            &copy; {new Date().getFullYear()} AXEOMLABS. ALL RIGHTS RESERVED.
+
+          <nav className="footer-nav-col" aria-label="Products">
+            <div className="footer-nav-title">PRODUCTS</div>
+            <Link to="/robotics" className="footer-nav-link">Drones</Link>
+            <Link to="/robotics" className="footer-nav-link">Robotics</Link>
+            <Link to="/systems" className="footer-nav-link">Software</Link>
+            <Link to="/systems" className="footer-nav-link">Hardware</Link>
+          </nav>
+
+          <nav className="footer-nav-col" aria-label="Company">
+            <div className="footer-nav-title">COMPANY</div>
+            <Link to="/research" className="footer-nav-link">Research</Link>
+            <Link to="/founders" className="footer-nav-link">Founders</Link>
+            <Link to="/#cta" className="footer-nav-link">Contact</Link>
+          </nav>
+
+          <nav className="footer-nav-col" aria-label="Legal">
+            <div className="footer-nav-title">LEGAL</div>
+            <Link to="/privacy-policy" className="footer-nav-link">Privacy Policy</Link>
+            <Link to="/terms-of-service" className="footer-nav-link">Terms of Service</Link>
+            <Link to="/cookie-policy" className="footer-nav-link">Cookie Policy</Link>
+          </nav>
+        </div>
+
+        <div className="footer-bottom">
+          <div className="container footer-bottom-inner">
+            <span>&copy; {new Date().getFullYear()} AxeomLabs. All rights reserved.</span>
+            <button
+              className="footer-cookie-btn"
+              onClick={() => {
+                try { localStorage.removeItem('axeom_cookie_consent'); } catch {}
+                window.location.reload();
+              }}
+            >
+              Cookie settings
+            </button>
           </div>
         </div>
       </footer>
+
+      {/* Cookie consent banner */}
+      <CookieBanner />
     </div>
   );
 }

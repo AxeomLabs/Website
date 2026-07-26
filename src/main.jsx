@@ -7,6 +7,10 @@ import Layout from './Layout.jsx'
 import Robotics from './pages/Robotics.jsx'
 import Systems from './pages/Systems.jsx'
 import Research from './pages/Research.jsx'
+import Founders from './pages/Founders.jsx'
+import PrivacyPolicy from './pages/PrivacyPolicy.jsx'
+import TermsOfService from './pages/TermsOfService.jsx'
+import CookiePolicy from './pages/CookiePolicy.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -17,6 +21,10 @@ createRoot(document.getElementById('root')).render(
           <Route path="/robotics" element={<Robotics />} />
           <Route path="/systems" element={<Systems />} />
           <Route path="/research" element={<Research />} />
+          <Route path="/founders" element={<Founders />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/terms-of-service" element={<TermsOfService />} />
+          <Route path="/cookie-policy" element={<CookiePolicy />} />
         </Route>
       </Routes>
     </BrowserRouter>
