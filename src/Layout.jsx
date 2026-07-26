@@ -8,45 +8,39 @@ import CookieBanner from './components/CookieBanner.jsx';
 gsap.registerPlugin(ScrollTrigger);
 
 /* ------------------------------------------------
-   Grain canvas
+   Grain overlay (Lightweight GPU-composited tile)
 ------------------------------------------------ */
 function GrainOverlay() {
-  const canvasRef = useRef(null);
-  const rafRef = useRef(null);
+  const [dataUrl, setDataUrl] = useState('');
 
   useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
+    const canvas = document.createElement('canvas');
+    canvas.width = 128;
+    canvas.height = 128;
     const ctx = canvas.getContext('2d');
-    let w, h;
-
-    function resize() {
-      w = canvas.width = window.innerWidth;
-      h = canvas.height = window.innerHeight;
+    const img = ctx.createImageData(128, 128);
+    const d = img.data;
+    for (let i = 0; i < d.length; i += 4) {
+      const v = (Math.random() * 255) | 0;
+      d[i] = d[i + 1] = d[i + 2] = v;
+      d[i + 3] = 255;
     }
-    resize();
-    window.addEventListener('resize', resize);
-
-    function draw() {
-      const img = ctx.createImageData(w, h);
-      const d = img.data;
-      for (let i = 0; i < d.length; i += 4) {
-        const v = (Math.random() * 255) | 0;
-        d[i] = d[i + 1] = d[i + 2] = v;
-        d[i + 3] = 255;
-      }
-      ctx.putImageData(img, 0, 0);
-      rafRef.current = requestAnimationFrame(draw);
-    }
-    draw();
-
-    return () => {
-      cancelAnimationFrame(rafRef.current);
-      window.removeEventListener('resize', resize);
-    };
+    ctx.putImageData(img, 0, 0);
+    setDataUrl(canvas.toDataURL());
   }, []);
 
-  return <canvas ref={canvasRef} id="grain-canvas" aria-hidden="true" />;
+  if (!dataUrl) return null;
+
+  return (
+    <div
+      id="grain-canvas"
+      aria-hidden="true"
+      style={{
+        backgroundImage: `url(${dataUrl})`,
+        backgroundRepeat: 'repeat',
+      }}
+    />
+  );
 }
 
 /* ------------------------------------------------

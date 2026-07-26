@@ -94,7 +94,7 @@ const pillars = [
   { num: '03', title: 'EMBEDDED SOFTWARE', desc: 'Real-time operating systems, bare-metal firmware, and hardware abstraction layers optimised for deterministic performance.' },
   { num: '04', title: 'HARDWARE DESIGN', desc: 'Custom electronics from schematic to PCB layout and manufacturing, including power management and high-speed signal design.' },
   { num: '05', title: 'COMPUTER VISION', desc: 'Perception pipelines, SLAM, and sensor fusion for depth estimation, object detection, and environment mapping.' },
-  { num: '06', title: 'APPLIED RESEARCH', desc: 'Translating scientific breakthroughs into practical systems — from materials to algorithms to deployable products.' },
+  { num: '06', title: 'APPLIED RESEARCH', desc: 'Translating scientific breakthroughs into practical systems: from materials to algorithms to deployable products.' },
 ];
 
 function App() {
@@ -148,7 +148,7 @@ function App() {
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify({
           access_key: '8d069e2b-4ec5-4e29-94c2-0d8429647ba6',
-          subject: 'AxeomLabs — New Contact Enquiry',
+          subject: 'AxeomLabs - New Contact Enquiry',
           from_name: 'AxeomLabs Website',
           replyto: formData.email,
           to: 'founder@axeomlabs.in',
@@ -176,7 +176,7 @@ function App() {
 
         <div className="hero-content">
           <div className="hero-left">
-            <div className="hero-eyebrow">[ AXEOMLABS — BUILDING INTELLIGENT SYSTEMS ]</div>
+            <div className="hero-eyebrow">[ AXEOMLABS // BUILDING INTELLIGENT SYSTEMS ]</div>
 
             <h1>
               <span className="word-line" style={{ display: 'block' }}>BUILD.</span>
@@ -363,14 +363,14 @@ function App() {
                 <div className="terminal-dot red" />
                 <div className="terminal-dot amber" />
                 <div className="terminal-dot green" />
-                <span className="terminal-title">axeomlabs — contact</span>
+                <span className="terminal-title">axeomlabs // contact</span>
               </div>
               <div className="terminal-body">
                 <div className="terminal-prompt">
                   <span>axeom@labs:~$</span> send_message --secure
                 </div>
                 {formState === 'error' && (
-                  <p className="error-msg">[ SEND FAILED — please try again or email us directly ]</p>
+                  <p className="error-msg">[ SEND FAILED / please try again or email us directly ]</p>
                 )}
                 <form
                   id="contact-form"

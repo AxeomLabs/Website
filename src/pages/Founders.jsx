@@ -41,15 +41,15 @@ function Founders() {
             <article className="founder-card reveal">
               <div className="founder-img-wrap">
                 <div className="founder-img-placeholder" aria-hidden="true">
-                  <span>F1</span>
+                  <span>HJV</span>
                 </div>
               </div>
               <div className="founder-info">
                 <div className="founder-code">CO-FOUNDER</div>
-                <h2 className="founder-name">NAME TBC</h2>
-                <p className="founder-role">Role / Title</p>
+                <h2 className="founder-name">Harinandan J V</h2>
+                <p className="founder-role">Co-Founder</p>
                 <p className="founder-bio">
-                  Details coming soon. This founder's background, expertise, and vision for AxeomLabs will be shared here shortly.
+                  Co-Founder of AxeomLabs, leading architecture and engineering across vertically integrated systems, autonomous platforms, and advanced research.
                 </p>
                 <div className="founder-links">
                   <a href="#" className="founder-link" aria-label="LinkedIn profile">LinkedIn</a>
@@ -61,15 +61,15 @@ function Founders() {
             <article className="founder-card reveal">
               <div className="founder-img-wrap">
                 <div className="founder-img-placeholder" aria-hidden="true">
-                  <span>F2</span>
+                  <span>AAS</span>
                 </div>
               </div>
               <div className="founder-info">
                 <div className="founder-code">CO-FOUNDER</div>
-                <h2 className="founder-name">NAME TBC</h2>
-                <p className="founder-role">Role / Title</p>
+                <h2 className="founder-name">Abhishek A S</h2>
+                <p className="founder-role">Co-Founder</p>
                 <p className="founder-bio">
-                  Details coming soon. This founder's background, expertise, and vision for AxeomLabs will be shared here shortly.
+                  Co-Founder of AxeomLabs, driving hardware innovation, intelligence protocols, and full-stack integration for high-performance physical computation.
                 </p>
                 <div className="founder-links">
                   <a href="#" className="founder-link" aria-label="LinkedIn profile">LinkedIn</a>
