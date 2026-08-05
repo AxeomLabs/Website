@@ -2,6 +2,7 @@ import { useRef } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import useSEO from '../hooks/useSEO';
+import useReducedMotion from '../hooks/useReducedMotion';
 
 function Founders() {
   const container = useRef(null);
@@ -12,14 +13,18 @@ function Founders() {
     'https://www.axeomlabs.in/founders'
   );
 
+  const prefersReducedMotion = useReducedMotion();
+
   useGSAP(() => {
-    gsap.from('.page-hero h1', { opacity: 0, y: 50, duration: 1, ease: 'expo.out', delay: 0.1 });
-    gsap.from('.page-hero-desc', { opacity: 0, y: 16, duration: 0.7, ease: 'expo.out', delay: 0.4 });
-    gsap.from('.page-hero-status', { opacity: 0, y: 10, duration: 0.5, ease: 'expo.out', delay: 0.1 });
+    if (!prefersReducedMotion) {
+      gsap.from('.page-hero h1', { opacity: 0, y: 50, duration: 1, ease: 'expo.out', delay: 0.1 });
+      gsap.from('.page-hero-desc', { opacity: 0, y: 16, duration: 0.7, ease: 'expo.out', delay: 0.4 });
+      gsap.from('.page-hero-status', { opacity: 0, y: 10, duration: 0.5, ease: 'expo.out', delay: 0.1 });
+    }
 
     const obs = new IntersectionObserver((entries) => {
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
-    }, { threshold: 0.06 });
+    }, { threshold: 0.01, rootMargin: '50px 0px' });
     document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
     return () => obs.disconnect();
   }, { scope: container });
@@ -59,7 +64,7 @@ function Founders() {
                   Co-Founder of AxeomLabs, leading architecture and engineering across vertically integrated systems, autonomous platforms, and advanced research.
                 </p>
                 <div className="founder-links">
-                  <a href="#" className="founder-link" aria-label="LinkedIn profile">LinkedIn</a>
+                  <a href="https://www.linkedin.com/in/harinandanjv" target="_blank" rel="noopener noreferrer" className="founder-link" aria-label="Harinandan J V LinkedIn profile">LinkedIn</a>
                 </div>
               </div>
             </article>
@@ -79,7 +84,7 @@ function Founders() {
                   Co-Founder of AxeomLabs, driving hardware innovation, intelligence protocols, and full-stack integration for high-performance physical computation.
                 </p>
                 <div className="founder-links">
-                  <a href="#" className="founder-link" aria-label="LinkedIn profile">LinkedIn</a>
+                  <a href="https://www.linkedin.com/in/abhishek-a-s" target="_blank" rel="noopener noreferrer" className="founder-link" aria-label="Abhishek A S LinkedIn profile">LinkedIn</a>
                 </div>
               </div>
             </article>

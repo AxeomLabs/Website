@@ -44,13 +44,20 @@ function GrainOverlay() {
 }
 
 /* ------------------------------------------------
-   Cursor glow (desktop only)
+   Cursor glow (desktop only, respects reduced motion)
 ------------------------------------------------ */
 function CursorGlow() {
   const ref = useRef(null);
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
+    // Gate: only on hover-capable, fine-pointer, motion-OK devices
+    const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!canHover || prefersReducedMotion) {
+      el.style.display = 'none';
+      return;
+    }
     const move = (e) => gsap.to(el, { x: e.clientX, y: e.clientY, duration: 0.8, ease: 'power2.out' });
     window.addEventListener('mousemove', move);
     return () => window.removeEventListener('mousemove', move);
@@ -131,11 +138,10 @@ function Ticker() {
    Nav link definitions
 ------------------------------------------------ */
 const NAV_LINKS = [
-  { label: 'DRONES', path: '/robotics', num: '01' },
-  { label: 'ROBOTICS', path: '/robotics', num: '02' },
-  { label: 'SYSTEMS', path: '/systems', num: '03' },
-  { label: 'RESEARCH', path: '/research', num: '04' },
-  { label: 'FOUNDERS', path: '/founders', num: '05' },
+  { label: 'ROBOTICS', path: '/robotics', num: '01' },
+  { label: 'SYSTEMS', path: '/systems', num: '02' },
+  { label: 'RESEARCH', path: '/research', num: '03' },
+  { label: 'FOUNDERS', path: '/founders', num: '04' },
 ];
 
 /* ------------------------------------------------
@@ -191,7 +197,7 @@ function MobileNav({ open, onClose }) {
             onClick={onClose}
             style={{ '--i': NAV_LINKS.length }}
           >
-            <span className="mobile-nav-link-num">06</span>
+            <span className="mobile-nav-link-num">05</span>
             <span>CONTACT</span>
           </Link>
         </nav>
@@ -216,8 +222,10 @@ function Layout() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
-  // Smooth scroll init
+  // Smooth scroll init (skipped when user prefers reduced motion)
   useEffect(() => {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) return; // native scroll, no Lenis
     const lenis = new Lenis({ lerp: 0.09, smoothWheel: true, wheelMultiplier: 0.9, touchMultiplier: 1.8 });
     lenis.on('scroll', ScrollTrigger.update);
     gsap.ticker.add((time) => lenis.raf(time * 1000));

@@ -1,8 +1,10 @@
 import { useRef } from 'react';
+import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 import useSEO from '../hooks/useSEO';
+import useReducedMotion from '../hooks/useReducedMotion';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -21,14 +23,18 @@ function Robotics() {
     'https://www.axeomlabs.in/robotics'
   );
 
-  useGSAP(() => {
-    const tl = gsap.timeline({ delay: 0.1 });
-    tl.from('.page-hero-status', { opacity: 0, y: 10, duration: 0.5, ease: 'expo.out' })
-      .from('.page-hero h1', { opacity: 0, y: 50, duration: 1, ease: 'expo.out' }, '-=0.2')
-      .from('.page-hero-desc', { opacity: 0, y: 16, duration: 0.7, ease: 'expo.out' }, '-=0.5')
-      .from('.page-hero-cta', { opacity: 0, y: 10, duration: 0.5, ease: 'expo.out' }, '-=0.3');
+  const prefersReducedMotion = useReducedMotion();
 
-    gsap.from('.page-hero-image', { opacity: 0, scale: 1.04, duration: 1.4, ease: 'power2.out', delay: 0.2 });
+  useGSAP(() => {
+    if (!prefersReducedMotion) {
+      const tl = gsap.timeline({ delay: 0.1 });
+      tl.from('.page-hero-status', { opacity: 0, y: 10, duration: 0.5, ease: 'expo.out' })
+        .from('.page-hero h1', { opacity: 0, y: 50, duration: 1, ease: 'expo.out' }, '-=0.2')
+        .from('.page-hero-desc', { opacity: 0, y: 16, duration: 0.7, ease: 'expo.out' }, '-=0.5')
+        .from('.page-hero-cta', { opacity: 0, y: 10, duration: 0.5, ease: 'expo.out' }, '-=0.3');
+
+      gsap.from('.page-hero-image', { opacity: 0, scale: 1.04, duration: 1.4, ease: 'power2.out', delay: 0.2 });
+    }
 
     gsap.to('.indicator-bar', {
       width: '100%', ease: 'none',
@@ -37,7 +43,7 @@ function Robotics() {
 
     const obs = new IntersectionObserver((entries) => {
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
-    }, { threshold: 0.08 });
+    }, { threshold: 0.01, rootMargin: '50px 0px' });
     document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
     return () => obs.disconnect();
@@ -56,13 +62,15 @@ function Robotics() {
               Bridging the gap between raw algorithmic cognition and physical articulation.
               AxeomLabs pioneers next-generation autonomous systems and proto-AGI architectures.
             </p>
-            <button className="btn-primary page-hero-cta">INITIATE SEQUENCE <span aria-hidden="true">→</span></button>
+            <Link to="/contact" className="btn-primary page-hero-cta">GET IN TOUCH <span aria-hidden="true">→</span></Link>
           </div>
           <div className="page-hero-right">
             <img
               src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=900&q=85"
               alt="Humanoid Robot"
               className="page-hero-image"
+              width="900"
+              height="600"
             />
             <div className="page-hero-meta">
               <span>[ STATUS: ACTIVE ]</span>
@@ -90,10 +98,10 @@ function Robotics() {
                 <div className="robo-card-content">
                   <h3>HUMANOID</h3>
                   <p>Biomimetic articulation designed for complex human environments. Features tactile feedback sensors and real-time gait adaptation.</p>
-                  <a href="#" className="link-mono">VIEW SPECS <span aria-hidden="true">↗</span></a>
+                  <Link to="/contact" className="link-mono">ENQUIRE <span aria-hidden="true">↗</span></Link>
                 </div>
                 <div className="robo-card-visual" style={{ height: '280px' }}>
-                  <img src="https://images.unsplash.com/photo-1546776310-eef45dd6d63c?w=600&q=80" alt="Humanoid robot platform" />
+                  <img src="https://images.unsplash.com/photo-1546776310-eef45dd6d63c?w=600&q=80" alt="Humanoid robot platform" loading="lazy" width="600" height="400" />
                 </div>
               </div>
             </div>
@@ -108,7 +116,7 @@ function Robotics() {
                   <span className="link-mono" style={{ color: 'var(--on-bg-muted)', cursor: 'default' }}>CLEARANCE REQUIRED</span>
                 </div>
                 <div className="robo-card-visual" style={{ height: '280px' }}>
-                  <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80" alt="Military robotics platform" />
+                  <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80" alt="Military robotics platform" loading="lazy" width="600" height="400" />
                 </div>
               </div>
             </div>

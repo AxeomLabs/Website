@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
+import useReducedMotion from './hooks/useReducedMotion';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -102,14 +103,18 @@ function App() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '', botcheck: false });
   const [formState, setFormState] = useState('idle');
 
+  const prefersReducedMotion = useReducedMotion();
+
   useGSAP(() => {
-    // Hero entrance
-    const tl = gsap.timeline({ delay: 0.15 });
-    tl.from('.hero-eyebrow', { opacity: 0, y: 12, duration: 0.6, ease: 'expo.out' })
-      .from('#hero h1 .word-line', { opacity: 0, y: 60, duration: 1.0, ease: 'expo.out', stagger: 0.12 }, '-=0.3')
-      .from('.hero-desc', { opacity: 0, y: 16, duration: 0.7, ease: 'expo.out' }, '-=0.4')
-      .from('.hero-cta-row', { opacity: 0, y: 12, duration: 0.5, ease: 'expo.out' }, '-=0.4')
-      .from('.hero-hud', { opacity: 0, x: 20, duration: 0.7, ease: 'expo.out' }, '-=0.6');
+    // Hero entrance — skip if user prefers reduced motion
+    if (!prefersReducedMotion) {
+      const tl = gsap.timeline({ delay: 0.15 });
+      tl.from('.hero-eyebrow', { opacity: 0, y: 12, duration: 0.6, ease: 'expo.out' })
+        .from('#hero h1 .word-line', { opacity: 0, y: 60, duration: 1.0, ease: 'expo.out', stagger: 0.12 }, '-=0.3')
+        .from('.hero-desc', { opacity: 0, y: 16, duration: 0.7, ease: 'expo.out' }, '-=0.4')
+        .from('.hero-cta-row', { opacity: 0, y: 12, duration: 0.5, ease: 'expo.out' }, '-=0.4')
+        .from('.hero-hud', { opacity: 0, x: 20, duration: 0.7, ease: 'expo.out' }, '-=0.6');
+    }
 
     // Scroll progress bar
     gsap.to('.indicator-bar', {
@@ -117,22 +122,13 @@ function App() {
       scrollTrigger: { trigger: document.body, start: 'top top', end: 'bottom bottom', scrub: 0.2 },
     });
 
-    // Philosophy clip reveal on scroll
-    document.querySelectorAll('.philosophy-stmt').forEach((stmt) => {
-      ScrollTrigger.create({
-        trigger: stmt,
-        start: 'top 88%',
-        onEnter: () => stmt.classList.add('visible'),
-      });
-    });
-
-    // General reveal observer
+    // General reveal observer (handles .reveal, .reveal-left, and .philosophy-stmt)
     const obs = new IntersectionObserver((entries) => {
       entries.forEach(e => {
         if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
       });
-    }, { threshold: 0.06 });
-    document.querySelectorAll('.reveal, .reveal-left').forEach(el => obs.observe(el));
+    }, { threshold: 0.01, rootMargin: '50px 0px' });
+    document.querySelectorAll('.reveal, .reveal-left, .philosophy-stmt').forEach(el => obs.observe(el));
 
     return () => obs.disconnect();
   }, { scope: container });
@@ -149,7 +145,7 @@ function App() {
         body: JSON.stringify({
           access_key: '8d069e2b-4ec5-4e29-94c2-0d8429647ba6',
           subject: 'AxeomLabs - New Contact Enquiry',
-          from_name: 'AxeomLabs Website',
+          from_name: formData.name,
           replyto: formData.email,
           to: 'founder@axeomlabs.in',
           name: formData.name,
@@ -245,13 +241,13 @@ function App() {
               <div className="section-label">01 // WHAT WE DO</div>
               <h2 style={{ color: 'var(--on-bg)', marginTop: 8 }}>OUR DIVISIONS</h2>
             </div>
-            <span className="section-counter">FIVE ACTIVE DIVISIONS</span>
+            <span className="section-counter">THREE ACTIVE DIVISIONS</span>
           </div>
 
           <div className="divisions-grid">
             {/* Drones */}
             <Link to="/robotics" className="division-card reveal">
-              <img src={divisions[0].img} alt={divisions[0].alt} className="division-card-img" />
+              <img src={divisions[0].img} alt={divisions[0].alt} className="division-card-img" loading="lazy" width="800" height="533" />
               <div className="division-card-body">
                 <div className="division-card-info">
                   <div className="division-card-code">{divisions[0].code}</div>
@@ -264,7 +260,7 @@ function App() {
 
             {/* Robotics */}
             <Link to="/robotics" className="division-card reveal">
-              <img src={divisions[1].img} alt={divisions[1].alt} className="division-card-img" />
+              <img src={divisions[1].img} alt={divisions[1].alt} className="division-card-img" loading="lazy" width="800" height="533" />
               <div className="division-card-body">
                 <div className="division-card-info">
                   <div className="division-card-code">{divisions[1].code}</div>
@@ -277,7 +273,7 @@ function App() {
 
             {/* Research - full width */}
             <Link to="/research" className="division-card division-card-full reveal">
-              <img src={divisions[4].img} alt={divisions[4].alt} className="division-card-img" />
+              <img src={divisions[4].img} alt={divisions[4].alt} className="division-card-img" loading="lazy" width="1400" height="933" />
               <div className="division-card-body">
                 <div className="division-card-info">
                   <div className="division-card-code">{divisions[4].code}</div>

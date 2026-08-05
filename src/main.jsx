@@ -12,6 +12,7 @@ import PrivacyPolicy from './pages/PrivacyPolicy.jsx'
 import TermsOfService from './pages/TermsOfService.jsx'
 import CookiePolicy from './pages/CookiePolicy.jsx'
 import Contact from './pages/Contact.jsx'
+import NotFound from './pages/NotFound.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -27,6 +28,7 @@ createRoot(document.getElementById('root')).render(
           <Route path="/terms-of-service" element={<TermsOfService />} />
           <Route path="/cookie-policy" element={<CookiePolicy />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -1,8 +1,10 @@
 import { useRef } from 'react';
+import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 import useSEO from '../hooks/useSEO';
+import useReducedMotion from '../hooks/useReducedMotion';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -15,13 +17,17 @@ function Research() {
     'https://www.axeomlabs.in/research'
   );
 
-  useGSAP(() => {
-    const tl = gsap.timeline({ delay: 0.1 });
-    tl.from('.page-hero-status', { opacity: 0, y: 10, duration: 0.5, ease: 'expo.out' })
-      .from('.page-hero h1', { opacity: 0, y: 50, duration: 1, ease: 'expo.out' }, '-=0.2')
-      .from('.page-hero-desc', { opacity: 0, y: 16, duration: 0.7, ease: 'expo.out' }, '-=0.5');
+  const prefersReducedMotion = useReducedMotion();
 
-    gsap.from('.page-hero-image', { opacity: 0, scale: 1.03, duration: 1.4, ease: 'power2.out', delay: 0.2 });
+  useGSAP(() => {
+    if (!prefersReducedMotion) {
+      const tl = gsap.timeline({ delay: 0.1 });
+      tl.from('.page-hero-status', { opacity: 0, y: 10, duration: 0.5, ease: 'expo.out' })
+        .from('.page-hero h1', { opacity: 0, y: 50, duration: 1, ease: 'expo.out' }, '-=0.2')
+        .from('.page-hero-desc', { opacity: 0, y: 16, duration: 0.7, ease: 'expo.out' }, '-=0.5');
+
+      gsap.from('.page-hero-image', { opacity: 0, scale: 1.03, duration: 1.4, ease: 'power2.out', delay: 0.2 });
+    }
 
     gsap.to('.indicator-bar', {
       width: '100%', ease: 'none',
@@ -30,7 +36,7 @@ function Research() {
 
     const obs = new IntersectionObserver((entries) => {
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
-    }, { threshold: 0.08 });
+    }, { threshold: 0.01, rootMargin: '50px 0px' });
     document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
     return () => obs.disconnect();
@@ -55,6 +61,8 @@ function Research() {
               src="https://images.unsplash.com/photo-1614730321146-b6fa6a46bcb4?w=900&q=85"
               alt="Earth from Space"
               className="page-hero-image"
+              width="900"
+              height="600"
             />
             <div className="page-hero-meta">
               <span>LAT: 34.0522 N | LON: 118.2437 W</span>
@@ -81,7 +89,7 @@ function Research() {
 
             {/* Astrophysics image */}
             <div className="research-card research-card-half research-card-img reveal">
-              <img src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=800&q=80" alt="Nebula" />
+              <img src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=800&q=80" alt="Nebula" loading="lazy" width="800" height="533" />
             </div>
 
             {/* Chemistry image */}
@@ -90,6 +98,9 @@ function Research() {
                 src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=800&q=80"
                 alt="Molecular structures"
                 style={{ objectPosition: 'center' }}
+                loading="lazy"
+                width="800"
+                height="533"
               />
             </div>
 
@@ -109,7 +120,7 @@ function Research() {
             <div className="research-card research-card-third reveal">
               <span className="section-counter">03 // OCEANOGRAPHY</span>
               <div className="research-card-img-inline">
-                <img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=600&q=80" alt="Ocean depth" />
+                <img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=600&q=80" alt="Ocean depth" loading="lazy" width="600" height="400" />
               </div>
               <h4 style={{ marginTop: 12 }}>19,000m</h4>
               <p>Mariana Trench acoustic mapping completed. Data integrity: 96.8%.</p>
@@ -146,15 +157,18 @@ function Research() {
                 Culture is the qualitative output of human civilization. We index artistic movements,
                 sociological shifts, and philosophical frameworks with the same rigor applied to thermodynamics.
               </p>
-              <button className="btn-primary" style={{ marginTop: 32 }}>
-                VIEW ARCHIVES <span aria-hidden="true">→</span>
-              </button>
+              <Link to="/contact" className="btn-primary" style={{ marginTop: 32 }}>
+                GET IN TOUCH <span aria-hidden="true">→</span>
+              </Link>
             </div>
             <div className="reveal">
               <img
                 src="https://images.unsplash.com/photo-1547891654-e66ed7ebb968?w=800&q=80"
                 alt="Abstract Art"
                 className="culture-img"
+                loading="lazy"
+                width="800"
+                height="1067"
               />
               <div className="culture-meta">[ AESTHETIC FRAMEWORK : ACTIVE ]</div>
             </div>

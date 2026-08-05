@@ -31,7 +31,7 @@ function TermsOfService() {
   useSEO(
     'Terms of Service | AxeomLabs',
     'Read the AxeomLabs Terms of Service. By using axeomlabs.in you agree to these terms governing use of our website and services.',
-    'https://www.axeomlabs.in/terms'
+    'https://www.axeomlabs.in/terms-of-service'
   );
   return (
     <LegalPage title="Terms of Service" label="LEGAL DOCUMENTATION">

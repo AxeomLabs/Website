@@ -1,7 +1,7 @@
 /* ================================================
    CSS CUSTOM PROPERTIES — AXEOM PROTOCOL v2
    ================================================ */
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+/* Fonts loaded via <link> in index.html for performance (no render-blocking @import) */
 
 :root {
   /* Core Surface — pure neutral blacks */
@@ -60,6 +60,8 @@ html {
   color: var(--on-bg);
   font-family: var(--font-body);
   font-size: 16px;
+  font-optical-sizing: auto;
+  letter-spacing: 0;
   scrollbar-width: thin;
   scrollbar-color: var(--border-bright) transparent;
   -webkit-text-size-adjust: 100%;
@@ -86,11 +88,12 @@ h1, h2, h3, h4 {
   font-family: var(--font-display);
   font-weight: 700;
   line-height: 1.05;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.02em; /* Apple: tighten large text, never fixed */
+  font-optical-sizing: auto;
 }
-h1 { font-size: clamp(44px, 8vw, 96px); }
-h2 { font-size: clamp(32px, 5vw, 64px); }
-h3 { font-size: clamp(20px, 3vw, 36px); font-weight: 500; }
+h1 { font-size: clamp(44px, 8vw, 96px); letter-spacing: -0.03em; }
+h2 { font-size: clamp(32px, 5vw, 64px); letter-spacing: -0.025em; }
+h3 { font-size: clamp(20px, 3vw, 36px); font-weight: 500; letter-spacing: -0.015em; }
 h4 { font-size: clamp(14px, 1.5vw, 18px); font-weight: 600; letter-spacing: 0.04em; }
 
 .label-mono {
@@ -742,12 +745,11 @@ section {
   font-family: var(--font-display);
   font-size: clamp(22px, 3.2vw, 52px);
   font-weight: 700;
-  line-height: 1.15;
-  letter-spacing: -0.03em;
+  line-height: 1.25;
+  letter-spacing: -0.025em;
   color: var(--on-bg);
   padding: calc(var(--unit) * 4) 0;
   border-bottom: 1px solid var(--border);
-  will-change: transform, opacity;
   overflow: hidden;
   position: relative;
 }
@@ -755,10 +757,17 @@ section {
 .philosophy-stmt .stmt-inner {
   display: block;
   transform: translateY(105%);
-  transition: transform 0.85s var(--ease-expo);
-  padding-bottom: 4px; /* prevent descender clipping */
+  transition: transform 0.75s var(--ease-expo);
+  padding: 4px 0; /* breathing room for ascenders/descenders */
+  will-change: transform;
 }
-.philosophy-stmt.visible .stmt-inner { transform: translateY(0); }
+.philosophy-stmt.visible {
+  overflow: visible;
+}
+.philosophy-stmt.visible .stmt-inner {
+  transform: translateY(0);
+  will-change: auto;
+}
 
 .philosophy-stmt .stmt-num {
   font-family: var(--font-mono);
@@ -2580,3 +2589,70 @@ a.contact-details-link:hover {
 }
 
 
+/* ================================================
+   404 — NOT FOUND PAGE
+   ================================================ */
+.not-found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+  text-align: center;
+  padding: var(--margin);
+}
+
+.not-found-code {
+  font-family: var(--font-mono);
+  font-size: clamp(80px, 20vw, 200px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: var(--on-bg-muted);
+  opacity: 0.2;
+}
+
+.not-found h1 {
+  margin-top: 16px;
+  font-size: clamp(24px, 4vw, 48px);
+  letter-spacing: -0.02em;
+}
+
+.not-found p {
+  margin-top: 12px;
+  color: var(--on-bg-dim);
+  max-width: 40ch;
+  line-height: 1.6;
+}
+
+.not-found .btn-primary {
+  margin-top: 32px;
+}
+
+/* ================================================
+   REDUCED MOTION — CSS cross-fade fallback
+   When user prefers reduced motion, skip all CSS
+   transitions/animations and make reveals instant.
+   GSAP is gated separately in JS via useReducedMotion.
+   ================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Instant reveal for all scroll-triggered elements */
+  .reveal, .reveal-left, .philosophy-stmt {
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+  }
+
+  /* Kill grain animation */
+  #grain-canvas { display: none; }
+
+  /* Kill ticker scroll */
+  .nav-ticker-track { animation: none !important; }
+}

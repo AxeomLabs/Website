@@ -1,8 +1,10 @@
 import { useRef } from 'react';
+import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 import useSEO from '../hooks/useSEO';
+import useReducedMotion from '../hooks/useReducedMotion';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -29,15 +31,19 @@ function Systems() {
     'https://www.axeomlabs.in/systems'
   );
 
-  useGSAP(() => {
-    const tl = gsap.timeline({ delay: 0.1 });
-    tl.from('.page-hero-status', { opacity: 0, y: 10, duration: 0.5, ease: 'expo.out' })
-      .from('.page-hero h1', { opacity: 0, y: 50, duration: 1, ease: 'expo.out' }, '-=0.2')
-      .from('.page-hero-desc', { opacity: 0, y: 16, duration: 0.7, ease: 'expo.out' }, '-=0.5');
+  const prefersReducedMotion = useReducedMotion();
 
-    gsap.from('.sys-metrics .metric', {
-      opacity: 0, x: 16, duration: 0.4, stagger: 0.08, ease: 'power3.out', delay: 0.5,
-    });
+  useGSAP(() => {
+    if (!prefersReducedMotion) {
+      const tl = gsap.timeline({ delay: 0.1 });
+      tl.from('.page-hero-status', { opacity: 0, y: 10, duration: 0.5, ease: 'expo.out' })
+        .from('.page-hero h1', { opacity: 0, y: 50, duration: 1, ease: 'expo.out' }, '-=0.2')
+        .from('.page-hero-desc', { opacity: 0, y: 16, duration: 0.7, ease: 'expo.out' }, '-=0.5');
+
+      gsap.from('.sys-metrics .metric', {
+        opacity: 0, x: 16, duration: 0.4, stagger: 0.08, ease: 'power3.out', delay: 0.5,
+      });
+    }
 
     gsap.to('.indicator-bar', {
       width: '100%', ease: 'none',
@@ -46,7 +52,7 @@ function Systems() {
 
     const obs = new IntersectionObserver((entries) => {
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
-    }, { threshold: 0.08 });
+    }, { threshold: 0.01, rootMargin: '50px 0px' });
     document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
     return () => obs.disconnect();
@@ -113,9 +119,9 @@ function Systems() {
                   Built from bare metal to guarantee execution timing for critical industrial
                   robotics and sensory fusion arrays.
                 </p>
-                <button className="btn-primary" style={{ marginTop: 24 }}>
-                  ACCESS KERNEL DOCS <span aria-hidden="true">→</span>
-                </button>
+                <Link to="/contact" className="btn-primary" style={{ marginTop: 24 }}>
+                  GET IN TOUCH <span aria-hidden="true">→</span>
+                </Link>
                 <div style={{ marginTop: 24, fontFamily: 'var(--font-mono)', fontSize: 10, color: 'var(--on-bg-muted)', lineHeight: 1.8 }}>
                   BUILD: v0.2.5 stable<br />ARCH: ARM64 / x86_64
                 </div>
@@ -149,7 +155,7 @@ function Systems() {
                 Full-stack hardware integration and interface layers.
               </h3>
             </div>
-            <button className="btn-secondary">VIEW REPOSITORIES <span aria-hidden="true">→</span></button>
+            <Link to="/contact" className="btn-secondary">ENQUIRE <span aria-hidden="true">→</span></Link>
           </div>
 
           <div className="domains-grid">

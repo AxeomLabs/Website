@@ -29,7 +29,7 @@ function CookiePolicy() {
   useSEO(
     'Cookie Policy | AxeomLabs',
     'Read the AxeomLabs Cookie Policy. We use essential cookies only. Analytics and advertising cookies require your explicit consent.',
-    'https://www.axeomlabs.in/cookies'
+    'https://www.axeomlabs.in/cookie-policy'
   );
   return (
     <LegalPage title="Cookie Policy" label="LEGAL DOCUMENTATION">

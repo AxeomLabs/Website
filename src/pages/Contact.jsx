@@ -2,6 +2,7 @@ import { useState, useRef } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import useSEO from '../hooks/useSEO';
+import useReducedMotion from '../hooks/useReducedMotion';
 
 const WEB3FORMS_KEY = '8d069e2b-4ec5-4e29-94c2-0d8429647ba6';
 
@@ -37,17 +38,21 @@ function Contact() {
     'https://www.axeomlabs.in/contact'
   );
 
+  const prefersReducedMotion = useReducedMotion();
+
   useGSAP(() => {
-    const tl = gsap.timeline({ delay: 0.1 });
-    tl.from('.contact-hero-label', { opacity: 0, y: 10, duration: 0.5, ease: 'expo.out' })
-      .from('.contact-hero h1', { opacity: 0, y: 50, duration: 1, ease: 'expo.out' }, '-=0.2')
-      .from('.contact-hero-desc', { opacity: 0, y: 16, duration: 0.7, ease: 'expo.out' }, '-=0.5')
-      .from('.contact-details-item', {
-        opacity: 0, y: 20, duration: 0.6, stagger: 0.1, ease: 'expo.out',
-      }, '-=0.3')
-      .from('.contact-form-field', {
-        opacity: 0, y: 16, duration: 0.5, stagger: 0.08, ease: 'expo.out',
-      }, '-=0.4');
+    if (!prefersReducedMotion) {
+      const tl = gsap.timeline({ delay: 0.1 });
+      tl.from('.contact-hero-label', { opacity: 0, y: 10, duration: 0.5, ease: 'expo.out' })
+        .from('.contact-hero h1', { opacity: 0, y: 50, duration: 1, ease: 'expo.out' }, '-=0.2')
+        .from('.contact-hero-desc', { opacity: 0, y: 16, duration: 0.7, ease: 'expo.out' }, '-=0.5')
+        .from('.contact-details-item', {
+          opacity: 0, y: 20, duration: 0.6, stagger: 0.1, ease: 'expo.out',
+        }, '-=0.3')
+        .from('.contact-form-field', {
+          opacity: 0, y: 16, duration: 0.5, stagger: 0.08, ease: 'expo.out',
+        }, '-=0.4');
+    }
   }, { scope: container });
 
   const handleChange = (e) => {

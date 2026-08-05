@@ -32,7 +32,7 @@ function PrivacyPolicy() {
   useSEO(
     'Privacy Policy | AxeomLabs',
     'Read the AxeomLabs Privacy Policy. We only collect information voluntarily provided through our contact form and do not sell or share data with third parties without consent.',
-    'https://www.axeomlabs.in/privacy'
+    'https://www.axeomlabs.in/privacy-policy'
   );
   return (
     <LegalPage title="Privacy Policy" label="LEGAL DOCUMENTATION">
