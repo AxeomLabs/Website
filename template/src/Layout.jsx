@@ -3,16 +3,11 @@ import { Outlet, Link, useLocation } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Lenis from 'lenis';
-import CookieBanner from './components/CookieBanner.jsx';
 
 gsap.registerPlugin(ScrollTrigger);
 
-/* ------------------------------------------------
-   Grain overlay (Lightweight GPU-composited tile)
------------------------------------------------- */
 function GrainOverlay() {
   const [dataUrl, setDataUrl] = useState('');
-
   useEffect(() => {
     const canvas = document.createElement('canvas');
     canvas.width = 128;
@@ -28,36 +23,22 @@ function GrainOverlay() {
     ctx.putImageData(img, 0, 0);
     setDataUrl(canvas.toDataURL());
   }, []);
-
   if (!dataUrl) return null;
-
   return (
-    <div
-      id="grain-canvas"
-      aria-hidden="true"
-      style={{
-        backgroundImage: `url(${dataUrl})`,
-        backgroundRepeat: 'repeat',
-      }}
+    <div id="grain-canvas" aria-hidden="true"
+      style={{ backgroundImage: `url(${dataUrl})`, backgroundRepeat: 'repeat' }}
     />
   );
 }
 
-/* ------------------------------------------------
-   Cursor glow (desktop only, respects reduced motion)
------------------------------------------------- */
 function CursorGlow() {
   const ref = useRef(null);
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    // Gate: only on hover-capable, fine-pointer, motion-OK devices
     const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (!canHover || prefersReducedMotion) {
-      el.style.display = 'none';
-      return;
-    }
+    if (!canHover || prefersReducedMotion) { el.style.display = 'none'; return; }
     const move = (e) => gsap.to(el, { x: e.clientX, y: e.clientY, duration: 0.8, ease: 'power2.out' });
     window.addEventListener('mousemove', move);
     return () => window.removeEventListener('mousemove', move);
@@ -65,19 +46,14 @@ function CursorGlow() {
   return <div ref={ref} id="cursor-glow" aria-hidden="true" />;
 }
 
-/* ------------------------------------------------
-   Scramble logo
------------------------------------------------- */
 const CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#@!';
 
 function ScrambleLogo({ text }) {
   const [display, setDisplay] = useState(text);
   const rafRef = useRef(null);
-
   const scramble = useCallback(() => {
     let iterations = 0;
     cancelAnimationFrame(rafRef.current);
-
     const tick = () => {
       setDisplay(
         text.split('').map((char, i) => {
@@ -95,26 +71,20 @@ function ScrambleLogo({ text }) {
     };
     tick();
   }, [text]);
-
   return (
     <span className="nav-logo-text" onMouseEnter={scramble} aria-label={text}>
-      {display}<sup className="logo-tm" aria-hidden="true">TM</sup>
+      {display}
     </span>
   );
 }
 
-/* ------------------------------------------------
-   Telemetry ticker
------------------------------------------------- */
 const TICKER_ITEMS = [
-  { key: 'SYS.STATUS', val: 'NOMINAL' },
+  { key: 'STATUS', val: 'NOMINAL' },
   { key: 'UPTIME', val: '99.9%' },
-  { key: 'DRONES', val: '12 BUILT' },
-  { key: 'ROBOTS', val: '5 ACTIVE' },
-  { key: 'DIVISION', val: 'R+D / HARDWARE / SOFTWARE' },
-  { key: 'BASE', val: 'INDIA' },
+  { key: 'PROJECTS', val: '24 SHIPPED' },
+  { key: 'DIVISION', val: 'ENGINEERING / DESIGN / R+D' },
   { key: 'BUILD', val: 'STABLE' },
-  { key: 'PROJECTS', val: '27 SHIPPED' },
+  { key: 'NODES', val: '8 ACTIVE' },
 ];
 
 function Ticker() {
@@ -134,98 +104,59 @@ function Ticker() {
   );
 }
 
-/* ------------------------------------------------
-   Nav link definitions
------------------------------------------------- */
 const NAV_LINKS = [
-  { label: 'ROBOTICS', path: '/robotics', num: '01' },
-  { label: 'SYSTEMS', path: '/systems', num: '02' },
-  { label: 'RESEARCH', path: '/research', num: '03' },
-  { label: 'FOUNDERS', path: '/founders', num: '04' },
+  { label: 'DIVISION 1', path: '/division-1', num: '01' },
+  { label: 'DIVISION 2', path: '/division-2', num: '02' },
+  { label: 'DIVISION 3', path: '/division-3', num: '03' },
+  { label: 'TEAM', path: '/team', num: '04' },
 ];
 
-/* ------------------------------------------------
-   Mobile nav overlay
------------------------------------------------- */
 function MobileNav({ open, onClose }) {
   const location = useLocation();
-
   useEffect(() => { onClose(); }, [location.pathname]);
-
   return (
     <>
-      {/* Backdrop */}
-      <div
-        className={`mobile-nav-backdrop${open ? ' open' : ''}`}
-        onClick={onClose}
-        aria-hidden="true"
-      />
-      {/* Drawer */}
-      <div
-        className={`mobile-nav${open ? ' open' : ''}`}
-        role="dialog"
-        aria-modal="true"
-        aria-label="Mobile navigation"
-      >
+      <div className={`mobile-nav-backdrop${open ? ' open' : ''}`} onClick={onClose} aria-hidden="true" />
+      <div className={`mobile-nav${open ? ' open' : ''}`} role="dialog" aria-modal="true" aria-label="Mobile navigation">
         <div className="mobile-nav-header">
-          <Link to="/" className="nav-logo" onClick={onClose} aria-label="AxeomLabs home">
+          <Link to="/" className="nav-logo" onClick={onClose} aria-label="Home">
             <span className="nav-logo-dot" aria-hidden="true" />
-            <span className="nav-logo-text">AXEOMLABS<sup className="logo-tm" aria-hidden="true">TM</sup></span>
+            <span className="nav-logo-text">ACME LABS</span>
           </Link>
           <button className="mobile-nav-close" onClick={onClose} aria-label="Close menu">
-            <span aria-hidden="true" />
-            <span aria-hidden="true" />
+            <span aria-hidden="true" /><span aria-hidden="true" />
           </button>
         </div>
-
         <nav className="mobile-nav-links" aria-label="Mobile navigation">
           {NAV_LINKS.map((link, i) => (
-            <Link
-              key={link.path + link.label}
-              to={link.path}
-              className="mobile-nav-link"
-              onClick={onClose}
-              style={{ '--i': i }}
-            >
+            <Link key={link.path + link.label} to={link.path} className="mobile-nav-link" onClick={onClose} style={{ '--i': i }}>
               <span className="mobile-nav-link-num">{link.num}</span>
               <span>{link.label}</span>
             </Link>
           ))}
-          <Link
-            to="/contact"
-            className="mobile-nav-link mobile-nav-cta"
-            onClick={onClose}
-            style={{ '--i': NAV_LINKS.length }}
-          >
+          <Link to="/contact" className="mobile-nav-link mobile-nav-cta" onClick={onClose} style={{ '--i': NAV_LINKS.length }}>
             <span className="mobile-nav-link-num">05</span>
             <span>CONTACT</span>
           </Link>
         </nav>
-
         <div className="mobile-nav-footer">
-          <a href="mailto:founder@axeomlabs.in" className="mobile-nav-email">
-            founder@axeomlabs.in
-          </a>
-          <span className="mobile-nav-status">SYS.STATUS: NOMINAL</span>
+          <a href="mailto:hello@example.com" className="mobile-nav-email">hello@example.com</a>
+          <span className="mobile-nav-status">STATUS: NOMINAL</span>
         </div>
       </div>
     </>
   );
 }
 
-/* ------------------------------------------------
-   Layout
------------------------------------------------- */
 function Layout() {
   const location = useLocation();
   const lenisRef = useRef(null);
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
-  // Smooth scroll init (skipped when user prefers reduced motion)
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReducedMotion) return; // native scroll, no Lenis
+    if (prefersReducedMotion) return;
     const lenis = new Lenis({ lerp: 0.09, smoothWheel: true, wheelMultiplier: 0.9, touchMultiplier: 1.8 });
     lenis.on('scroll', ScrollTrigger.update);
     gsap.ticker.add((time) => lenis.raf(time * 1000));
@@ -234,7 +165,6 @@ function Layout() {
     return () => lenis.destroy();
   }, []);
 
-  // Scroll-to-top + refresh on route change
   useEffect(() => {
     window.scrollTo(0, 0);
     if (lenisRef.current) lenisRef.current.scrollTo(0, { immediate: true });
@@ -243,14 +173,12 @@ function Layout() {
     setMenuOpen(false);
   }, [location.pathname]);
 
-  // Scroll state for nav background
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  // Lock body scroll when mobile menu open
   useEffect(() => {
     document.body.style.overflow = menuOpen ? 'hidden' : '';
     return () => { document.body.style.overflow = ''; };
@@ -267,106 +195,64 @@ function Layout() {
       <CursorGlow />
       <div id="scroll-indicator"><div className="indicator-bar" /></div>
 
-      {/* NAV */}
       <header id="global-nav" className={scrolled ? 'scrolled' : ''}>
         <div className="container nav-container">
-          <Link to="/" className="nav-logo" aria-label="AxeomLabs home">
+          <Link to="/" className="nav-logo" aria-label="Home">
             <span className="nav-logo-dot" aria-hidden="true" />
-            <ScrambleLogo text="AXEOMLABS" />
+            <ScrambleLogo text="ACME LABS" />
           </Link>
-
-          {/* Desktop nav */}
           <nav className="nav-links" aria-label="Primary navigation">
             {NAV_LINKS.map(link => (
-              <Link
-                key={link.path + link.label}
-                to={link.path}
-                className={isActive(link.path) ? 'nav-active' : ''}
-              >
+              <Link key={link.path + link.label} to={link.path} className={isActive(link.path) ? 'nav-active' : ''}>
                 <span className="nav-link-num" aria-hidden="true">{link.num}/</span>
                 {link.label}
               </Link>
             ))}
             <Link to="/contact" className="nav-portal">CONTACT</Link>
           </nav>
-
-          {/* Hamburger (mobile only) */}
-          <button
-            className={`nav-hamburger${menuOpen ? ' open' : ''}`}
-            onClick={() => setMenuOpen(v => !v)}
-            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
-            aria-expanded={menuOpen}
-          >
-            <span aria-hidden="true" />
-            <span aria-hidden="true" />
-            <span aria-hidden="true" />
+          <button className={`nav-hamburger${menuOpen ? ' open' : ''}`} onClick={() => setMenuOpen(v => !v)} aria-label={menuOpen ? 'Close menu' : 'Open menu'} aria-expanded={menuOpen}>
+            <span aria-hidden="true" /><span aria-hidden="true" /><span aria-hidden="true" />
           </button>
         </div>
-
         <Ticker />
       </header>
 
-      {/* Mobile nav overlay */}
       <MobileNav open={menuOpen} onClose={() => setMenuOpen(false)} />
 
       <main id="main-content">
         <Outlet />
       </main>
 
-      {/* FOOTER */}
       <footer id="main-footer">
         <div className="container footer-top">
           <div className="footer-brand-col">
-            <span className="footer-brand">AXEOMLABS<sup className="logo-tm" aria-hidden="true">TM</sup></span>
-            <p className="footer-tagline">
-              Building intelligent systems across drones, robotics, software, and hardware.
-            </p>
-            <a href="mailto:founder@axeomlabs.in" className="footer-email">
-              founder@axeomlabs.in
-            </a>
+            <span className="footer-brand">ACME LABS</span>
+            <p className="footer-tagline">Building the future, one system at a time.</p>
+            <a href="mailto:hello@example.com" className="footer-email">hello@example.com</a>
           </div>
-
           <nav className="footer-nav-col" aria-label="Products">
             <div className="footer-nav-title">PRODUCTS</div>
-            <Link to="/robotics" className="footer-nav-link">Drones</Link>
-            <Link to="/robotics" className="footer-nav-link">Robotics</Link>
-            <Link to="/systems" className="footer-nav-link">Software</Link>
-            <Link to="/systems" className="footer-nav-link">Hardware</Link>
+            <Link to="/division-1" className="footer-nav-link">Division One</Link>
+            <Link to="/division-2" className="footer-nav-link">Division Two</Link>
+            <Link to="/division-3" className="footer-nav-link">Division Three</Link>
           </nav>
-
           <nav className="footer-nav-col" aria-label="Company">
             <div className="footer-nav-title">COMPANY</div>
-            <Link to="/research" className="footer-nav-link">Research</Link>
-            <Link to="/founders" className="footer-nav-link">Founders</Link>
+            <Link to="/team" className="footer-nav-link">Team</Link>
             <Link to="/contact" className="footer-nav-link">Contact</Link>
           </nav>
-
           <nav className="footer-nav-col" aria-label="Legal">
             <div className="footer-nav-title">LEGAL</div>
             <Link to="/privacy-policy" className="footer-nav-link">Privacy Policy</Link>
             <Link to="/terms-of-service" className="footer-nav-link">Terms of Service</Link>
-            <Link to="/cookie-policy" className="footer-nav-link">Cookie Policy</Link>
           </nav>
         </div>
-
         <div className="footer-bottom">
           <div className="container footer-bottom-inner">
-            <span>&copy; {new Date().getFullYear()} AxeomLabs. All rights reserved.</span>
-            <button
-              className="footer-cookie-btn"
-              onClick={() => {
-                try { localStorage.removeItem('axeom_cookie_consent'); } catch {}
-                window.location.reload();
-              }}
-            >
-              Cookie settings
-            </button>
+            <span>&copy; {new Date().getFullYear()} Acme Labs. All rights reserved.</span>
           </div>
         </div>
       </footer>
-
-      {/* Cookie consent banner */}
-      <CookieBanner />
     </div>
   );
 }

@@ -1,57 +1,27 @@
-/* ================================================
-   CSS CUSTOM PROPERTIES — AXEOM PROTOCOL v2
-   ================================================ */
-/* Fonts loaded via <link> in index.html for performance (no render-blocking @import) */
-
-@font-face {
-  font-family: 'AxeomLabs';
-  src: url('./assets/AxeomLabs.woff2') format('woff2'),
-       url('./assets/AxeomLabs.woff') format('woff'),
-       url('./assets/AxeomLabs.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
 :root {
-  /* Core Surface — pure neutral blacks */
   --bg:              #0a0a0a;
   --bg-secondary:    #0f0f0f;
   --bg-card:         #151515;
   --bg-glass:        rgba(10, 10, 10, 0.82);
-
-  /* Typography — clean near-white */
   --on-bg:           #e4e4e4;
   --on-bg-dim:       #707070;
   --on-bg-muted:     #363636;
-
-  /* Accent — muted steel blue. Reads almost grey, feels colored */
   --accent:          #7d9db5;
   --accent-dim:      rgba(125, 157, 181, 0.11);
   --accent-glow:     rgba(125, 157, 181, 0.20);
-
-  /* Borders — pure neutral */
   --border:          rgba(255, 255, 255, 0.07);
   --border-bright:   rgba(255, 255, 255, 0.13);
   --border-accent:   rgba(125, 157, 181, 0.30);
-
-  /* Fonts */
-  --font-logo:    'AxeomLabs', 'Space Grotesk', sans-serif;
   --font-display: 'Space Grotesk', sans-serif;
   --font-body:    'Inter', sans-serif;
   --font-mono:    'IBM Plex Mono', monospace;
-
-  /* Spacing */
   --container-max: 1440px;
   --unit:          8px;
   --gutter:        24px;
   --margin:        64px;
-
-  /* Radii */
   --rounded-sm: 2px;
   --rounded:    4px;
   --rounded-md: 8px;
-
-  /* Motion */
   --ease-expo:     cubic-bezier(0.16, 1, 0.3, 1);
   --ease-out:      cubic-bezier(0.0, 0.0, 0.2, 1);
   --duration-fast: 0.18s;
@@ -59,9 +29,6 @@
   --duration-slow: 0.9s;
 }
 
-/* ================================================
-   RESET & BASE
-   ================================================ */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 html {
@@ -91,14 +58,11 @@ img, video { display: block; max-width: 100%; }
 a { color: inherit; text-decoration: none; }
 button { cursor: pointer; border: none; background: none; }
 
-/* ================================================
-   TYPOGRAPHY
-   ================================================ */
 h1, h2, h3, h4 {
   font-family: var(--font-display);
   font-weight: 700;
   line-height: 1.05;
-  letter-spacing: -0.02em; /* Apple: tighten large text, never fixed */
+  letter-spacing: -0.02em;
   font-optical-sizing: auto;
 }
 h1 { font-size: clamp(44px, 8vw, 96px); letter-spacing: -0.03em; }
@@ -117,9 +81,6 @@ h4 { font-size: clamp(14px, 1.5vw, 18px); font-weight: 600; letter-spacing: 0.04
 
 .accent-text { color: var(--accent); }
 
-/* ================================================
-   LAYOUT
-   ================================================ */
 .container {
   max-width: var(--container-max);
   margin: 0 auto;
@@ -131,9 +92,6 @@ section {
   border-bottom: 1px solid var(--border);
 }
 
-/* ================================================
-   GRAIN OVERLAY
-   ================================================ */
 #grain-canvas {
   position: fixed;
   top: 0; left: 0;
@@ -144,9 +102,6 @@ section {
   mix-blend-mode: screen;
 }
 
-/* ================================================
-   CURSOR GLOW
-   ================================================ */
 #cursor-glow {
   position: fixed;
   width: 400px;
@@ -159,9 +114,6 @@ section {
   transition: opacity 0.3s;
 }
 
-/* ================================================
-   SCROLL INDICATOR
-   ================================================ */
 #scroll-indicator {
   position: fixed;
   top: 0; left: 0;
@@ -176,9 +128,6 @@ section {
   box-shadow: 0 0 8px var(--accent-glow);
 }
 
-/* ================================================
-   NAVIGATION
-   ================================================ */
 #global-nav {
   position: fixed;
   top: 0; left: 0; width: 100%;
@@ -190,28 +139,23 @@ section {
   transition: border-color var(--duration-fast);
 }
 #global-nav.scrolled { border-bottom-color: var(--border-bright); }
-
-/* Main nav bar */
 .nav-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 56px;
 }
-
-/* Scramble logo */
 .nav-logo {
-  font-family: var(--font-logo);
-  font-weight: normal;
-  font-size: 16px;
-  letter-spacing: 0.04em;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.05em;
   color: var(--on-bg);
   display: flex;
   align-items: center;
   gap: 8px;
   cursor: default;
   user-select: none;
-  position: relative;
 }
 .nav-logo-dot {
   width: 6px; height: 6px;
@@ -230,18 +174,6 @@ section {
   transition: color var(--duration-fast);
 }
 .nav-logo:hover .nav-logo-text { color: var(--accent); }
-.logo-tm {
-  font-family: var(--font-mono);
-  font-size: 6px;
-  font-weight: 400;
-  letter-spacing: 0;
-  vertical-align: super;
-  margin-left: 1px;
-  opacity: 0.45;
-  line-height: 1;
-}
-
-/* Numbered nav links */
 .nav-links {
   display: flex;
   gap: 28px;
@@ -281,8 +213,6 @@ section {
 .nav-links a.nav-active { color: var(--accent); }
 .nav-links a.nav-active::after { right: 0; }
 .nav-links a.nav-active .nav-link-num { opacity: 1; }
-
-/* ACCESS button with shimmer */
 .nav-portal {
   background: var(--accent) !important;
   color: var(--bg) !important;
@@ -312,8 +242,6 @@ section {
   transform: translateY(-1px) !important;
   box-shadow: 0 0 28px rgba(125, 157, 181, 0.40), inset 0 0 0 1px rgba(255,255,255,0.18) !important;
 }
-
-/* Telemetry ticker strip */
 .nav-ticker {
   height: 24px;
   border-top: 1px solid var(--border);
@@ -342,7 +270,6 @@ section {
 .nav-ticker-track {
   display: flex;
   gap: 0;
-  /* duplicate content for seamless loop */
   animation: ticker-scroll 40s linear infinite;
   white-space: nowrap;
   will-change: transform;
@@ -373,9 +300,6 @@ section {
   font-size: 8px;
 }
 
-/* ================================================
-   HERO
-   ================================================ */
 #hero {
   min-height: 100vh;
   padding-top: 80px;
@@ -515,8 +439,6 @@ section {
   transition: color var(--duration-fast), border-color var(--duration-fast);
 }
 .btn-ghost:hover { color: var(--on-bg); border-color: var(--border-bright); }
-
-/* Hero HUD panel */
 .hero-hud {
   display: flex;
   flex-direction: column;
@@ -603,9 +525,6 @@ section {
   50% { transform: translateX(-50%) translateY(6px); opacity: 1; }
 }
 
-/* ================================================
-   DIVISIONS SECTION
-   ================================================ */
 #divisions {
   background: var(--bg);
   padding: calc(var(--unit) * 16) 0;
@@ -722,16 +641,11 @@ section {
   white-space: nowrap;
 }
 .division-card:hover .division-card-arrow { color: var(--accent); gap: 12px; }
-
-/* Full-width research card */
 .division-card-full {
   grid-column: 1 / -1;
 }
 .division-card-full .division-card-img { height: 420px; }
 
-/* ================================================
-   PHILOSOPHY SECTION
-   ================================================ */
 #philosophy {
   background: var(--bg-secondary);
   padding: calc(var(--unit) * 20) 0;
@@ -779,7 +693,7 @@ section {
   display: block;
   transform: translateY(105%);
   transition: transform 0.75s var(--ease-expo);
-  padding: 4px 0; /* breathing room for ascenders/descenders */
+  padding: 4px 0;
   will-change: transform;
 }
 .philosophy-stmt.visible {
@@ -800,9 +714,6 @@ section {
   opacity: 0.7;
 }
 
-/* ================================================
-   DIRECTIVES (was lab divisions)
-   ================================================ */
 #directives {
   background: var(--bg);
   padding: calc(var(--unit) * 8) 0;
@@ -863,9 +774,6 @@ section {
   max-width: 28ch;
 }
 
-/* ================================================
-   CTA / TERMINAL FORM
-   ================================================ */
 #cta {
   background: var(--bg-secondary);
   padding: calc(var(--unit) * 16) 0;
@@ -923,8 +831,6 @@ section {
   background: var(--accent);
   flex-shrink: 0;
 }
-
-/* Terminal form */
 .terminal-form {
   background: var(--bg-card);
   border: 1px solid var(--border);
@@ -1028,9 +934,6 @@ textarea.t-input {
   margin-bottom: 12px;
 }
 
-/* ================================================
-   FOOTER
-   ================================================ */
 footer {
   background: var(--bg);
   border-top: 1px solid var(--border);
@@ -1047,10 +950,10 @@ footer {
   gap: 24px;
 }
 .footer-brand {
-  font-family: var(--font-logo);
-  font-weight: normal;
-  font-size: 16px;
-  letter-spacing: 0.04em;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.02em;
   color: var(--on-bg);
 }
 .footer-sep {
@@ -1072,9 +975,6 @@ footer {
   text-transform: uppercase;
 }
 
-/* ================================================
-   REVEAL ANIMATIONS
-   ================================================ */
 .reveal {
   opacity: 0;
   transform: translateY(24px);
@@ -1089,9 +989,6 @@ footer {
 }
 .reveal-left.visible { opacity: 1; transform: translateX(0); }
 
-/* ================================================
-   PAGE HERO (shared across sub-pages)
-   ================================================ */
 .page-hero {
   min-height: 72vh;
   padding-top: 80px;
@@ -1201,9 +1098,6 @@ footer {
   border-radius: var(--rounded);
 }
 
-/* ================================================
-   PAGE SECTIONS (sub-pages)
-   ================================================ */
 .page-section {
   background: var(--bg);
   padding: calc(var(--unit) * 14) 0;
@@ -1218,8 +1112,6 @@ footer {
   border-bottom: 1px solid var(--border);
 }
 .section-header-row h2 { color: var(--on-bg); }
-
-/* Applied grid (robotics/systems cards) */
 .applied-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1292,8 +1184,6 @@ footer {
   transition: filter var(--duration-slow);
 }
 .robo-card:hover .robo-card-visual img { filter: grayscale(60%) brightness(0.5); }
-
-/* Systems row */
 .systems-row {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -1328,8 +1218,6 @@ footer {
   color: var(--on-bg-dim);
   line-height: 1.6;
 }
-
-/* OS Card */
 .os-card {
   background: var(--bg-card);
   border: 1px solid var(--border);
@@ -1393,8 +1281,6 @@ footer {
 }
 .os-spec-row:last-child { border-bottom: none; }
 .os-spec-row span:last-child { color: var(--on-bg); }
-
-/* Domains grid */
 .domains-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -1426,8 +1312,6 @@ footer {
   color: var(--accent);
   text-transform: uppercase;
 }
-
-/* OS Table */
 .os-table { background: var(--bg-card); border: 1px solid var(--border); }
 .os-table-header, .os-table-row {
   display: grid;
@@ -1452,8 +1336,6 @@ footer {
 .os-table-row span { color: var(--on-bg-dim); font-size: 11px; }
 .os-table-row span:first-child { color: var(--on-bg); }
 .os-table-row span:last-child { color: var(--accent); text-align: center; border-right: none; }
-
-/* Systems hero */
 .sys-hero-layout {
   display: grid;
   grid-template-columns: 1fr 380px;
@@ -1509,8 +1391,6 @@ footer {
   font-size: 10px;
   color: var(--on-bg-dim);
 }
-
-/* Research */
 .research-header {
   padding-bottom: calc(var(--unit) * 4);
   border-bottom: 1px solid var(--border);
@@ -1581,8 +1461,6 @@ footer {
   color: var(--accent);
   font-weight: 600;
 }
-
-/* Culture section */
 .culture-layout {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1608,8 +1486,6 @@ footer {
   text-transform: uppercase;
   margin-top: 12px;
 }
-
-/* Button secondary */
 .btn-secondary {
   display: inline-flex;
   align-items: center;
@@ -1630,9 +1506,6 @@ footer {
 }
 .btn-secondary:hover { color: var(--on-bg); border-color: var(--border-bright); }
 
-/* ================================================
-   REDUCED MOTION
-   ================================================ */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
@@ -1643,9 +1516,6 @@ footer {
   .philosophy-stmt .stmt-inner { transform: none; }
 }
 
-/* ================================================
-   RESPONSIVE
-   ================================================ */
 @media (max-width: 1024px) {
   :root { --margin: 40px; }
   .hero-content { grid-template-columns: 1fr; gap: var(--margin); }
@@ -1691,9 +1561,6 @@ footer {
   .cookie-banner-actions .cookie-btn { width: 100%; }
 }
 
-/* ================================================
-   FOOTER
-   ================================================ */
 #main-footer {
   background: var(--bg-secondary);
   border-top: 1px solid var(--border);
@@ -1715,10 +1582,10 @@ footer {
 }
 
 .footer-brand {
-  font-family: var(--font-logo);
+  font-family: var(--font-display);
   font-size: 18px;
-  font-weight: normal;
-  letter-spacing: 0.04em;
+  font-weight: 700;
+  letter-spacing: 0.06em;
   color: var(--on-bg);
 }
 
@@ -1788,9 +1655,6 @@ footer {
 }
 .footer-cookie-btn:hover { color: var(--on-bg-dim); }
 
-/* ================================================
-   FOUNDERS PAGE
-   ================================================ */
 .founders-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -1910,9 +1774,6 @@ footer {
   max-width: 65ch;
 }
 
-/* ================================================
-   LEGAL PAGES
-   ================================================ */
 .legal-body {
   max-width: 72ch;
   margin: 0 auto;
@@ -1967,8 +1828,6 @@ footer {
   transition: opacity var(--duration-fast);
 }
 .legal-link:hover { opacity: 0.75; }
-
-/* Cookie policy table */
 .cookie-table {
   border: 1px solid var(--border);
   border-radius: var(--rounded);
@@ -2012,9 +1871,6 @@ footer {
 
 .cookie-table-row + .cookie-table-row { border-top: 1px solid var(--border); }
 
-/* ================================================
-   COOKIE BANNER
-   ================================================ */
 .cookie-banner {
   position: fixed;
   bottom: 0; left: 0; right: 0;
@@ -2152,9 +2008,6 @@ footer {
   flex-shrink: 0;
 }
 
-/* ================================================
-   MOBILE NAVIGATION
-   ================================================ */
 .nav-hamburger {
   display: none;
   background: none;
@@ -2323,8 +2176,6 @@ footer {
 @media (max-width: 1024px) {
   .nav-links, .nav-portal { display: none; }
   .nav-hamburger { display: block; }
-  
-  /* Additional mobile grid/padding fixes */
   #divisions .division-card, 
   #cta .cta-right {
     padding: calc(var(--unit) * 8) 0;
@@ -2335,9 +2186,6 @@ footer {
   .nav-hamburger { margin-right: -10px; }
 }
 
-/* ================================================
-   CONTACT PAGE
-   ================================================ */
 .contact-hero {
   position: relative;
   min-height: 100vh;
@@ -2608,11 +2456,6 @@ a.contact-details-link:hover {
     padding: calc(var(--unit) * 6);
   }
 }
-
-
-/* ================================================
-   404 — NOT FOUND PAGE
-   ================================================ */
 .not-found {
   display: flex;
   flex-direction: column;
@@ -2649,13 +2492,6 @@ a.contact-details-link:hover {
 .not-found .btn-primary {
   margin-top: 32px;
 }
-
-/* ================================================
-   REDUCED MOTION — CSS cross-fade fallback
-   When user prefers reduced motion, skip all CSS
-   transitions/animations and make reveals instant.
-   GSAP is gated separately in JS via useReducedMotion.
-   ================================================ */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
@@ -2663,17 +2499,11 @@ a.contact-details-link:hover {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-
-  /* Instant reveal for all scroll-triggered elements */
   .reveal, .reveal-left, .philosophy-stmt {
     opacity: 1 !important;
     transform: none !important;
     clip-path: none !important;
   }
-
-  /* Kill grain animation */
   #grain-canvas { display: none; }
-
-  /* Kill ticker scroll */
   .nav-ticker-track { animation: none !important; }
 }
