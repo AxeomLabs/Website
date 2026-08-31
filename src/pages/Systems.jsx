@@ -70,49 +70,40 @@ function Systems() {
         ],
       }) }} />
 
-      {/* BREADCRUMB */}
-      <nav aria-label="Breadcrumb" style={{
-        position: 'absolute',
-        top: 88,
-        left: 'var(--margin)',
-        fontFamily: 'var(--font-mono)',
-        fontSize: 10,
-        letterSpacing: '0.1em',
-        color: 'var(--on-bg-muted)',
-        zIndex: 10,
-        display: 'flex',
-        gap: 8,
-        alignItems: 'center',
-      }}>
-        <Link to="/" style={{ color: 'var(--on-bg-muted)', textTransform: 'uppercase' }}>Home</Link>
-        <span aria-hidden="true">›</span>
-        <span style={{ color: 'var(--accent)', textTransform: 'uppercase' }}>Systems</span>
-      </nav>
       {/* HERO */}
-      <section className="page-hero" aria-label="Systems Division" style={{ minHeight: 'auto' }}>
+      <section className="page-hero" aria-label="Systems Division">
         <div className="page-hero-bg" aria-hidden="true" />
-        <div className="page-hero-layout">
-          <div className="page-hero-left">
-            <div className="page-hero-status">[ DIVISION: OS + SYSTEMS ]</div>
-            <h1 style={{ color: 'var(--on-bg)', textTransform: 'uppercase', marginBottom: 24 }}>
-              SOFTWARE +<br />SYSTEMS
-            </h1>
-            <p className="page-hero-desc">
-              Architecting the deterministic logic layers for autonomous operations. We build fault-tolerant
-              environments ranging from ultra-low-latency embedded RTOS to global-scale enterprise data pipelines.
-            </p>
-          </div>
-          <div className="page-hero-right">
-            <img
-              src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=900&q=85"
-              alt="Server rack and data centre infrastructure representing AxeomLabs systems engineering"
-              className="page-hero-image"
-              width="900"
-              height="600"
-            />
-            <div className="page-hero-meta">
-              <span>[ DIVISION: SYSTEMS ]</span>
-              <span>STATUS: ACTIVE</span>
+        <div className="container page-hero-container">
+          {/* BREADCRUMB */}
+          <nav aria-label="Breadcrumb" className="page-breadcrumb">
+            <Link to="/">Home</Link>
+            <span aria-hidden="true">›</span>
+            <span className="current">Systems</span>
+          </nav>
+
+          <div className="page-hero-layout">
+            <div className="page-hero-left">
+              <div className="page-hero-status">[ DIVISION: OS + SYSTEMS ]</div>
+              <h1>SOFTWARE +<br />SYSTEMS</h1>
+              <p className="page-hero-desc">
+                Architecting the deterministic logic layers for autonomous operations. We build fault-tolerant
+                environments ranging from ultra-low-latency embedded RTOS to global-scale enterprise data pipelines.
+              </p>
+            </div>
+            <div className="page-hero-right">
+              <div className="page-hero-img-wrap">
+                <img
+                  src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=900&q=85"
+                  alt="Server rack and data centre infrastructure representing AxeomLabs systems engineering"
+                  className="page-hero-image"
+                  width="900"
+                  height="600"
+                />
+                <div className="page-hero-meta">
+                  <span>DIVISION: SYSTEMS</span>
+                  <span>STATUS: ACTIVE</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>

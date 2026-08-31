@@ -98,40 +98,40 @@ function Research() {
         ],
       }) }} />
 
-      {/* BREADCRUMB */}
-      <nav aria-label="Breadcrumb" style={{
-        position: 'absolute', top: 88, left: 'var(--margin)',
-        fontFamily: 'var(--font-mono)', fontSize: 10, letterSpacing: '0.1em',
-        color: 'var(--on-bg-muted)', zIndex: 10, display: 'flex', gap: 8, alignItems: 'center',
-      }}>
-        <Link to="/" style={{ color: 'var(--on-bg-muted)', textTransform: 'uppercase' }}>Home</Link>
-        <span aria-hidden="true">›</span>
-        <span style={{ color: 'var(--accent)', textTransform: 'uppercase' }}>Research</span>
-      </nav>
-
       {/* HERO */}
       <section className="page-hero" aria-label="Research Division">
         <div className="page-hero-bg" aria-hidden="true" />
-        <div className="page-hero-layout">
-          <div className="page-hero-left">
-            <div className="page-hero-status">[ DEPT 04 : RESEARCH ]</div>
-            <h1>GLOBAL<br />IMPACT.</h1>
-            <p className="page-hero-desc">
-              We work across astrophysics, chemistry, oceanography, and biology alongside
-              robotics and AI. The science informs the hardware. The hardware tests the science.
-            </p>
-          </div>
-          <div className="page-hero-right">
-            <img
-              src="https://images.unsplash.com/photo-1614730321146-b6fa6a46bcb4?w=1200&q=85"
-              alt="Earth from orbit, representing AxeomLabs global research in astrophysics and space"
-              className="page-hero-image"
-              width="1200"
-              height="800"
-            />
-            <div className="page-hero-meta">
-              <span>[ DOMAINS: 10 ACTIVE ]</span>
-              <span>SYS STATE: STABLE</span>
+        <div className="container page-hero-container">
+          {/* BREADCRUMB */}
+          <nav aria-label="Breadcrumb" className="page-breadcrumb">
+            <Link to="/">Home</Link>
+            <span aria-hidden="true">›</span>
+            <span className="current">Research</span>
+          </nav>
+
+          <div className="page-hero-layout">
+            <div className="page-hero-left">
+              <div className="page-hero-status">[ DEPT 04 : RESEARCH ]</div>
+              <h1>GLOBAL<br />IMPACT.</h1>
+              <p className="page-hero-desc">
+                We work across astrophysics, chemistry, oceanography, and biology alongside
+                robotics and AI. The science informs the hardware. The hardware tests the science.
+              </p>
+            </div>
+            <div className="page-hero-right">
+              <div className="page-hero-img-wrap">
+                <img
+                  src="https://images.unsplash.com/photo-1614730321146-b6fa6a46bcb4?w=1200&q=85"
+                  alt="Earth from orbit, representing AxeomLabs global research in astrophysics and space"
+                  className="page-hero-image"
+                  width="1200"
+                  height="800"
+                />
+                <div className="page-hero-meta">
+                  <span>DOMAINS: 10 ACTIVE</span>
+                  <span>SYS STATE: STABLE</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -243,7 +243,7 @@ function Research() {
                   height="467"
                 />
                 <img
-                  src="https://images.unsplash.com/photo-1606206591513-adbfbdd8e5e0?w=700&q=85"
+                  src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=700&q=85"
                   alt="Close up of a circuit board and electronic components"
                   className="research-stack-img research-stack-bot"
                   loading="lazy"

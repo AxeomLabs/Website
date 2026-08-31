@@ -61,48 +61,41 @@ function Robotics() {
         ],
       }) }} />
 
-      {/* BREADCRUMB */}
-      <nav aria-label="Breadcrumb" style={{
-        position: 'absolute',
-        top: 88,
-        left: 'var(--margin)',
-        fontFamily: 'var(--font-mono)',
-        fontSize: 10,
-        letterSpacing: '0.1em',
-        color: 'var(--on-bg-muted)',
-        zIndex: 10,
-        display: 'flex',
-        gap: 8,
-        alignItems: 'center',
-      }}>
-        <Link to="/" style={{ color: 'var(--on-bg-muted)', textTransform: 'uppercase' }}>Home</Link>
-        <span aria-hidden="true">›</span>
-        <span style={{ color: 'var(--accent)', textTransform: 'uppercase' }}>Robotics</span>
-      </nav>
       {/* HERO */}
       <section className="page-hero" aria-label="Robotics Division">
         <div className="page-hero-bg" aria-hidden="true" />
-        <div className="page-hero-layout">
-          <div className="page-hero-left">
-            <div className="page-hero-status">[ DIVISION: ROBOTICS + AI ]</div>
-            <h1>INTELLIGENCE<br />EMBODIED.</h1>
-            <p className="page-hero-desc">
-              Bridging the gap between raw algorithmic cognition and physical articulation.
-              AxeomLabs pioneers next-generation autonomous systems and proto-AGI architectures.
-            </p>
-            <Link to="/contact" className="btn-primary page-hero-cta">GET IN TOUCH <span aria-hidden="true">→</span></Link>
-          </div>
-          <div className="page-hero-right">
-            <img
-              src="https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?w=900&q=85"
-              alt="Industrial robotic arm in a factory environment"
-              className="page-hero-image"
-              width="900"
-              height="600"
-            />
-            <div className="page-hero-meta">
-              <span>[ STATUS: ACTIVE ]</span>
-              <span>MODEL: AXL-7 PROTOTYPE</span>
+        <div className="container page-hero-container">
+          {/* BREADCRUMB */}
+          <nav aria-label="Breadcrumb" className="page-breadcrumb">
+            <Link to="/">Home</Link>
+            <span aria-hidden="true">›</span>
+            <span className="current">Robotics</span>
+          </nav>
+
+          <div className="page-hero-layout">
+            <div className="page-hero-left">
+              <div className="page-hero-status">[ DIVISION: ROBOTICS + AI ]</div>
+              <h1>INTELLIGENCE<br />EMBODIED.</h1>
+              <p className="page-hero-desc">
+                Bridging the gap between raw algorithmic cognition and physical articulation.
+                AxeomLabs pioneers next-generation autonomous systems and proto-AGI architectures.
+              </p>
+              <Link to="/contact" className="btn-primary page-hero-cta">GET IN TOUCH <span aria-hidden="true">→</span></Link>
+            </div>
+            <div className="page-hero-right">
+              <div className="page-hero-img-wrap">
+                <img
+                  src="https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?w=900&q=85"
+                  alt="Industrial robotic arm in a factory environment"
+                  className="page-hero-image"
+                  width="900"
+                  height="600"
+                />
+                <div className="page-hero-meta">
+                  <span>STATUS: ACTIVE</span>
+                  <span>MODEL: AXL-7 PROTOTYPE</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>

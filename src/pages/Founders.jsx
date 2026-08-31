@@ -64,34 +64,58 @@ function Founders() {
         },
       ]) }} />
 
-      {/* BREADCRUMB */}
-      <nav aria-label="Breadcrumb" style={{
-        position: 'absolute',
-        top: 88,
-        left: 'var(--margin)',
-        fontFamily: 'var(--font-mono)',
-        fontSize: 10,
-        letterSpacing: '0.1em',
-        color: 'var(--on-bg-muted)',
-        zIndex: 10,
-        display: 'flex',
-        gap: 8,
-        alignItems: 'center',
-      }}>
-        <Link to="/" style={{ color: 'var(--on-bg-muted)', textTransform: 'uppercase' }}>Home</Link>
-        <span aria-hidden="true">›</span>
-        <span style={{ color: 'var(--accent)', textTransform: 'uppercase' }}>Founders</span>
-      </nav>
       {/* HERO */}
       <section className="page-hero" aria-label="Founders">
         <div className="page-hero-bg" aria-hidden="true" />
-        <div style={{ maxWidth: 'var(--container-max)', margin: '0 auto', padding: 'calc(80px + var(--margin)) var(--margin) var(--margin)', width: '100%' }}>
-          <div className="page-hero-status">[ ABOUT THE FOUNDERS ]</div>
-          <h1 style={{ marginTop: 24 }}>THE PEOPLE<br />BEHIND IT.</h1>
-          <p className="page-hero-desc" style={{ maxWidth: '52ch' }}>
-            AxeomLabs was founded by two builders who refused to separate
-            hardware from software, or theory from practice.
-          </p>
+        <div className="container page-hero-container">
+          {/* BREADCRUMB */}
+          <nav aria-label="Breadcrumb" className="page-breadcrumb">
+            <Link to="/">Home</Link>
+            <span aria-hidden="true">›</span>
+            <span className="current">Founders</span>
+          </nav>
+
+          <div className="page-hero-layout">
+            <div className="page-hero-left">
+              <div className="page-hero-status">[ ABOUT THE FOUNDERS ]</div>
+              <h1>THE PEOPLE<br />BEHIND IT.</h1>
+              <p className="page-hero-desc">
+                AxeomLabs was founded by two builders who refused to separate
+                hardware from software, or theory from practice.
+              </p>
+            </div>
+            <div className="page-hero-right">
+              <div className="page-hero-img-wrap" style={{ padding: '24px', background: 'var(--bg-card)' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid var(--border)', paddingBottom: '12px' }}>
+                    <span style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', letterSpacing: '0.12em', color: 'var(--accent)' }}>AXL // LEADERSHIP DOSSIER</span>
+                    <span style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', color: 'var(--on-bg-muted)' }}>EST. 2024</span>
+                  </div>
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+                    <div>
+                      <div style={{ fontFamily: 'var(--font-mono)', fontSize: '9px', color: 'var(--on-bg-muted)', marginBottom: '4px' }}>OPERATIONS</div>
+                      <div style={{ fontFamily: 'var(--font-mono)', fontSize: '12px', color: 'var(--on-bg)' }}>R&D / PRODUCTION</div>
+                    </div>
+                    <div>
+                      <div style={{ fontFamily: 'var(--font-mono)', fontSize: '9px', color: 'var(--on-bg-muted)', marginBottom: '4px' }}>LOCATION</div>
+                      <div style={{ fontFamily: 'var(--font-mono)', fontSize: '12px', color: 'var(--on-bg)' }}>INDIA</div>
+                    </div>
+                    <div>
+                      <div style={{ fontFamily: 'var(--font-mono)', fontSize: '9px', color: 'var(--on-bg-muted)', marginBottom: '4px' }}>FOUNDING PHILOSOPHY</div>
+                      <div style={{ fontFamily: 'var(--font-mono)', fontSize: '12px', color: 'var(--on-bg)' }}>PHYSICAL-FIRST COGNITION</div>
+                    </div>
+                    <div>
+                      <div style={{ fontFamily: 'var(--font-mono)', fontSize: '9px', color: 'var(--on-bg-muted)', marginBottom: '4px' }}>FIELD STATUS</div>
+                      <div style={{ fontFamily: 'var(--font-mono)', fontSize: '12px', color: '#4ade80' }}>ACTIVE DEPLOYMENTS</div>
+                    </div>
+                  </div>
+                  <div style={{ borderTop: '1px solid var(--border)', paddingTop: '12px', fontFamily: 'var(--font-mono)', fontSize: '10px', color: 'var(--on-bg-dim)', lineHeight: 1.6 }}>
+                    "We build systems that operate in the physical world where failure is real and edge cases cannot be simulated away."
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 

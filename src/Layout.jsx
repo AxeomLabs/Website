@@ -241,6 +241,21 @@ function Layout() {
     ScrollTrigger.getAll().forEach(t => t.kill());
     ScrollTrigger.refresh();
     setMenuOpen(false);
+
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.01, rootMargin: '40px 0px' });
+    
+    const timer = setTimeout(() => {
+      document.querySelectorAll('.reveal, .reveal-left, .stack-step, .philosophy-stmt').forEach(el => obs.observe(el));
+    }, 50);
+
+    return () => {
+      clearTimeout(timer);
+      obs.disconnect();
+    };
   }, [location.pathname]);
 
   // Scroll state for nav background

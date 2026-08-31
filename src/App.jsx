@@ -197,13 +197,7 @@ export default function App() {
       scrollTrigger: { trigger: document.body, start: 'top top', end: 'bottom bottom', scrub: 0.2 },
     });
 
-    const obs = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
-      });
-    }, { threshold: 0.01, rootMargin: '40px 0px' });
-    document.querySelectorAll('.reveal, .reveal-left, .stack-step').forEach(el => obs.observe(el));
-    return () => obs.disconnect();
+
   }, { scope: container });
 
   const handleSubmit = async (e) => {
@@ -234,67 +228,91 @@ export default function App() {
       {/* ═══════════════════════════════════════════════════════════════
           01 HERO — Split layout: text left, machine right
           ═══════════════════════════════════════════════════════════════ */}
-      <section id="hero" aria-label="AxeomLabs — Intelligence built for the physical world">
-        <div className="hero-split">
+      <section id="hero" aria-label="AxeomLabs: Intelligence built for the physical world">
+        <div className="hero-bg-grid" aria-hidden="true" />
+        <div className="container hero-container">
+          <div className="hero-grid">
 
-          {/* Left: content */}
-          <div className="hero-content">
-            <div className="hero-eyebrow">
-              <span className="hero-status-dot" aria-hidden="true" />
-              <span>AXEOMLABS</span>
-              <span className="hero-sep" aria-hidden="true">·</span>
-              <span>INDIA</span>
-              <span className="hero-sep" aria-hidden="true">·</span>
-              <span>EST. 2024</span>
+            {/* Left: content */}
+            <div className="hero-content">
+              <div className="hero-eyebrow">
+                <span className="hero-status-dot" aria-hidden="true" />
+                <span>AXEOMLABS</span>
+                <span className="hero-sep" aria-hidden="true">·</span>
+                <span>INDIA</span>
+                <span className="hero-sep" aria-hidden="true">·</span>
+                <span>EST. 2024</span>
+              </div>
+
+              <h1 className="hero-headline">
+                Intelligence,<br />
+                built for the<br />
+                physical world.
+              </h1>
+
+              <p className="hero-sub">
+                We design and build autonomous drones, robotics platforms, embedded AI,
+                and custom hardware. Everything we ship gets tested in the field.
+              </p>
+
+              <div className="hero-disciplines" aria-label="Disciplines">
+                <span className="hero-disc-item">AI</span>
+                <span className="hero-disc-sep">·</span>
+                <span className="hero-disc-item">ROBOTICS</span>
+                <span className="hero-disc-sep">·</span>
+                <span className="hero-disc-item">AUTONOMOUS SYSTEMS</span>
+                <span className="hero-disc-sep">·</span>
+                <span className="hero-disc-item">HARDWARE</span>
+              </div>
+
+              <div className="hero-ctas">
+                <button
+                  className="btn-primary"
+                  onClick={() => document.getElementById('selected-work')?.scrollIntoView({ behavior: 'smooth' })}
+                >
+                  EXPLORE THE LAB <span aria-hidden="true">→</span>
+                </button>
+                <Link to="/contact" className="btn-ghost">BUILD WITH US</Link>
+              </div>
             </div>
 
-            <h1 className="hero-headline">
-              Intelligence,<br />
-              built for the<br />
-              physical world.
-            </h1>
-
-            <p className="hero-sub">
-              We design and build autonomous drones, robotics platforms, embedded AI,
-              and custom hardware. Everything we ship gets tested in the field.
-            </p>
-
-            <div className="hero-disciplines" aria-label="Disciplines">
-              AI <span className="hero-disc-sep">·</span>
-              ROBOTICS <span className="hero-disc-sep">·</span>
-              AUTONOMOUS SYSTEMS <span className="hero-disc-sep">·</span>
-              HARDWARE
+            {/* Right: real machine image panel */}
+            <div className="hero-img-panel" aria-hidden="true">
+              <div className="hero-media-card">
+                <div className="hero-media-header">
+                  <div className="hero-media-title">
+                    <span className="hero-status-dot sm" />
+                    <span>SYS // AXL-DRONE-V4</span>
+                  </div>
+                  <div className="hero-media-telemetry">
+                    <span>GPS: LOCK</span>
+                  </div>
+                </div>
+                <div className="hero-media-img-box">
+                  <img
+                    src="https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=1200&q=85"
+                    alt="Professional drone in flight at golden hour, representing AxeomLabs autonomous aerial systems"
+                    className="hero-machine-img"
+                    width="1200"
+                    height="800"
+                    fetchpriority="high"
+                  />
+                  <div className="hero-img-overlay" />
+                  <div className="hero-crosshair top-left">+</div>
+                  <div className="hero-crosshair top-right">+</div>
+                  <div className="hero-crosshair bottom-left">+</div>
+                  <div className="hero-crosshair bottom-right">+</div>
+                </div>
+                <div className="hero-media-footer">
+                  <span>FIELD TEST: SVALBARD / GOA</span>
+                  <span className="hero-img-badge">
+                    <span className="hero-status-dot sm" />
+                    ONLINE
+                  </span>
+                </div>
+              </div>
             </div>
 
-            <div className="hero-ctas">
-              <button
-                className="btn-primary"
-                onClick={() => document.getElementById('selected-work')?.scrollIntoView({ behavior: 'smooth' })}
-              >
-                EXPLORE THE LAB <span aria-hidden="true">→</span>
-              </button>
-              <Link to="/contact" className="btn-ghost">BUILD WITH US</Link>
-            </div>
-          </div>
-
-          {/* Right: real machine image */}
-          <div className="hero-img-panel" aria-hidden="true">
-            <img
-              src="https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=1400&q=85"
-              alt="Professional drone in flight at golden hour, representing AxeomLabs autonomous aerial systems"
-              className="hero-machine-img"
-              width="1400"
-              height="933"
-              fetchpriority="high"
-            />
-            <div className="hero-img-overlay" />
-            <div className="hero-img-meta">
-              <span>SYS.STATUS</span>
-              <span className="hero-img-badge">
-                <span className="hero-status-dot sm" />
-                ONLINE
-              </span>
-            </div>
           </div>
         </div>
 
