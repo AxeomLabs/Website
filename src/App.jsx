@@ -54,8 +54,8 @@ const FEATURED_WORK = [
     tags: ['SLAM', 'SENSOR FUSION', 'EDGE AI', 'LIDAR'],
     status: 'ACTIVE',
     path: '/robotics',
-    img: 'https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=1400&q=85',
-    alt: 'Autonomous drone in flight over open terrain',
+    img: 'https://images.unsplash.com/photo-1527977966376-1c8408f9f108?w=1400&q=85',
+    alt: 'Professional drone hovering over open terrain at dusk',
   },
   {
     id: '002',
@@ -65,8 +65,8 @@ const FEATURED_WORK = [
     tags: ['LOCOMOTION', 'TERRAIN MAPPING', 'TACTILE'],
     status: 'ACTIVE',
     path: '/robotics',
-    img: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=1000&q=85',
-    alt: 'Autonomous robot in an industrial environment',
+    img: 'https://images.unsplash.com/photo-1561144257-e32e8506e82a?w=1000&q=85',
+    alt: 'Industrial robot arm performing precision movements in a production environment',
   },
   {
     id: '003',
@@ -76,8 +76,8 @@ const FEATURED_WORK = [
     tags: ['QUANTIZATION', 'CORTEX-M7', 'INT8'],
     status: 'R&D',
     path: '/systems',
-    img: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=1000&q=85',
-    alt: 'Custom PCB and embedded electronics close-up',
+    img: 'https://images.unsplash.com/photo-1555680202-c86f0e12f086?w=1000&q=85',
+    alt: 'Microprocessor and integrated circuit die under macro lens',
   },
 ];
 
@@ -281,7 +281,7 @@ export default function App() {
           <div className="hero-img-panel" aria-hidden="true">
             <img
               src="https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=1400&q=85"
-              alt="Autonomous drone in flight"
+              alt="Professional drone in flight at golden hour, representing AxeomLabs autonomous aerial systems"
               className="hero-machine-img"
               width="1400"
               height="933"

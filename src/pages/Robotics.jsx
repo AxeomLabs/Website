@@ -94,8 +94,8 @@ function Robotics() {
           </div>
           <div className="page-hero-right">
             <img
-              src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=900&q=85"
-              alt="Humanoid Robot"
+              src="https://images.unsplash.com/photo-1561144257-e32e8506e82a?w=900&q=85"
+              alt="Industrial robotic arm in a factory environment"
               className="page-hero-image"
               width="900"
               height="600"
@@ -129,7 +129,11 @@ function Robotics() {
                   <Link to="/contact" className="link-mono">ENQUIRE <span aria-hidden="true">↗</span></Link>
                 </div>
                 <div className="robo-card-visual" style={{ height: '280px' }}>
-                  <img src="https://images.unsplash.com/photo-1546776310-eef45dd6d63c?w=600&q=80" alt="Humanoid robot platform" loading="lazy" width="600" height="400" />
+                  <img
+                    src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=600&q=80"
+                    alt="Humanoid robot with articulated arms in a controlled test environment"
+                    loading="lazy" width="600" height="400"
+                  />
                 </div>
               </div>
             </div>
@@ -144,7 +148,11 @@ function Robotics() {
                   <span className="link-mono" style={{ color: 'var(--on-bg-muted)', cursor: 'default' }}>CLEARANCE REQUIRED</span>
                 </div>
                 <div className="robo-card-visual" style={{ height: '280px' }}>
-                  <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80" alt="Military robotics platform" loading="lazy" width="600" height="400" />
+                  <img
+                    src="https://images.unsplash.com/photo-1581092335397-9583eb92d232?w=600&q=80"
+                    alt="Armored ground robotics platform in field test conditions"
+                    loading="lazy" width="600" height="400"
+                  />
                 </div>
               </div>
             </div>

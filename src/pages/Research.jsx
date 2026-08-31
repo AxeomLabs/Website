@@ -123,11 +123,11 @@ function Research() {
           </div>
           <div className="page-hero-right">
             <img
-              src="https://images.unsplash.com/photo-1614730321146-b6fa6a46bcb4?w=900&q=85"
-              alt="Earth photographed from orbit, representing AxeomLabs research in astrophysics and space"
+              src="https://images.unsplash.com/photo-1614730321146-b6fa6a46bcb4?w=1200&q=85"
+              alt="Earth from orbit, representing AxeomLabs global research in astrophysics and space"
               className="page-hero-image"
-              width="900"
-              height="600"
+              width="1200"
+              height="800"
             />
             <div className="page-hero-meta">
               <span>[ DOMAINS: 10 ACTIVE ]</span>
@@ -228,20 +228,30 @@ function Research() {
                 We test in the field. Open terrain, ocean conditions, actual airspace.
                 If it only works in a controlled environment, it doesn't count.
               </p>
-              <Link to="/ai" className="btn-primary" style={{ marginTop: 32 }}>
+              <Link to="/research" className="btn-primary" style={{ marginTop: 32 }}>
                 EXPLORE AI RESEARCH <span aria-hidden="true">→</span>
               </Link>
             </div>
             <div className="reveal">
-              <img
-                src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=800&q=80"
-                alt="A nebula in deep space, representing AxeomLabs astrophysics and space research"
-                className="culture-img"
-                loading="lazy"
-                width="800"
-                height="1067"
-              />
-              <div className="culture-meta">[ ASTROPHYSICS : ACTIVE ]</div>
+              <div className="research-img-stack">
+                <img
+                  src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=700&q=85"
+                  alt="Engineer working on robotics hardware in a lab environment"
+                  className="research-stack-img research-stack-top"
+                  loading="lazy"
+                  width="700"
+                  height="467"
+                />
+                <img
+                  src="https://images.unsplash.com/photo-1606206591513-adbfbdd8e5e0?w=700&q=85"
+                  alt="Close up of a circuit board and electronic components"
+                  className="research-stack-img research-stack-bot"
+                  loading="lazy"
+                  width="700"
+                  height="467"
+                />
+              </div>
+              <div className="culture-meta">[ FIELD TESTING : ACTIVE ]</div>
             </div>
           </div>
         </div>

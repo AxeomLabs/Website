@@ -91,8 +91,8 @@ function Systems() {
       {/* HERO */}
       <section className="page-hero" aria-label="Systems Division" style={{ minHeight: 'auto' }}>
         <div className="page-hero-bg" aria-hidden="true" />
-        <div className="sys-hero-layout">
-          <div className="sys-hero-left">
+        <div className="page-hero-layout">
+          <div className="page-hero-left">
             <div className="page-hero-status">[ DIVISION: OS + SYSTEMS ]</div>
             <h1 style={{ color: 'var(--on-bg)', textTransform: 'uppercase', marginBottom: 24 }}>
               SOFTWARE +<br />SYSTEMS
@@ -102,25 +102,17 @@ function Systems() {
               environments ranging from ultra-low-latency embedded RTOS to global-scale enterprise data pipelines.
             </p>
           </div>
-          <div className="sys-hero-right">
-            <div className="sys-metrics" role="status" aria-label="System metrics">
-              <div className="sys-metrics-title">SYSTEM METRICS</div>
-              <div className="metric">
-                <span className="metric-label">UPTIME</span>
-                <span className="metric-value">99.999%</span>
-              </div>
-              <div className="metric">
-                <span className="metric-label">LATENCY</span>
-                <span className="metric-value">&lt;0.5ms</span>
-              </div>
-              <div className="metric">
-                <span className="metric-label">ACCURACY</span>
-                <span className="metric-value">+-0.001ms</span>
-              </div>
-              <div className="metric metric-status">
-                <span className="metric-label">STATUS</span>
-                <span className="metric-value">STABLE</span>
-              </div>
+          <div className="page-hero-right">
+            <img
+              src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=900&q=85"
+              alt="Server rack and data centre infrastructure representing AxeomLabs systems engineering"
+              className="page-hero-image"
+              width="900"
+              height="600"
+            />
+            <div className="page-hero-meta">
+              <span>[ DIVISION: SYSTEMS ]</span>
+              <span>STATUS: ACTIVE</span>
             </div>
           </div>
         </div>
@@ -168,6 +160,16 @@ function Systems() {
                   <div className="os-spec-row"><span>Footprint</span><span>&lt;64KB Base</span></div>
                 </div>
               </div>
+            </div>
+            <div className="os-card-img-strip">
+              <img
+                src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=1400&q=80"
+                alt="Printed circuit board and embedded microcontroller, representing Axeom OS hardware target"
+                loading="lazy"
+                width="1400"
+                height="400"
+              />
+              <div className="os-card-img-overlay" aria-hidden="true" />
             </div>
           </div>
         </div>

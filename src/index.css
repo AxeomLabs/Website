@@ -4317,3 +4317,68 @@ a.contact-details-link:hover {
     transition: none;
   }
 }
+
+/* ====================================================
+   RESEARCH PAGE — stacked image pair
+   ==================================================== */
+
+.research-img-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.research-stack-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--rounded-sm);
+  object-fit: cover;
+  aspect-ratio: 3/2;
+  transition: transform 0.4s ease;
+}
+
+.research-stack-img:hover { transform: scale(1.02); }
+
+.research-stack-bot {
+  aspect-ratio: 4/2;
+}
+
+/* ====================================================
+   SYSTEMS PAGE — OS card image strip
+   ==================================================== */
+
+.os-card-img-strip {
+  position: relative;
+  overflow: hidden;
+  height: 200px;
+  border-top: 1px solid var(--border);
+}
+
+.os-card-img-strip img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 60%;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.os-card-img-strip:hover img { transform: scale(1.03); }
+
+.os-card-img-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    var(--bg-card) 0%,
+    transparent 40%,
+    transparent 60%,
+    var(--bg-card) 100%
+  ),
+  linear-gradient(
+    to bottom,
+    var(--bg-card) 0%,
+    transparent 30%
+  );
+}
