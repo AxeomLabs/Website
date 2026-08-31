@@ -6,13 +6,17 @@ Disallow: /privacy-policy$
 Disallow: /terms-of-service$
 Disallow: /cookie-policy$
 
-# AI training crawlers - opt out of training data scraping
+# OpenAI - allow browsing and knowledge indexing
 User-agent: GPTBot
-Disallow: /
+Allow: /
 
 User-agent: ChatGPT-User
-Disallow: /
+Allow: /
 
+User-agent: OAI-SearchBot
+Allow: /
+
+# Other AI training crawlers - opt out
 User-agent: Google-Extended
 Disallow: /
 
