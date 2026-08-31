@@ -6,7 +6,7 @@ Disallow: /privacy-policy$
 Disallow: /terms-of-service$
 Disallow: /cookie-policy$
 
-# AI training crawlers — opt out of training data scraping
+# AI training crawlers - opt out of training data scraping
 User-agent: GPTBot
 Disallow: /
 

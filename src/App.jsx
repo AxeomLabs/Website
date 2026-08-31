@@ -90,12 +90,12 @@ const divisions = [
 ];
 
 const pillars = [
-  { num: '01', title: 'AUTONOMOUS UAV SYSTEMS', desc: 'Fixed-wing and multirotor drones with onboard edge AI for real-time path planning, object avoidance, and mission execution.' },
-  { num: '02', title: 'ROBOTICS PLATFORMS', desc: 'Ground, aerial, and aquatic robots designed for inspection, agriculture, construction, and defence applications.' },
-  { num: '03', title: 'EMBEDDED SOFTWARE', desc: 'Real-time operating systems, bare-metal firmware, and hardware abstraction layers optimised for deterministic performance.' },
-  { num: '04', title: 'HARDWARE DESIGN', desc: 'Custom electronics from schematic to PCB layout and manufacturing, including power management and high-speed signal design.' },
-  { num: '05', title: 'COMPUTER VISION', desc: 'Perception pipelines, SLAM, and sensor fusion for depth estimation, object detection, and environment mapping.' },
-  { num: '06', title: 'APPLIED RESEARCH', desc: 'Translating scientific breakthroughs into practical systems: from materials to algorithms to deployable products.' },
+  { num: '01', title: 'AUTONOMOUS UAV SYSTEMS', desc: 'Fixed-wing and multirotor drones with onboard edge AI for real-time path planning, object avoidance, and mission execution without a pilot.' },
+  { num: '02', title: 'ROBOTICS PLATFORMS', desc: 'Ground, aerial, and aquatic robots for inspection, agriculture, construction, and defence. Built to work in real conditions, not controlled labs.' },
+  { num: '03', title: 'EMBEDDED SOFTWARE', desc: 'Real-time operating systems, bare-metal firmware, and hardware abstraction layers. Written so the hardware does exactly what it needs to, when it needs to.' },
+  { num: '04', title: 'HARDWARE DESIGN', desc: 'Custom electronics from schematic through PCB layout to manufacturing. Power management, high-speed signal design, the whole thing.' },
+  { num: '05', title: 'COMPUTER VISION', desc: 'Perception pipelines, SLAM, and sensor fusion for depth estimation, object detection, and environment mapping. Runs on device, not in the cloud.' },
+  { num: '06', title: 'APPLIED RESEARCH', desc: 'We investigate astrophysics, chemistry, biology, oceanography, and AI not for papers, but because the science feeds into what we build next.' },
 ];
 
 function App() {
@@ -106,7 +106,7 @@ function App() {
   const prefersReducedMotion = useReducedMotion();
 
   useGSAP(() => {
-    // Hero entrance — skip if user prefers reduced motion
+    // Hero entrance - skip if user prefers reduced motion
     if (!prefersReducedMotion) {
       const tl = gsap.timeline({ delay: 0.15 });
       tl.from('.hero-eyebrow', { opacity: 0, y: 12, duration: 0.6, ease: 'expo.out' })

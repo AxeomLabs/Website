@@ -12,7 +12,7 @@ const SITE_LINKS = [
 
 function NotFound() {
   useSEO(
-    '404 — Page Not Found | AxeomLabs',
+    '404 Page Not Found | AxeomLabs',
     'The page you are looking for does not exist or has been moved. Return to the AxeomLabs homepage.',
     'https://www.axeomlabs.in/404'
   );

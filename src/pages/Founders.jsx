@@ -9,8 +9,8 @@ function Founders() {
   const container = useRef(null);
 
   useSEO(
-    'Our Founders | AxeomLabs — Harinandan J V & Abhishek A S',
-    'Meet Harinandan J V and Abhishek A S, the co-founders of AxeomLabs — the team building autonomous drones, robotics platforms, and intelligent hardware from India.',
+    'Our Founders | AxeomLabs',
+    'Harinandan J V and Abhishek A S started AxeomLabs to build machines that actually work in the real world. Drones, robots, hardware, software, all of it.',
     'https://www.axeomlabs.in/founders'
   );
 
@@ -112,7 +112,7 @@ function Founders() {
                 <h2 className="founder-name">Harinandan J V</h2>
                 <p className="founder-role">Co-Founder</p>
                 <p className="founder-bio">
-                  Co-Founder of AxeomLabs, leading architecture and engineering across vertically integrated systems, autonomous platforms, and advanced research.
+                  Harinandan co-founded AxeomLabs and leads the overall architecture of our systems. He works across hardware design, software, and research, and is the one who usually figures out what the project actually needs to be.
                 </p>
                 <div className="founder-links">
                   <a href="https://www.linkedin.com/in/harinandanjv" target="_blank" rel="noopener noreferrer" className="founder-link" aria-label="Harinandan J V LinkedIn profile">LinkedIn</a>
@@ -132,7 +132,7 @@ function Founders() {
                 <h2 className="founder-name">Abhishek A S</h2>
                 <p className="founder-role">Co-Founder</p>
                 <p className="founder-bio">
-                  Co-Founder of AxeomLabs, driving hardware innovation, intelligence protocols, and full-stack integration for high-performance physical computation.
+                  Abhishek co-founded AxeomLabs and focuses on the hardware side of things. PCB design, electronics, power systems, and making sure the physical parts of a system don't let the software down.
                 </p>
                 <div className="founder-links">
                   <a href="https://www.linkedin.com/in/abhishek-a-s" target="_blank" rel="noopener noreferrer" className="founder-link" aria-label="Abhishek A S LinkedIn profile">LinkedIn</a>
@@ -153,14 +153,13 @@ function Founders() {
             </div>
             <div className="story-text-col">
               <p>
-                AxeomLabs started with a simple observation: the gap between software intelligence
-                and real-world physical systems is enormous. Bridging it requires people who can
-                think across the full stack, from electron to algorithm.
+                AxeomLabs started because we kept running into the same problem: software people don't
+                understand hardware, and hardware people don't understand software. We wanted to build a company
+                where those two things were never separate to begin with.
               </p>
               <p>
-                We build drones that think, robots that adapt, and software that makes hardware
-                come alive. Every system we ship is vertically integrated, tested in the field,
-                and built to last.
+                We build drones that think, robots that move through real terrain, and the software that ties
+                it all together. Everything we ship gets tested in the field, not just on a bench.
               </p>
               <a href="/#cta" className="btn-primary" style={{ marginTop: 32, display: 'inline-flex', alignItems: 'center', gap: 8 }}>
                 WORK WITH US <span aria-hidden="true">→</span>

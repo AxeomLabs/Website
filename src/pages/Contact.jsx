@@ -33,8 +33,8 @@ function Contact() {
   const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' });
 
   useSEO(
-    'Contact | AxeomLabs — Get in Touch',
-    'Get in touch with AxeomLabs. Whether you have a project, want to collaborate, or just want to say hello — reach out to founder@axeomlabs.in.',
+    'Contact AxeomLabs',
+    'Get in touch with AxeomLabs. Have a project in mind, want to collaborate, or just want to say hello? Reach out to founder@axeomlabs.in.',
     'https://www.axeomlabs.in/contact'
   );
 
@@ -99,8 +99,8 @@ function Contact() {
             <div className="contact-hero-label">06 // CONTACT</div>
             <h1>GET IN<br />TOUCH.</h1>
             <p className="contact-hero-desc">
-              Whether you have a project in mind, want to collaborate on something new,
-              or just want to say hello — we want to hear from you.
+              Whether you have a project in mind, want to collaborate on something,
+              or just want to say hello, we would love to hear from you.
             </p>
 
             <div className="contact-details">

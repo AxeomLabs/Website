@@ -1,14 +1,14 @@
 import { useEffect } from 'react';
 
 /**
- * useSEO — Sets page-level title and meta description on mount.
+ * useSEO - Sets page-level title and meta description on mount.
  * Restores the default home title on unmount.
  *
- * @param {string} title       — Full <title> string for this page
- * @param {string} description — Meta description for this page
- * @param {string} [canonical] — Optional canonical URL override
+ * @param {string} title       - Full <title> string for this page
+ * @param {string} description - Meta description for this page
+ * @param {string} [canonical] - Optional canonical URL override
  */
-const DEFAULT_TITLE = 'AxeomLabs | Drones, Robotics & Intelligent Systems — India';
+const DEFAULT_TITLE = 'AxeomLabs | Drones, Robotics & Intelligent Systems, India';
 const DEFAULT_DESC  = 'AxeomLabs designs and builds autonomous drones, robotics platforms, embedded software, and custom hardware. Founded by Harinandan J V and Abhishek A S, based in India.';
 
 export default function useSEO(title, description, canonical) {

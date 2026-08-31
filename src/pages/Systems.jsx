@@ -26,7 +26,7 @@ function Systems() {
   const container = useRef(null);
 
   useSEO(
-    'Systems & Software | AxeomLabs — Embedded Firmware & Full-Stack Engineering',
+    'Systems and Software | AxeomLabs',
     'AxeomLabs engineers embedded software, real-time operating systems, bare-metal firmware, and full-stack software platforms optimised for deterministic performance.',
     'https://www.axeomlabs.in/systems'
   );

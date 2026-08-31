@@ -1,4 +1,4 @@
-# AxeomLabs — llms.txt
+# AxeomLabs llms.txt
 # https://llmstxt.org/
 # This file provides a plain-text summary of the AxeomLabs website for AI language models.
 

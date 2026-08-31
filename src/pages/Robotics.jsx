@@ -18,7 +18,7 @@ function Robotics() {
   const container = useRef(null);
 
   useSEO(
-    'Robotics Platforms | AxeomLabs — Ground, Aerial & Aquatic Robots',
+    'Robotics Platforms | AxeomLabs',
     'AxeomLabs builds ground, aerial, and aquatic robotics platforms with tactile sensing, real-time navigation, and edge AI for complex unstructured environments.',
     'https://www.axeomlabs.in/robotics'
   );
