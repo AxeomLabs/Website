@@ -138,10 +138,10 @@ function Ticker() {
    Nav link definitions
 ------------------------------------------------ */
 const NAV_LINKS = [
-  { label: 'ROBOTICS', path: '/robotics', num: '01' },
-  { label: 'SYSTEMS', path: '/systems', num: '02' },
-  { label: 'RESEARCH', path: '/research', num: '03' },
-  { label: 'FOUNDERS', path: '/founders', num: '04' },
+  { label: 'WORK',     path: '/robotics',  num: '01' },
+  { label: 'RESEARCH', path: '/research',  num: '02' },
+  { label: 'SYSTEMS',  path: '/systems',   num: '03' },
+  { label: 'ABOUT',    path: '/founders',  num: '04' },
 ];
 
 /* ------------------------------------------------
@@ -283,12 +283,17 @@ function Layout() {
                 to={link.path}
                 className={isActive(link.path) ? 'nav-active' : ''}
               >
-                <span className="nav-link-num" aria-hidden="true">{link.num}/</span>
                 {link.label}
               </Link>
             ))}
-            <Link to="/contact" className="nav-portal">CONTACT</Link>
+            <Link to="/contact" className="nav-portal">CONTACT <span aria-hidden="true">↗</span></Link>
           </nav>
+
+          {/* Lab status (desktop) */}
+          <div className="nav-lab-status" aria-label="Lab status: systems online">
+            <span className="nav-status-dot" aria-hidden="true" />
+            <span>SYSTEMS ONLINE</span>
+          </div>
 
           {/* Hamburger (mobile only) */}
           <button
@@ -315,19 +320,38 @@ function Layout() {
 
       {/* FOOTER */}
       <footer id="main-footer">
+        {/* Footer CTA bar */}
+        <div className="footer-cta-bar">
+          <div className="container">
+            <div className="footer-cta-inner">
+              <div>
+                <div className="section-label" style={{ color: 'var(--on-bg-muted)' }}>AXEOMLABS</div>
+                <p className="footer-cta-headline">BUILDING WHAT COMES NEXT.</p>
+              </div>
+              <Link to="/contact" className="btn-primary footer-cta-btn">
+                LET'S BUILD SOMETHING <span aria-hidden="true">→</span>
+              </Link>
+            </div>
+          </div>
+        </div>
+
         <div className="container footer-top">
           <div className="footer-brand-col">
             <span className="footer-brand">AXEOMLABS<sup className="logo-tm" aria-hidden="true">TM</sup></span>
             <p className="footer-tagline">
-              Building intelligent systems across drones, robotics, software, and hardware.
+              Autonomous systems. Embedded intelligence.<br />Built from India for what comes next.
             </p>
             <a href="mailto:founder@axeomlabs.in" className="footer-email">
               founder@axeomlabs.in
             </a>
+            <div className="footer-social">
+              <a href="https://github.com/AxeomLabs" target="_blank" rel="noopener noreferrer" className="footer-social-link" aria-label="GitHub">GH</a>
+              <a href="https://www.linkedin.com/company/axeomlabs" target="_blank" rel="noopener noreferrer" className="footer-social-link" aria-label="LinkedIn">LI</a>
+            </div>
           </div>
 
-          <nav className="footer-nav-col" aria-label="Products">
-            <div className="footer-nav-title">PRODUCTS</div>
+          <nav className="footer-nav-col" aria-label="Work">
+            <div className="footer-nav-title">WORK</div>
             <Link to="/robotics" className="footer-nav-link">Drones</Link>
             <Link to="/robotics" className="footer-nav-link">Robotics</Link>
             <Link to="/systems" className="footer-nav-link">Software</Link>
@@ -351,7 +375,7 @@ function Layout() {
 
         <div className="footer-bottom">
           <div className="container footer-bottom-inner">
-            <span>&copy; {new Date().getFullYear()} AxeomLabs. All rights reserved.</span>
+            <span>&copy; {new Date().getFullYear()} AxeomLabs. All rights reserved. &nbsp;&middot;&nbsp; INDIA &middot; {new Date().getFullYear()}</span>
             <button
               className="footer-cookie-btn"
               onClick={() => {
