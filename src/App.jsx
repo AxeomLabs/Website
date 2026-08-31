@@ -65,8 +65,8 @@ const FEATURED_WORK = [
     tags: ['LOCOMOTION', 'TERRAIN MAPPING', 'TACTILE'],
     status: 'ACTIVE',
     path: '/robotics',
-    img: 'https://images.unsplash.com/photo-1561144257-e32e8506e82a?w=1000&q=85',
-    alt: 'Industrial robot arm performing precision movements in a production environment',
+    img: 'https://images.unsplash.com/photo-1581092335397-9583eb92d232?w=1000&q=85',
+    alt: 'Armored ground robotics platform in field test conditions',
   },
   {
     id: '003',

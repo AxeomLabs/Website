@@ -138,10 +138,10 @@ function Ticker() {
    Nav link definitions
 ------------------------------------------------ */
 const NAV_LINKS = [
-  { label: 'WORK',     path: '/robotics',  num: '01' },
+  { label: 'ROBOTICS', path: '/robotics',  num: '01' },
   { label: 'RESEARCH', path: '/research',  num: '02' },
   { label: 'SYSTEMS',  path: '/systems',   num: '03' },
-  { label: 'ABOUT',    path: '/founders',  num: '04' },
+  { label: 'FOUNDERS', path: '/founders',  num: '04' },
 ];
 
 /* ------------------------------------------------

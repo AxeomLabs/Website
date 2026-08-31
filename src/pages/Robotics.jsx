@@ -94,7 +94,7 @@ function Robotics() {
           </div>
           <div className="page-hero-right">
             <img
-              src="https://images.unsplash.com/photo-1561144257-e32e8506e82a?w=900&q=85"
+              src="https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?w=900&q=85"
               alt="Industrial robotic arm in a factory environment"
               className="page-hero-image"
               width="900"
