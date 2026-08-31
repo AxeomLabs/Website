@@ -60,6 +60,34 @@ function Systems() {
 
   return (
     <div ref={container}>
+      {/* STRUCTURED DATA */}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        'itemListElement': [
+          { '@type': 'ListItem', 'position': 1, 'name': 'Home', 'item': 'https://www.axeomlabs.in/' },
+          { '@type': 'ListItem', 'position': 2, 'name': 'Systems', 'item': 'https://www.axeomlabs.in/systems' },
+        ],
+      }) }} />
+
+      {/* BREADCRUMB */}
+      <nav aria-label="Breadcrumb" style={{
+        position: 'absolute',
+        top: 88,
+        left: 'var(--margin)',
+        fontFamily: 'var(--font-mono)',
+        fontSize: 10,
+        letterSpacing: '0.1em',
+        color: 'var(--on-bg-muted)',
+        zIndex: 10,
+        display: 'flex',
+        gap: 8,
+        alignItems: 'center',
+      }}>
+        <Link to="/" style={{ color: 'var(--on-bg-muted)', textTransform: 'uppercase' }}>Home</Link>
+        <span aria-hidden="true">›</span>
+        <span style={{ color: 'var(--accent)', textTransform: 'uppercase' }}>Systems</span>
+      </nav>
       {/* HERO */}
       <section className="page-hero" aria-label="Systems Division" style={{ minHeight: 'auto' }}>
         <div className="page-hero-bg" aria-hidden="true" />

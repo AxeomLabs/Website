@@ -8,12 +8,43 @@ import useReducedMotion from '../hooks/useReducedMotion';
 
 gsap.registerPlugin(ScrollTrigger);
 
+const researchAreas = [
+  {
+    num: '01',
+    label: 'AUTONOMOUS NAVIGATION',
+    title: 'SLAM & Sensor Fusion',
+    desc: 'Simultaneous Localization and Mapping (SLAM) algorithms combined with multi-modal sensor fusion — LiDAR, IMU, stereo camera — for robust navigation in GPS-denied and unstructured environments.',
+    stat: 'Sub-10cm positional accuracy',
+  },
+  {
+    num: '02',
+    label: 'COMPUTER VISION',
+    title: 'Edge Perception Systems',
+    desc: 'Real-time object detection, depth estimation, and scene understanding optimised for embedded processors. Models trained and deployed on-device — no cloud dependency, deterministic latency.',
+    stat: '<15ms inference on ARM Cortex-A',
+  },
+  {
+    num: '03',
+    label: 'MATERIALS SCIENCE',
+    title: 'Structural Hardware Research',
+    desc: 'Exploring carbon fibre composites, lattice-infill 3D printing, and bio-inspired structural geometries to build airframes and chassis that are simultaneously lighter and stronger.',
+    stat: '40% weight reduction vs. aluminium baseline',
+  },
+  {
+    num: '04',
+    label: 'EMBEDDED AI',
+    title: 'On-Device Intelligence',
+    desc: 'Porting large-model architectures to constrained microcontrollers via quantization, pruning, and knowledge distillation. Bringing intelligence to systems with <512KB RAM.',
+    stat: 'INT8 inference on Cortex-M7',
+  },
+];
+
 function Research() {
   const container = useRef(null);
 
   useSEO(
     'Applied Research | AxeomLabs — Robotics, Vision & Autonomous Systems',
-    'AxeomLabs conducts applied research in robotics, computer vision, materials science, and autonomous navigation. Translating scientific breakthroughs into deployable products.',
+    'AxeomLabs conducts applied research in autonomous navigation (SLAM), computer vision, materials science, and embedded AI — translating breakthroughs into deployable hardware products.',
     'https://www.axeomlabs.in/research'
   );
 
@@ -49,128 +80,87 @@ function Research() {
         <div className="page-hero-bg" aria-hidden="true" />
         <div className="page-hero-layout">
           <div className="page-hero-left">
-            <div className="page-hero-status">[ DEPT 04 : ADVANCED DISCOVERIES ]</div>
-            <h1>GLOBAL<br />IMPACT.</h1>
+            <div className="page-hero-status">[ DEPT 04 : APPLIED RESEARCH ]</div>
+            <h1>RESEARCH<br />APPLIED.</h1>
             <p className="page-hero-desc">
-              Exploring the physical limits of our universe, the molecular foundations of matter,
-              and the cultural resonance of human endeavor.
+              From sensor fusion algorithms to structural materials, AxeomLabs bridges the gap
+              between lab discovery and field-deployable hardware.
             </p>
           </div>
           <div className="page-hero-right">
             <img
-              src="https://images.unsplash.com/photo-1614730321146-b6fa6a46bcb4?w=900&q=85"
-              alt="Earth from Space"
+              src="https://images.unsplash.com/photo-1535378917042-10a22c95931a?w=900&q=85"
+              alt="Circuit board close-up representing embedded hardware research at AxeomLabs"
               className="page-hero-image"
               width="900"
               height="600"
             />
             <div className="page-hero-meta">
-              <span>LAT: 34.0522 N | LON: 118.2437 W</span>
-              <span>SYS STATE: STABLE</span>
+              <span>[ STATUS: ACTIVE ]</span>
+              <span>AREAS: 4 ACTIVE</span>
             </div>
           </div>
         </div>
       </section>
 
-      {/* APPLIED SCIENCES */}
-      <section className="page-section" aria-label="Applied Sciences">
+      {/* RESEARCH AREAS */}
+      <section className="page-section" aria-label="Research Areas">
         <div className="container">
           <div className="research-header reveal">
-            <div className="section-label">01 // APPLIED SCIENCES</div>
+            <div className="section-label">01 // RESEARCH AREAS</div>
           </div>
 
           <div className="research-grid">
-            {/* Astrophysics text */}
-            <div className="research-card research-card-half reveal">
-              <span className="section-counter">01 // ASTROPHYSICS</span>
-              <h3 style={{ marginTop: 12 }}>Deep Space Telemetry</h3>
-              <p>Analyzing signal propagation across vast interstellar distances to optimize communication arrays for autonomous probes.</p>
-            </div>
-
-            {/* Astrophysics image */}
-            <div className="research-card research-card-half research-card-img reveal">
-              <img src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=800&q=80" alt="Nebula" loading="lazy" width="800" height="533" />
-            </div>
-
-            {/* Chemistry image */}
-            <div className="research-card research-card-half research-card-img reveal">
-              <img
-                src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=800&q=80"
-                alt="Molecular structures"
-                style={{ objectPosition: 'center' }}
-                loading="lazy"
-                width="800"
-                height="533"
-              />
-            </div>
-
-            {/* Chemistry text */}
-            <div className="research-card research-card-half reveal">
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-                <span className="section-counter">02 // CHEMISTRY</span>
-                <div style={{ fontFamily: 'var(--font-mono)', fontSize: 10, color: 'var(--on-bg-muted)', textAlign: 'right', lineHeight: 1.6 }}>
-                  COMPOUND #22<br />MOL.WEIGHT: 194.19 g/mol
+            {researchAreas.map((area, i) => (
+              <div key={i} className="research-card research-card-half reveal">
+                <span className="section-counter">{area.num} // {area.label}</span>
+                <h3 style={{ marginTop: 12 }}>{area.title}</h3>
+                <p style={{ marginTop: 8 }}>{area.desc}</p>
+                <div style={{
+                  marginTop: 16,
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: 10,
+                  color: 'var(--accent)',
+                  letterSpacing: '0.08em',
+                }}>
+                  ◎ {area.stat}
                 </div>
               </div>
-              <h3 style={{ marginTop: 12 }}>Molecular Synthetics</h3>
-              <p style={{ marginTop: 8 }}>Engineering novel compound structures for targeted biological and materials applications at nanoscale precision.</p>
-            </div>
-
-            {/* Oceanography */}
-            <div className="research-card research-card-third reveal">
-              <span className="section-counter">03 // OCEANOGRAPHY</span>
-              <div className="research-card-img-inline">
-                <img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=600&q=80" alt="Ocean depth" loading="lazy" width="600" height="400" />
-              </div>
-              <h4 style={{ marginTop: 12 }}>19,000m</h4>
-              <p>Mariana Trench acoustic mapping completed. Data integrity: 96.8%.</p>
-            </div>
-
-            {/* Bioscience */}
-            <div className="research-card research-card-third reveal">
-              <span className="section-counter">04 // BIOSCIENCE</span>
-              <h3 style={{ marginTop: 12 }}>Cellular Adaptation</h3>
-              <p style={{ marginTop: 8 }}>Observing micro-evolutionary traits in extreme high-pressure environments.</p>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8, marginTop: 16 }}>
-                <div className="sample-box">
-                  <span className="sample-label">SAMPLE A</span>
-                  <span className="sample-val">ACTIVE</span>
-                </div>
-                <div className="sample-box">
-                  <span className="sample-label">SAMPLE B</span>
-                  <span className="sample-val">DORMANT</span>
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* CULTURE */}
-      <section className="page-section" id="culture" aria-label="Human Experiences and Culture">
+      {/* APPROACH */}
+      <section className="page-section" style={{ background: 'var(--bg-secondary)' }} aria-label="Research Approach">
         <div className="container">
           <div className="culture-layout">
             <div className="culture-left reveal-left">
-              <div className="section-label">02 // HUMAN EXPERIENCES + CULTURE</div>
-              <h2 style={{ marginTop: 16, color: 'var(--on-bg)' }}>The Synthesis of Logic and Emotion.</h2>
+              <div className="section-label">02 // OUR APPROACH</div>
+              <h2 style={{ marginTop: 16, color: 'var(--on-bg)' }}>Hardware-First. Field-Validated.</h2>
               <p>
-                Culture is the qualitative output of human civilization. We index artistic movements,
-                sociological shifts, and philosophical frameworks with the same rigor applied to thermodynamics.
+                Every research direction we pursue has a clear path to a physical product. We don't
+                publish papers — we build systems. Findings are validated in real environments:
+                dusty warehouses, open fields, and uncontrolled airspace.
               </p>
-              <Link to="/contact" className="btn-primary" style={{ marginTop: 32 }}>
-                GET IN TOUCH <span aria-hidden="true">→</span>
+              <p style={{ marginTop: 16 }}>
+                This means our research timelines are tied to hardware iterations, not academic
+                cycles. Speed and robustness are non-negotiable constraints.
+              </p>
+              <Link to="/robotics" className="btn-primary" style={{ marginTop: 32 }}>
+                SEE ROBOTICS <span aria-hidden="true">→</span>
               </Link>
             </div>
             <div className="reveal">
               <img
-                src="https://images.unsplash.com/photo-1547891654-e66ed7ebb968?w=800&q=80"
-                alt="Abstract Art"
+                src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80"
+                alt="Engineer working on robotics hardware in a lab environment"
                 className="culture-img"
                 loading="lazy"
                 width="800"
                 height="1067"
               />
-              <div className="culture-meta">[ AESTHETIC FRAMEWORK : ACTIVE ]</div>
+              <div className="culture-meta">[ LAB: FIELD VALIDATION ACTIVE ]</div>
             </div>
           </div>
         </div>

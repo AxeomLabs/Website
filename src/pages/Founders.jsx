@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
+import { Link } from 'react-router-dom';
 import useSEO from '../hooks/useSEO';
 import useReducedMotion from '../hooks/useReducedMotion';
 
@@ -31,6 +32,56 @@ function Founders() {
 
   return (
     <div ref={container}>
+      {/* STRUCTURED DATA */}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        'itemListElement': [
+          { '@type': 'ListItem', 'position': 1, 'name': 'Home', 'item': 'https://www.axeomlabs.in/' },
+          { '@type': 'ListItem', 'position': 2, 'name': 'Founders', 'item': 'https://www.axeomlabs.in/founders' },
+        ],
+      }) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify([
+        {
+          '@context': 'https://schema.org',
+          '@type': 'Person',
+          '@id': 'https://www.axeomlabs.in/founders#harinandan',
+          'name': 'Harinandan J V',
+          'jobTitle': 'Co-Founder',
+          'worksFor': { '@id': 'https://www.axeomlabs.in/#organization' },
+          'url': 'https://www.linkedin.com/in/harinandanjv',
+          'sameAs': ['https://www.linkedin.com/in/harinandanjv'],
+        },
+        {
+          '@context': 'https://schema.org',
+          '@type': 'Person',
+          '@id': 'https://www.axeomlabs.in/founders#abhishek',
+          'name': 'Abhishek A S',
+          'jobTitle': 'Co-Founder',
+          'worksFor': { '@id': 'https://www.axeomlabs.in/#organization' },
+          'url': 'https://www.linkedin.com/in/abhishek-a-s',
+          'sameAs': ['https://www.linkedin.com/in/abhishek-a-s'],
+        },
+      ]) }} />
+
+      {/* BREADCRUMB */}
+      <nav aria-label="Breadcrumb" style={{
+        position: 'absolute',
+        top: 88,
+        left: 'var(--margin)',
+        fontFamily: 'var(--font-mono)',
+        fontSize: 10,
+        letterSpacing: '0.1em',
+        color: 'var(--on-bg-muted)',
+        zIndex: 10,
+        display: 'flex',
+        gap: 8,
+        alignItems: 'center',
+      }}>
+        <Link to="/" style={{ color: 'var(--on-bg-muted)', textTransform: 'uppercase' }}>Home</Link>
+        <span aria-hidden="true">›</span>
+        <span style={{ color: 'var(--accent)', textTransform: 'uppercase' }}>Founders</span>
+      </nav>
       {/* HERO */}
       <section className="page-hero" aria-label="Founders">
         <div className="page-hero-bg" aria-hidden="true" />

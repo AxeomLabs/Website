@@ -1671,6 +1671,25 @@ footer {
   :root { --margin: 20px; --gutter: 16px; }
   #hero h1 { font-size: clamp(40px, 11vw, 64px); }
   .hero-content { padding: 0 var(--gutter); padding-bottom: var(--margin); padding-top: var(--margin); }
+  .hero-cta-row { flex-direction: column; width: 100%; align-items: stretch; }
+  .btn-primary, .btn-ghost { width: 100%; justify-content: center; }
+  .hero-scroll-prompt { display: none; }
+
+  .page-section, #divisions, #philosophy, #directives, #cta, .legal-body, .sys-hero { padding: calc(var(--unit) * 8) 0; }
+  
+  .division-card-img { height: 220px; }
+  .division-card-full .division-card-img { height: 240px; }
+  .division-card-body { padding: calc(var(--unit) * 4) calc(var(--unit) * 4); }
+
+  .story-layout { grid-template-columns: 1fr; gap: calc(var(--unit) * 3); }
+  .story-label-col { padding-top: 0; }
+
+  .footer-bottom-inner { flex-direction: column; gap: 16px; align-items: flex-start; }
+
+  .contact-hero { padding-top: 80px; padding-bottom: 80px; }
+  .page-hero { min-height: auto; padding-top: 100px; padding-bottom: 60px; }
+  .os-card-left, .os-card-right { padding: calc(var(--unit) * 4); }
+
   .applied-grid { grid-template-columns: 1fr; }
   .systems-row { grid-template-columns: 1fr; }
   .system-card { border-right: none; border-bottom: 1px solid var(--border); }

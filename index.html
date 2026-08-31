@@ -4,10 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- =====================================================
-         PRIMARY META
-         ===================================================== -->
-    <title>AxeomLabs | Drones, Robotics & Intelligent Systems — India</title>
+    <!-- PRIMARY META -->
+    <title>AxeomLabs | Drones, Robotics &amp; Intelligent Systems — India</title>
     <meta name="description" content="AxeomLabs designs and builds autonomous drones, robotics platforms, embedded software, and custom hardware. Founded by Harinandan J V and Abhishek A S, based in India.">
     <meta name="keywords" content="AxeomLabs, drones India, autonomous UAV, robotics, embedded software, hardware design, computer vision, applied research, Harinandan J V, Abhishek A S">
     <meta name="author" content="Harinandan J V, Abhishek A S">
@@ -15,46 +13,34 @@
     <meta name="theme-color" content="#0a0a0a">
     <link rel="canonical" href="https://www.axeomlabs.in/">
 
-    <!-- =====================================================
-         FAVICONS & TOUCH ICONS
-         ===================================================== -->
+    <!-- FAVICONS & TOUCH ICONS -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="apple-touch-icon" sizes="180x180" href="/favicon.svg">
+    <link rel="manifest" href="/site.webmanifest">
     <meta name="msapplication-TileColor" content="#0a0a0a">
 
-    <!-- =====================================================
-         OPEN GRAPH (Facebook / LinkedIn previews)
-         ===================================================== -->
+    <!-- OPEN GRAPH (Facebook / LinkedIn / WhatsApp previews) -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.axeomlabs.in/">
-    <meta property="og:title" content="AxeomLabs | Drones, Robotics & Intelligent Systems">
+    <meta property="og:title" content="AxeomLabs | Drones, Robotics &amp; Intelligent Systems">
     <meta property="og:description" content="We design and build autonomous drones, robotics platforms, embedded software, and custom hardware. From flying systems to ground robots to the code that makes them intelligent.">
     <meta property="og:image" content="https://www.axeomlabs.in/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="AxeomLabs — Autonomous Drones, Robotics &amp; Intelligent Systems">
     <meta property="og:site_name" content="AxeomLabs">
     <meta property="og:locale" content="en_IN">
 
-    <!-- =====================================================
-         TWITTER / X CARDS
-         ===================================================== -->
+    <!-- TWITTER / X CARDS -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@AxeomLabs">
-    <meta name="twitter:title" content="AxeomLabs | Drones, Robotics & Intelligent Systems">
-    <meta name="twitter:description" content="We design and build autonomous drones, robotics platforms, embedded software, and custom hardware.">
-    <meta name="twitter:image" content="https://www.axeomlabs.in/og-image.png">
     <meta name="twitter:site" content="@axeomlabs">
     <meta name="twitter:creator" content="@axeomlabs">
+    <meta name="twitter:title" content="AxeomLabs | Drones, Robotics &amp; Intelligent Systems">
+    <meta name="twitter:description" content="We design and build autonomous drones, robotics platforms, embedded software, and custom hardware.">
+    <meta name="twitter:image" content="https://www.axeomlabs.in/og-image.png">
+    <meta name="twitter:image:alt" content="AxeomLabs — Autonomous Drones &amp; Robotics">
 
-    <!-- =====================================================
-         GOOGLE FONTS (preconnect + non-blocking link)
-         ===================================================== -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
-
-    <!-- =====================================================
-         STRUCTURED DATA — JSON-LD
-         ===================================================== -->
-    <!-- Organization -->
+    <!-- STRUCTURED DATA — JSON-LD -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -62,7 +48,11 @@
       "@id": "https://www.axeomlabs.in/#organization",
       "name": "AxeomLabs",
       "url": "https://www.axeomlabs.in",
-      "logo": "https://www.axeomlabs.in/favicon.svg",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.axeomlabs.in/favicon.svg"
+      },
+      "image": "https://www.axeomlabs.in/og-image.png",
       "description": "AxeomLabs designs and builds autonomous drones, robotics platforms, embedded software, custom hardware, and applied research systems.",
       "foundingDate": "2024",
       "foundingLocation": {
@@ -72,23 +62,31 @@
       "contactPoint": {
         "@type": "ContactPoint",
         "email": "founder@axeomlabs.in",
-        "contactType": "general enquiry"
+        "contactType": "customer support",
+        "areaServed": "IN",
+        "availableLanguage": "English"
       },
       "founders": [
         {
           "@type": "Person",
+          "@id": "https://www.axeomlabs.in/founders#harinandan",
           "name": "Harinandan J V",
-          "jobTitle": "Co-Founder"
+          "jobTitle": "Co-Founder",
+          "url": "https://www.linkedin.com/in/harinandanjv"
         },
         {
           "@type": "Person",
+          "@id": "https://www.axeomlabs.in/founders#abhishek",
           "name": "Abhishek A S",
-          "jobTitle": "Co-Founder"
+          "jobTitle": "Co-Founder",
+          "url": "https://www.linkedin.com/in/abhishek-a-s"
         }
+      ],
+      "sameAs": [
+        "https://www.linkedin.com/company/axeomlabs"
       ]
     }
     </script>
-    <!-- WebSite (enables Google Sitelinks Search Box) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -99,17 +97,40 @@
       "description": "Autonomous drones, robotics, embedded software, and hardware research from India.",
       "publisher": {
         "@id": "https://www.axeomlabs.in/#organization"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://www.axeomlabs.in/?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
       }
     }
     </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "@id": "https://www.axeomlabs.in/#localbusiness",
+      "name": "AxeomLabs",
+      "url": "https://www.axeomlabs.in",
+      "email": "founder@axeomlabs.in",
+      "image": "https://www.axeomlabs.in/og-image.png",
+      "description": "AxeomLabs designs and builds autonomous drones, robotics platforms, embedded software, and custom hardware systems.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "IN"
+      },
+      "priceRange": "Contact for pricing",
+      "openingHours": "Mo-Fr 09:00-18:00"
+    }
+    </script>
 
-    <!-- =====================================================
-         FONTS (preconnect first for speed)
-         ===================================================== -->
+    <!-- GOOGLE FONTS (preconnect + stylesheet) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
 
     <!-- Flash-prevention inline paint -->
     <style>

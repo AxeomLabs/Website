@@ -1,0 +1,43 @@
+# AxeomLabs — llms.txt
+# https://llmstxt.org/
+# This file provides a plain-text summary of the AxeomLabs website for AI language models.
+
+## About
+
+AxeomLabs is an Indian deep-tech company designing and building autonomous systems at the intersection of hardware, software, and intelligence. Founded in 2024 by Harinandan J V and Abhishek A S.
+
+## Products & Divisions
+
+- **Drones (Aerial Systems):** Custom-engineered UAVs for surveillance, mapping, and payload delivery. Designed for turbulent environments with LiDAR-based navigation.
+- **Robotics:** Humanoid and ground robots with tactile sensing, adaptive gait control, and real-time edge AI inference.
+- **Systems & Embedded Software:** Bare-metal firmware, real-time operating systems (Axeom OS), and full-stack software from ARM microcontrollers to cloud fleet management.
+
+## Research Focus
+
+AxeomLabs conducts applied research in:
+- Autonomous navigation (SLAM, visual odometry, sensor fusion)
+- Computer vision for unstructured environments
+- Edge AI and on-device inference
+- Materials science for lightweight structural hardware
+- Human-machine interaction for field robotics
+
+## Contact
+
+- Email: founder@axeomlabs.in
+- Website: https://www.axeomlabs.in
+- Location: India
+
+## Pages
+
+- Home: https://www.axeomlabs.in/
+- Robotics: https://www.axeomlabs.in/robotics
+- Systems: https://www.axeomlabs.in/systems
+- Research: https://www.axeomlabs.in/research
+- Founders: https://www.axeomlabs.in/founders
+- Contact: https://www.axeomlabs.in/contact
+
+## Legal
+
+- Privacy Policy: https://www.axeomlabs.in/privacy-policy
+- Terms of Service: https://www.axeomlabs.in/terms-of-service
+- Cookie Policy: https://www.axeomlabs.in/cookie-policy
