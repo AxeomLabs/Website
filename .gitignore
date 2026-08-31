@@ -6,8 +6,22 @@ node_modules/
 .env.local
 Thumbs.db
 
+# Build output — deploy from CI, don't commit
+dist/
+
+# Archives & temp files
+*.zip
+template/
+template 2/
+backup_vanilla/
+
+# PDFs and personal files
+*.pdf
+
 # Internal AxeomLabs Docs — DO NOT COMMIT
 ARCHITECTURE.md
 DEVELOPMENT.md
 AI_CONTEXT.md
 AxeomLabs_Agent_Prompt.md
+axeomlabs-code-audit.md
+DESIGN.md
