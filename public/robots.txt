@@ -1,12 +1,28 @@
+# AxeomLabs robots.txt
+# https://www.axeomlabs.in/
+
 User-agent: *
 Allow: /
 
-# Disallow non-indexable utility paths
+# Disallow non-indexable utility policy pages from indexing crawl waste
 Disallow: /privacy-policy$
 Disallow: /terms-of-service$
 Disallow: /cookie-policy$
 
-# OpenAI - allow browsing and knowledge indexing
+# Search Engines & Entity Indexers
+User-agent: Googlebot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+# AI Search & Knowledge Graph Crawlers
 User-agent: GPTBot
 Allow: /
 
@@ -16,24 +32,22 @@ Allow: /
 User-agent: OAI-SearchBot
 Allow: /
 
-# Other AI training crawlers - opt out
-User-agent: Google-Extended
-Disallow: /
+User-agent: PerplexityBot
+Allow: /
 
-User-agent: CCBot
-Disallow: /
-
-User-agent: anthropic-ai
-Disallow: /
+User-agent: ClaudeBot
+Allow: /
 
 User-agent: Claude-Web
-Disallow: /
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
 
 User-agent: cohere-ai
-Disallow: /
+Allow: /
 
-# LLM-friendly structured context file
-# https://llmstxt.org/
+# LLM Context File
 # LLMs-txt: https://www.axeomlabs.in/llms.txt
 
 Sitemap: https://www.axeomlabs.in/sitemap.xml

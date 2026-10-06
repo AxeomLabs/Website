@@ -213,6 +213,8 @@ function MobileNav({ open, onClose }) {
   );
 }
 
+
+
 /* ------------------------------------------------
    Layout
 ------------------------------------------------ */
@@ -222,10 +224,22 @@ function Layout() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
-  // Smooth scroll init (skipped when user prefers reduced motion)
+  // Device detection for zero-collision capability separation
+  useEffect(() => {
+    const updateDevice = () => {
+      const isMobile = window.innerWidth <= 768 || window.matchMedia('(pointer: coarse)').matches;
+      document.documentElement.setAttribute('data-device', isMobile ? 'mobile' : 'desktop');
+    };
+    updateDevice();
+    window.addEventListener('resize', updateDevice, { passive: true });
+    return () => window.removeEventListener('resize', updateDevice);
+  }, []);
+
+  // Smooth scroll init (skipped when user prefers reduced motion or on mobile touch)
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReducedMotion) return; // native scroll, no Lenis
+    const isTouch = window.matchMedia('(pointer: coarse)').matches;
+    if (prefersReducedMotion || isTouch) return; // native momentum scroll on mobile
     const lenis = new Lenis({ lerp: 0.09, smoothWheel: true, wheelMultiplier: 0.9, touchMultiplier: 1.8 });
     lenis.on('scroll', ScrollTrigger.update);
     gsap.ticker.add((time) => lenis.raf(time * 1000));
@@ -360,8 +374,9 @@ function Layout() {
               founder@axeomlabs.in
             </a>
             <div className="footer-social">
-              <a href="https://github.com/AxeomLabs" target="_blank" rel="noopener noreferrer" className="footer-social-link" aria-label="GitHub">GH</a>
-              <a href="https://www.linkedin.com/company/axeomlabs" target="_blank" rel="noopener noreferrer" className="footer-social-link" aria-label="LinkedIn">LI</a>
+              <a href="https://github.com/AxeomLabs" target="_blank" rel="me noopener noreferrer" className="footer-social-link" aria-label="GitHub">GH</a>
+              <a href="https://www.linkedin.com/company/axeomlabs" target="_blank" rel="me noopener noreferrer" className="footer-social-link" aria-label="LinkedIn">LI</a>
+              <a href="https://x.com/axeomlabs" target="_blank" rel="me noopener noreferrer" className="footer-social-link" aria-label="X (Twitter)">X</a>
             </div>
           </div>
 

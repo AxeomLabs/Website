@@ -40,90 +40,102 @@
     <meta name="twitter:image" content="https://www.axeomlabs.in/og-image.png">
     <meta name="twitter:image:alt" content="AxeomLabs: Autonomous Drones and Robotics">
 
-    <!-- STRUCTURED DATA (JSON-LD) -->
+    <!-- STRUCTURED DATA: GOOGLE KNOWLEDGE GRAPH ENTITY ARCHITECTURE (JSON-LD) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Organization",
-      "@id": "https://www.axeomlabs.in/#organization",
-      "name": "AxeomLabs",
-      "url": "https://www.axeomlabs.in",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://www.axeomlabs.in/favicon.svg"
-      },
-      "image": "https://www.axeomlabs.in/og-image.png",
-      "description": "AxeomLabs designs and builds autonomous drones, robotics platforms, embedded software, custom hardware, and applied research systems.",
-      "foundingDate": "2024",
-      "foundingLocation": {
-        "@type": "Place",
-        "addressCountry": "IN"
-      },
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "email": "founder@axeomlabs.in",
-        "contactType": "customer support",
-        "areaServed": "IN",
-        "availableLanguage": "English"
-      },
-      "founders": [
+      "@graph": [
         {
-          "@type": "Person",
-          "@id": "https://www.axeomlabs.in/founders#harinandan",
-          "name": "Harinandan J V",
-          "jobTitle": "Co-Founder",
-          "url": "https://www.linkedin.com/in/harinandanjv"
+          "@type": "Organization",
+          "@id": "https://www.axeomlabs.in/#organization",
+          "name": "AxeomLabs",
+          "legalName": "AxeomLabs",
+          "alternateName": [
+            "Axeom Labs",
+            "AxeomLabs India",
+            "Axeom Labs R&D",
+            "AxeomLabs Autonomous Systems",
+            "AxeomLabs Physical Intelligence"
+          ],
+          "url": "https://www.axeomlabs.in",
+          "logo": {
+            "@type": "ImageObject",
+            "@id": "https://www.axeomlabs.in/#logo",
+            "url": "https://www.axeomlabs.in/favicon.svg",
+            "caption": "AxeomLabs Logo"
+          },
+          "image": {
+            "@type": "ImageObject",
+            "@id": "https://www.axeomlabs.in/#image",
+            "url": "https://www.axeomlabs.in/og-image.png",
+            "caption": "AxeomLabs: Autonomous Drones, Robotics and Embedded Systems"
+          },
+          "description": "AxeomLabs is an Indian deep-tech R&D company that designs and builds autonomous drones, robotics platforms, embedded software, and custom hardware.",
+          "disambiguatingDescription": "AxeomLabs (spelled A-X-E-O-M-L-A-B-S) is an Indian autonomous systems and robotics engineering company founded in 2024 by Harinandan J V and Abhishek A S, headquartered in India (distinct and unaffiliated with Axiom Labs or Axiom Space).",
+          "foundingDate": "2024",
+          "foundingLocation": {
+            "@type": "Place",
+            "name": "India",
+            "address": {
+              "@type": "PostalAddress",
+              "addressCountry": "IN"
+            }
+          },
+          "knowsAbout": [
+            "Autonomous Drones (UAVs)",
+            "Robotics Platforms",
+            "Embedded Systems",
+            "Real-Time Operating Systems (RTOS)",
+            "Computer Vision",
+            "Custom PCB & Hardware Engineering",
+            "Applied Physics & Science Research"
+          ],
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "founder@axeomlabs.in",
+            "contactType": "corporate inquiries",
+            "areaServed": "Global",
+            "availableLanguage": ["English", "Hindi"]
+          },
+          "founders": [
+            {
+              "@type": "Person",
+              "@id": "https://www.axeomlabs.in/founders#harinandan",
+              "name": "Harinandan J V",
+              "jobTitle": "Co-Founder & Chief Architect",
+              "worksFor": { "@id": "https://www.axeomlabs.in/#organization" },
+              "url": "https://www.linkedin.com/in/harinandanjv",
+              "sameAs": ["https://www.linkedin.com/in/harinandanjv"]
+            },
+            {
+              "@type": "Person",
+              "@id": "https://www.axeomlabs.in/founders#abhishek",
+              "name": "Abhishek A S",
+              "jobTitle": "Co-Founder & Hardware Lead",
+              "worksFor": { "@id": "https://www.axeomlabs.in/#organization" },
+              "url": "https://www.linkedin.com/in/abhishek-a-s",
+              "sameAs": ["https://www.linkedin.com/in/abhishek-a-s"]
+            }
+          ],
+          "sameAs": [
+            "https://github.com/AxeomLabs",
+            "https://www.linkedin.com/company/axeomlabs",
+            "https://x.com/axeomlabs"
+          ]
         },
         {
-          "@type": "Person",
-          "@id": "https://www.axeomlabs.in/founders#abhishek",
-          "name": "Abhishek A S",
-          "jobTitle": "Co-Founder",
-          "url": "https://www.linkedin.com/in/abhishek-a-s"
+          "@type": "WebSite",
+          "@id": "https://www.axeomlabs.in/#website",
+          "url": "https://www.axeomlabs.in",
+          "name": "AxeomLabs",
+          "alternateName": "AxeomLabs Official Website",
+          "description": "Official website of AxeomLabs. Autonomous drones, robotics, embedded software, and hardware research from India.",
+          "publisher": {
+            "@id": "https://www.axeomlabs.in/#organization"
+          },
+          "inLanguage": "en-IN"
         }
-      ],
-      "sameAs": [
-        "https://www.linkedin.com/company/axeomlabs"
       ]
-    }
-    </script>
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "@id": "https://www.axeomlabs.in/#website",
-      "url": "https://www.axeomlabs.in",
-      "name": "AxeomLabs",
-      "description": "Autonomous drones, robotics, embedded software, and hardware research from India.",
-      "publisher": {
-        "@id": "https://www.axeomlabs.in/#organization"
-      },
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": {
-          "@type": "EntryPoint",
-          "urlTemplate": "https://www.axeomlabs.in/?q={search_term_string}"
-        },
-        "query-input": "required name=search_term_string"
-      }
-    }
-    </script>
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "@id": "https://www.axeomlabs.in/#localbusiness",
-      "name": "AxeomLabs",
-      "url": "https://www.axeomlabs.in",
-      "email": "founder@axeomlabs.in",
-      "image": "https://www.axeomlabs.in/og-image.png",
-      "description": "AxeomLabs designs and builds autonomous drones, robotics platforms, embedded software, and custom hardware systems.",
-      "address": {
-        "@type": "PostalAddress",
-        "addressCountry": "IN"
-      },
-      "priceRange": "Contact for pricing",
-      "openingHours": "Mo-Fr 09:00-18:00"
     }
     </script>
 

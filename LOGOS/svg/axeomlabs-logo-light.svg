@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <defs>
+    <style>
+      @font-face {
+        font-family: 'AxeomLabs';
+        src: url('data:font/woff2;base64,d09GMgABAAAAAAWUAAsAAAAACqAAAAVGAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHFQGYACDegqIFIZMATYCJAMkCxQABCAFhCIHRxsACVGUUE4D2c8Cu9nlEB3HZR5sm03DCvggFi/+/33hAd8IgrX/ze6JfROorv1Zw6WRRLNKDdYJmUSp3LdfmzMgaSTt65hZXZnd7/NFS8NC5nU8XrpIyESI2Ob9qyDY+kJc6caVkjb8e9p76THtXIxCMAEZmDsHIw/St4S/9lsZm84Qkj0khMZfdFnMd+jqTRNe6V4ip5LMkmq/eNOvXs+3iOdgpSP+HEegd8Sq+vQ9vobeBzcNYEiT1R+k+fHgMxx6RIeyhR9acw3dMF/kwSJ+5Cl8D78//jqakqqCtYfz93cUtMHIffGPm+XmnGX0wokKBQ6szBVf2+l7I8YHQtLX/cXpOrCglWpjO06cuXL//8fIjuN8mRUKC5ZszuAvGYRUKFVqjZao0c7IPSAOjYqJ/yFaFpmjeU9iLUYuBMaQmEGB01DiDFQ4BzUuQYPr6iPhdIuvAAMxAvGR4k0joRC2If0r+qGWllBRjKqbqgVZlwzfvCthQ1zIOzKelbBm529Rl1AMw2+RZDKaAoS0ydGD2qOjxlIZTx90bHZUCjkpd8R5CEWz2JFh5hKGQSGNs+NiZt6wYkWI00YLCxmGiBzsVFcXwUDppuXo8GPc83HCvLa2SDBiMYlfM1tZkPFktOtbrIuLgMD8L/j7oxnzpsxNQKmNSFiJszp7WIjTd2RLZzXGCEKdW5ROy3DWoZt06QSgwDAjFqPZ3Sxyk/qzsJOXyeQy5ncN602MSIiDRgv45VvBTJZixAyGaTLDrHAcH392bCfISFo0XgxGr3jMiAZIyKxjhsaYhgwdupRhiBM9rVOY6SnxMiNhhTh5hz8dF0XSMp6XcubS29c7z5Kk8SLqjBGOhzTnpq3Dd8krOXyrJIcSh4qc4lpI62S39NXVJmnQOqIWqYEJiP1lPrU2AOrH6Z+jjmtea2ovid4fWZpMMtD2p8HuXI49p5N+hkiIdzXj/YNAPQytr1eYKFRqcEQoiXdjaDP09t2CgNl935pPi1UMVYhQvQi9UC/4Mr3AoBKAsR/nLl1M0jcwt0kDQenVp8H/p4lujkVCeywhA8tAGmGj8tdnzVnIiVu3Xr28kQl27j5iSq+JSfGAa1NCHimtxPeIDUtAcAWk9P0TbEEL/aWuEjo5LHXeVzMjpBzxIYPFbjYKiFXgSE+gTFMwaK+OyIs9gnbIgUsra69GAcSfvspceZYVDnWjBXbxbjru8T00HEJ++PX2u7LiYdcv53SRlsOGs1j/7WexT0WU4jRuLJYXiNzimV5IvZa+vsyKHbUHQNx+/UKygAwy4H2deytPAM/9lVohINwnzHvbi60WAUCXOqd2Iv/IiQQ1djr7yL3aXbq8HG6P9471fv2q4zXrBPm9n5CzvkGO+gG5N+S9FFzvO+9U4H2/sHs+f3qDvu71Lf/aB2+n/JvRrxhmfPoFdhqB1RBn/m6phsyaXxMxdbsOATLNkC+U6O0eEDiwpDMuifHUqS81oprGRWxaolklbytUBtug1jkIvf1mNx+s4hqi7IQVKQVpwUcorHhhlbxXqGz4gdqKX+hd9be3wa48fiWSf8xFcokm83ic10XL3WKc2BSwidHx8n3sYYAxT1ExUbEkN5NpqpmOyWe7FKToecTCmByU6aiVpuHi2Jiu2/WoJB82lBDxHeOExCUrNDJes7itho5vmZ+LJWwkwEwYNQ5h7ZEApsilkFpNqDCJnDEptbFmqRb3oszueAiIPRuTRsL6kANJlo6yeoRCi8bsRhpKR8lR1G9xAHrWJXWRUUQZVdTRRBtd9GKUzezkOCc5y1XuAQAA') format('woff2');
+      }
+      .drafting-ring { stroke: rgba(0, 0, 0, 0.08); stroke-width: 1.5; fill: none; }
+      .tick { stroke: #55768e; stroke-width: 2; opacity: 0.8; }
+      .bracket { stroke: rgba(0, 0, 0, 0.16); stroke-width: 1.5; fill: none; }
+      .logo-text {
+        font-family: 'AxeomLabs', sans-serif;
+        font-size: 520px;
+        fill: #1a1c1c;
+        text-anchor: middle;
+        dominant-baseline: central;
+      }
+    </style>
+  </defs>
+
+  <rect width="1024" height="1024" fill="#f9f9f9" />
+
+  <path class="bracket" d="M 60 110 L 60 60 L 110 60" />
+  <path class="bracket" d="M 964 110 L 964 60 L 914 60" />
+  <path class="bracket" d="M 60 914 L 60 964 L 110 964" />
+  <path class="bracket" d="M 964 914 L 964 964 L 914 964" />
+
+  <circle class="drafting-ring" cx="512" cy="512" r="410" />
+
+  <line class="tick" x1="512" y1="88" x2="512" y2="116" />
+  <line class="tick" x1="512" y1="908" x2="512" y2="936" />
+  <line class="tick" x1="88" y1="512" x2="116" y2="512" />
+  <line class="tick" x1="908" y1="512" x2="936" y2="512" />
+
+  <g transform="translate(512, 512)">
+    <text class="logo-text" x="-162" y="0">A</text>
+    <text class="logo-text" x="162" y="0">X</text>
+  </g>
+</svg>

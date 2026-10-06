@@ -1,0 +1,552 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   AXEOMLABS — UNIVERSAL RESPONSIVE ENGINE (ANY ASPECT RATIO & DEVICE)
+   Engineered for:
+   - Modern Mobile (320px – 480px, tall portrait 9:19.5, 9:20)
+   - Narrow / Split Viewports (480px – 640px, e.g. 500x757)
+   - Tablets & Foldables (640px – 1024px, 4:3, 3:2, square-ish)
+   - Landscape Mobile / Short Viewports (max-height: 560px)
+   - Desktop & Ultrawide (1024px – 2560px, 16:9, 21:9)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── 1. GLOBAL FLUID RESILIENCE & FIXES ───────────────────────────────────── */
+html, body {
+  max-width: 100vw;
+  overflow-x: clip;
+}
+
+/* Ensure dynamic viewport height handles mobile browser URL bars */
+:root {
+  --app-height: 100dvh;
+}
+
+/* Base image & media fluid behavior */
+img, video, canvas, svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Prevent text overflow in flex/grid items */
+* {
+  min-width: 0;
+}
+
+/* ── 2. TABLET, FOLDABLE & NARROW DESKTOP (<= 1024px) ─────────────────────── */
+@media (max-width: 1024px) {
+
+  :root {
+    --margin: clamp(20px, 4vw, 40px);
+    --gutter: clamp(16px, 3.5vw, 28px);
+  }
+
+  .container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: var(--gutter) !important;
+    padding-right: var(--gutter) !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Navigation — Clean Hamburger Transition */
+  #global-nav {
+    height: 58px;
+    background: rgba(10, 10, 10, 0.92);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-container {
+    height: 100%;
+    padding: 0 var(--gutter) !important;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-links,
+  .nav-portal,
+  .nav-lab-status {
+    display: none !important;
+  }
+
+  .nav-hamburger {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border: 1px solid var(--border);
+    border-radius: var(--rounded-sm);
+    background: var(--bg-card);
+    cursor: pointer;
+    padding: 0;
+    transition: border-color var(--duration-fast), background var(--duration-fast);
+  }
+
+  .nav-hamburger:hover {
+    border-color: var(--border-accent);
+  }
+
+  .nav-ticker {
+    display: none !important;
+  }
+
+  /* Mobile Drawer Overlay */
+  .mobile-nav {
+    width: min(340px, 86vw);
+    height: 100dvh;
+    max-height: 100dvh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: max(24px, env(safe-area-inset-bottom));
+  }
+
+  /* Hero Section Adaptability */
+  #hero {
+    min-height: auto !important;
+    padding-top: clamp(74px, 10vh, 100px) !important;
+    padding-bottom: clamp(36px, 6vh, 60px) !important;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .hero-container {
+    padding-top: 8px !important;
+    padding-bottom: 8px !important;
+  }
+
+  .hero-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: clamp(24px, 4vh, 40px) !important;
+    min-height: auto !important;
+  }
+
+  .hero-content {
+    order: 1 !important;
+    max-width: 100% !important;
+  }
+
+  .hero-img-panel {
+    order: 2 !important;
+    width: 100% !important;
+    max-width: min(100%, 600px) !important;
+    margin: 0 auto !important;
+  }
+
+  .hero-headline {
+    font-size: clamp(2rem, 6.5vw + 0.5rem, 3.75rem) !important;
+    line-height: 1.12 !important;
+    letter-spacing: -0.025em !important;
+    margin-bottom: 16px !important;
+  }
+
+  .hero-sub {
+    font-size: clamp(0.95rem, 2vw, 1.125rem) !important;
+    line-height: 1.6 !important;
+    max-width: 580px !important;
+    margin-bottom: 18px !important;
+  }
+
+  .hero-disciplines {
+    font-size: 11px !important;
+    letter-spacing: 0.1em !important;
+    margin-bottom: 24px !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 6px 10px !important;
+  }
+
+  .hero-ctas {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 12px !important;
+    width: 100% !important;
+  }
+
+  .hero-media-card {
+    border-radius: var(--rounded-md) !important;
+    overflow: hidden !important;
+  }
+
+  .hero-media-img-box {
+    aspect-ratio: 16/10 !important;
+    max-height: 340px !important;
+    width: 100% !important;
+  }
+
+  .hero-machine-img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+
+  .hero-scroll-prompt {
+    display: none !important;
+  }
+
+  /* Section Padding Scale */
+  #the-lab,
+  #selected-work,
+  #the-stack,
+  #capabilities,
+  #numbers,
+  #founders-preview,
+  #cta,
+  .page-section {
+    padding: clamp(44px, 7vw, 80px) 0 !important;
+  }
+
+  /* The Lab */
+  .lab-intro-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 20px !important;
+  }
+
+  .lab-intro-statement {
+    font-size: clamp(1.2rem, 3.5vw, 1.85rem) !important;
+    line-height: 1.45 !important;
+    margin-bottom: 14px !important;
+  }
+
+  .lab-intro-sub {
+    font-size: clamp(0.9rem, 2vw, 1.05rem) !important;
+    line-height: 1.65 !important;
+  }
+
+  .lab-intro-meta {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 10px 18px !important;
+    padding: 12px 14px !important;
+    background: var(--bg-card) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: var(--rounded-sm) !important;
+    font-size: 11px !important;
+  }
+
+  /* Selected Work */
+  .work-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)) !important;
+    gap: 16px !important;
+    margin-top: 16px !important;
+  }
+
+  .work-feature {
+    margin-top: 24px !important;
+    border-radius: var(--rounded-md) !important;
+  }
+
+  .work-feature-img-wrap {
+    aspect-ratio: 16/10 !important;
+    max-height: 320px !important;
+  }
+
+  /* Capabilities */
+  .caps-layout {
+    display: flex !important;
+    flex-direction: column !important;
+    margin-top: 24px !important;
+    border: 1px solid var(--border) !important;
+    border-radius: var(--rounded-md) !important;
+    overflow: hidden !important;
+  }
+
+  .caps-nav {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 1px !important;
+    background: var(--border) !important;
+  }
+
+  .caps-nav-item {
+    padding: 12px 8px !important;
+    font-size: 11px !important;
+    letter-spacing: 0.08em !important;
+    text-align: center !important;
+    justify-content: center !important;
+    background: var(--bg-card) !important;
+  }
+
+  .caps-panel {
+    padding: clamp(16px, 3vw, 28px) !important;
+  }
+
+  .caps-panel-title {
+    font-size: clamp(1.15rem, 3vw, 1.5rem) !important;
+  }
+
+  .caps-panel-desc {
+    font-size: clamp(0.88rem, 1.8vw, 1rem) !important;
+    line-height: 1.6 !important;
+  }
+
+  /* Telemetry Stats */
+  .stats-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1px !important;
+    background: var(--border) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: var(--rounded-sm) !important;
+    overflow: hidden !important;
+    margin-top: 24px !important;
+  }
+
+  .stat-box {
+    padding: clamp(14px, 2.5vw, 24px) !important;
+    background: var(--bg-card) !important;
+  }
+
+  .stat-num {
+    font-size: clamp(1.75rem, 5vw, 2.5rem) !important;
+    line-height: 1.1 !important;
+  }
+
+  .stat-label {
+    font-size: 11px !important;
+    letter-spacing: 0.08em !important;
+  }
+
+  /* Founders Preview */
+  .founders-brief-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)) !important;
+    gap: 16px !important;
+    margin-top: 24px !important;
+  }
+
+  /* CTA Form */
+  .cta-layout {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 24px !important;
+  }
+
+  .cta-form {
+    padding: clamp(18px, 4vw, 32px) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: var(--rounded-md) !important;
+  }
+
+  /* Subpages */
+  .page-hero {
+    min-height: auto !important;
+    padding-top: clamp(80px, 12vh, 110px) !important;
+    padding-bottom: clamp(32px, 5vh, 48px) !important;
+    border-bottom: 1px solid var(--border) !important;
+  }
+
+  .page-hero-layout {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 24px !important;
+    min-height: auto !important;
+  }
+
+  .page-hero h1 {
+    font-size: clamp(1.85rem, 6vw, 3rem) !important;
+    line-height: 1.15 !important;
+  }
+
+  .page-hero-desc {
+    font-size: clamp(0.92rem, 1.8vw, 1.05rem) !important;
+    line-height: 1.65 !important;
+  }
+
+  .page-hero-right {
+    width: 100% !important;
+    max-width: min(100%, 560px) !important;
+    margin: 0 auto !important;
+  }
+
+  .page-hero-image {
+    max-height: 280px !important;
+    width: 100% !important;
+    object-fit: cover !important;
+    border-radius: var(--rounded-md) !important;
+  }
+
+  .domains-grid,
+  .systems-row,
+  .founders-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)) !important;
+    gap: 16px !important;
+  }
+
+  /* Footer */
+  .footer-top {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr)) !important;
+    gap: 32px !important;
+    padding-top: clamp(28px, 5vw, 48px) !important;
+  }
+
+  .footer-bottom-inner {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: space-between !important;
+    gap: 12px !important;
+    font-size: 12px !important;
+  }
+}
+
+/* ── 3. COMPACT MOBILE & PHABLET (<= 640px, e.g. 500x757 & Phones) ────────── */
+@media (max-width: 640px) {
+
+  :root {
+    --margin: 16px;
+    --gutter: 16px;
+  }
+
+  .nav-logo-text {
+    font-size: 14px;
+    letter-spacing: 0.12em;
+  }
+
+  .hero-headline {
+    font-size: clamp(1.85rem, 8.5vw, 2.75rem) !important;
+  }
+
+  .hero-eyebrow {
+    font-size: 10px !important;
+    letter-spacing: 0.1em !important;
+    padding: 4px 10px !important;
+  }
+
+  .hero-ctas {
+    flex-direction: column !important;
+  }
+
+  .hero-ctas .btn-primary,
+  .hero-ctas .btn-ghost {
+    width: 100% !important;
+    height: 48px !important;
+    justify-content: center !important;
+    font-size: 12px !important;
+    letter-spacing: 0.1em !important;
+  }
+
+  .hero-media-img-box {
+    aspect-ratio: 16/10 !important;
+    max-height: 240px !important;
+  }
+
+  .caps-nav {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .caps-table-row {
+    grid-template-columns: 90px 1fr !important;
+    font-size: 12px !important;
+    gap: 8px !important;
+  }
+
+  /* Input fields MUST be at least 16px to prevent iOS Safari auto-zoom */
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    font-size: 16px !important;
+    padding: 12px 14px !important;
+  }
+
+  .btn-submit {
+    height: 48px !important;
+    font-size: 13px !important;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .stat-box {
+    padding: 14px 12px !important;
+  }
+
+  .stat-num {
+    font-size: 24px !important;
+  }
+
+  .footer-bottom-inner {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 12px !important;
+  }
+}
+
+/* ── 4. EXTRA SMALL SCREENS (< 360px, e.g. iPhone SE 1st gen / Mini) ────── */
+@media (max-width: 360px) {
+  :root {
+    --margin: 12px;
+    --gutter: 12px;
+  }
+
+  .hero-headline {
+    font-size: 1.65rem !important;
+  }
+
+  .caps-nav {
+    grid-template-columns: 1fr !important;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ── 5. SHORT HEIGHT / LANDSCAPE MOBILE (max-height: 560px) ──────────────── */
+@media (max-height: 560px) {
+  #hero {
+    padding-top: 64px !important;
+    padding-bottom: 24px !important;
+  }
+
+  .hero-grid {
+    gap: 16px !important;
+  }
+
+  .hero-media-img-box {
+    max-height: 180px !important;
+  }
+
+  .hero-headline {
+    font-size: clamp(1.6rem, 5vh + 1rem, 2.2rem) !important;
+    margin-bottom: 8px !important;
+  }
+
+  .hero-sub {
+    font-size: 0.88rem !important;
+    margin-bottom: 12px !important;
+  }
+
+  .hero-disciplines {
+    margin-bottom: 14px !important;
+  }
+
+  .hero-ctas .btn-primary,
+  .hero-ctas .btn-ghost {
+    height: 42px !important;
+  }
+
+  .page-section {
+    padding: 32px 0 !important;
+  }
+}
+
+/* ── 6. SAFE AREA INSETS (iOS Notches & Modern Edge-to-Edge Displays) ─────── */
+@supports (padding: max(0px)) {
+  #global-nav {
+    padding-top: env(safe-area-inset-top);
+  }
+
+  body {
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
+
+  #main-footer {
+    padding-bottom: max(20px, env(safe-area-inset-bottom));
+  }
+}

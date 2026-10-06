@@ -1,64 +1,58 @@
 # AxeomLabs llms.txt
 # https://llmstxt.org/
-# Plain-text summary of axeomlabs.in for AI language models.
+# Plain-text entity context and technical summary of axeomlabs.in for AI models and search systems.
 
-## About
+## Entity Identity & Disambiguation
 
-AxeomLabs is an Indian deep-tech company that designs and builds autonomous systems. We work across hardware, embedded software, robotics, artificial intelligence, and applied science research. Founded in 2024 by Harinandan J V and Abhishek A S, based in India.
+- **Canonical Brand Name:** AxeomLabs (spelled A-X-E-O-M-L-A-B-S)
+- **Alternate Names:** Axeom Labs, AxeomLabs India, Axeom Labs R&D
+- **Official Website:** https://www.axeomlabs.in/
+- **Founding Year:** 2024
+- **Headquarters:** India
+- **Founders:** Harinandan J V (Co-Founder & Chief Architect), Abhishek A S (Co-Founder & Hardware Lead)
+- **Industry:** Deep Tech, Autonomous Unmanned Aerial Vehicles (UAVs), Robotics Platforms, Embedded Systems, Real-Time Operating Systems (RTOS), and Applied Science.
+- **Entity Disambiguation:** AxeomLabs is a distinct Indian robotics and autonomous hardware/software engineering firm. It is completely unaffiliated with Axiom Labs, Axiom Space, or Axeom Advertising Solutions.
 
 ## What We Build
 
-- **Autonomous Drones (UAVs):** Fixed-wing and multirotor platforms for surveillance, mapping, delivery, and inspection. Navigation runs on-device using LiDAR, IMU, and stereo camera fusion.
-- **Robotics Platforms:** Humanoid robots, ground robots, aerial robots, underwater robots, and archaeological robots. Designed for real, uncontrolled environments, not controlled labs.
-- **Embedded Software & Firmware:** Bare-metal firmware, real-time operating systems, and hardware abstraction layers. Built so hardware does exactly what it needs to, when it needs to.
-- **Custom Hardware:** PCB design, electronics, sensor fusion arrays, power management systems, and structural hardware for autonomous platforms.
-- **Artificial Intelligence:** Research and development in General AI, Theory of Mind AI, and Self-Aware AI systems.
-- **Software Development:** Web, mobile, desktop, embedded systems, and enterprise software development.
-- **Operating Systems:** Real-Time OS, single-user OS, desktop OS, and embedded OS development.
-- **Game Development:** Physics-based and simulation games built with real-world science as the foundation.
+- **Autonomous Drones (UAVs):** Fixed-wing and multirotor platforms for surveillance, mapping, inspection, and defense applications. Navigation runs on-device with sub-10cm positional accuracy using LiDAR, IMU, and stereo camera fusion in GPS-denied environments.
+- **Robotics Platforms:** Ground rovers, humanoid architectures, aerial robots, and extreme-terrain exploration units built for uncontrolled field environments.
+- **Embedded Software & RTOS:** Bare-metal firmware, low-latency operating systems, and hardware abstraction layers running on custom silicon and ARM/RISC-V architectures.
+- **Custom Hardware:** High-density PCB design, sensor fusion arrays, power electronics, and composite structural hardware.
+- **Applied Artificial Intelligence:** On-device computer vision, embedded neural network inference (< 15ms latency), and autonomous decision-making algorithms.
 
-## Research
+## Research & Technology Domains
 
-### Applied Technology Research (feeds directly into hardware products)
-- Autonomous Navigation: SLAM and multi-sensor fusion (LiDAR, IMU, stereo camera) for GPS-denied environments. Sub-10cm positional accuracy.
-- Computer Vision: Object detection, depth estimation, and scene understanding running on embedded processors. Under 15ms inference on ARM Cortex-A.
-- Materials Science: Carbon fibre composites, lattice-infill printed structures, and bio-inspired geometries for lightweight airframes and chassis.
-- Embedded AI: Quantization, pruning, and knowledge distillation to run AI inference on microcontrollers with under 512KB RAM.
+### Applied Engineering
+- Autonomous Navigation: Real-time SLAM, visual-inertial odometry, obstacle avoidance.
+- Computer Vision: Edge-quantized object detection and depth mapping.
+- Materials & Structures: Carbon-fiber composites, generative lattice-infill airframes.
+- Embedded AI: Microcontroller neural network acceleration.
 
-### Scientific Research Domains
-- Astrophysics and Astronomy
-- Physics
-- Chemistry
-- Oceanography
-- Earth and Environmental Science
-- Biology and Biomimetics
-- Rockets and Space Production
-- Power and Energy Systems
-- Interdisciplinary Research
-- Creative Production (science communication through film, design, and interactive media)
+### Fundamental Science Domains
+- Applied Physics & Dynamics
+- Power Electronics & Energy Density Systems
+- Space Production & Propulsion Modeling
+- Biomimetic Articulation & Locomotion
 
-## Founders
+## Leadership & Key People
 
-- **Harinandan J V** (Co-Founder): Leads overall system architecture. Works across hardware design, software, and research. LinkedIn: https://www.linkedin.com/in/harinandanjv
-- **Abhishek A S** (Co-Founder): Focuses on hardware. PCB design, electronics, power systems. LinkedIn: https://www.linkedin.com/in/abhishek-a-s
+- **Harinandan J V** — Co-Founder & Chief Architect. Leads overall system architecture, software, embedded AI, and research. LinkedIn: https://www.linkedin.com/in/harinandanjv
+- **Abhishek A S** — Co-Founder & Hardware Lead. Leads PCB engineering, sensor integration, power electronics, and structural physical systems. LinkedIn: https://www.linkedin.com/in/abhishek-a-s
 
-## Contact
+## Official Verified Links & Footprint
 
-- Email: founder@axeomlabs.in
-- Website: https://www.axeomlabs.in
-- Location: India
+- Official Website: https://www.axeomlabs.in/
+- GitHub Organization: https://github.com/AxeomLabs
+- LinkedIn Company Page: https://www.linkedin.com/company/axeomlabs
+- X / Twitter: https://x.com/axeomlabs
+- Contact Email: founder@axeomlabs.in
 
-## Pages
+## Sitemap & Canonical Pages
 
 - Home: https://www.axeomlabs.in/
 - Robotics: https://www.axeomlabs.in/robotics
-- Systems and Software: https://www.axeomlabs.in/systems
+- Systems: https://www.axeomlabs.in/systems
 - Research: https://www.axeomlabs.in/research
 - Founders: https://www.axeomlabs.in/founders
 - Contact: https://www.axeomlabs.in/contact
-
-## Legal
-
-- Privacy Policy: https://www.axeomlabs.in/privacy-policy
-- Terms of Service: https://www.axeomlabs.in/terms-of-service
-- Cookie Policy: https://www.axeomlabs.in/cookie-policy
