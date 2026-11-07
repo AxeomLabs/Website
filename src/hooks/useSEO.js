@@ -8,8 +8,8 @@ import { useEffect } from 'react';
  * @param {string} description - Meta description for this page
  * @param {string} [canonical] - Optional canonical URL override
  */
-const DEFAULT_TITLE = 'AxeomLabs | Drones, Robotics & Intelligent Systems, India';
-const DEFAULT_DESC  = 'AxeomLabs designs and builds autonomous drones, robotics platforms, embedded software, and custom hardware. Founded by Harinandan J V and Abhishek A S, based in India.';
+const DEFAULT_TITLE = 'AxeomLabs | Space Robotics & Autonomous Systems';
+const DEFAULT_DESC  = 'AxeomLabs develops task-capable robotic systems for remote and hazardous environments, with a long-term mission to prepare lunar and Martian outposts.';
 
 export default function useSEO(title, description, canonical) {
   useEffect(() => {
@@ -49,9 +49,9 @@ export default function useSEO(title, description, canonical) {
     return () => {
       document.title = DEFAULT_TITLE;
       if (descTag) descTag.setAttribute('content', DEFAULT_DESC);
-      if (ogTitle)  ogTitle.setAttribute('content', 'AxeomLabs | Drones, Robotics & Intelligent Systems');
+      if (ogTitle)  ogTitle.setAttribute('content', 'AxeomLabs | Space Robotics & Autonomous Systems');
       if (ogDesc)   ogDesc.setAttribute('content', DEFAULT_DESC);
-      if (twTitle)  twTitle.setAttribute('content', 'AxeomLabs | Drones, Robotics & Intelligent Systems');
+      if (twTitle)  twTitle.setAttribute('content', 'AxeomLabs | Space Robotics & Autonomous Systems');
       if (twDesc)   twDesc.setAttribute('content', DEFAULT_DESC);
       if (canonicalTag) canonicalTag.href = 'https://www.axeomlabs.in/';
     };

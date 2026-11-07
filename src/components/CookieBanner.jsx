@@ -1,23 +1,25 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 const CONSENT_KEY = 'axeom_cookie_consent';
 
 function CookieBanner() {
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(() => {
+    if (typeof window === 'undefined') return false;
+    try {
+      return !localStorage.getItem(CONSENT_KEY);
+    } catch {
+      return true;
+    }
+  });
   const [showDetails, setShowDetails] = useState(false);
   const [prefs, setPrefs] = useState({ analytics: false, advertising: false });
 
-  useEffect(() => {
-    try {
-      const stored = localStorage.getItem(CONSENT_KEY);
-      if (!stored) setVisible(true);
-    } catch {
-      setVisible(true);
-    }
-  }, []);
-
   const save = (consent) => {
-    try { localStorage.setItem(CONSENT_KEY, JSON.stringify(consent)); } catch {}
+    try {
+      localStorage.setItem(CONSENT_KEY, JSON.stringify(consent));
+    } catch {
+      /* ignore storage errors */
+    }
     setVisible(false);
   };
 

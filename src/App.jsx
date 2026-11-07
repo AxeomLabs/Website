@@ -36,48 +36,48 @@ function Counter({ target, suffix = '' }) {
 
 /* ─── Stack step ────────────────────────────────────────────────────────────── */
 const STACK_STEPS = [
-  { num: '01', label: 'RESEARCH', desc: 'Physics, materials, biology, applied science.' },
-  { num: '02', label: 'SYSTEM DESIGN', desc: 'Architecture, constraints, hardware-software split.' },
-  { num: '03', label: 'HARDWARE', desc: 'PCB design, power systems, chassis, sensors.' },
-  { num: '04', label: 'FIRMWARE', desc: 'Bare-metal code, RTOS, sensor drivers, comms.' },
-  { num: '05', label: 'INTELLIGENCE', desc: 'AI, autonomy, perception, real-time control.' },
-  { num: '06', label: 'FIELD TESTING', desc: 'Open terrain, actual airspace, uncontrolled conditions.' },
+  { num: '01', label: 'RESEARCH & DEVELOPMENT', desc: 'Establish the technical foundation and system architecture.' },
+  { num: '02', label: 'CORE DEVELOPMENT', desc: 'Develop robotic platforms and autonomous capabilities.' },
+  { num: '03', label: 'HARDWARE', desc: 'Integrate mechanisms, power systems, sensors, and controls.' },
+  { num: '04', label: 'PROTOTYPE & INTEGRATION', desc: 'Bring robotic platforms and autonomous systems together.' },
+  { num: '05', label: 'TESTING & VALIDATION', desc: 'Validate performance in simulated extreme environments.' },
+  { num: '06', label: 'SPACE DEPLOYMENT', desc: 'Pursue flight qualification and mission partnerships.' },
 ];
 
 /* ─── Featured work ─────────────────────────────────────────────────────────── */
 const FEATURED_WORK = [
   {
     id: '001',
-    code: 'AERIAL SYSTEMS',
-    name: 'Autonomous UAV Platform',
-    desc: 'Fixed-wing and multirotor platforms that navigate GPS-denied environments. LiDAR-based SLAM, onboard edge AI, real-time obstacle avoidance. Designed for surveillance, mapping, and payload operations.',
-    tags: ['SLAM', 'SENSOR FUSION', 'EDGE AI', 'LIDAR'],
-    status: 'ACTIVE',
+    code: 'INFRASTRUCTURE MAINTENANCE',
+    name: 'Robotics for Remote Infrastructure',
+    desc: 'Robotic systems for inspecting and repairing essential infrastructure in harsh and remote environments, reducing the need to place people in hazardous operating conditions.',
+    tags: ['INSPECTION', 'MAINTENANCE', 'REMOTE OPS'],
+    status: 'R&D',
     path: '/robotics',
-    img: 'https://images.unsplash.com/photo-1527977966376-1c8408f9f108?w=1400&q=85',
-    alt: 'Professional drone hovering over open terrain at dusk',
+    img: '/assets/space/industrial-robot-arm.jpg',
+    alt: 'Industrial robotic arm on a manufacturing line, illustrating infrastructure maintenance systems.',
   },
   {
     id: '002',
-    code: 'GROUND SYSTEMS',
-    name: 'Adaptive Ground Robotics',
-    desc: 'Ground and underwater platforms built to handle terrain and conditions that most hardware avoids. Tactile sensing, adaptive gait, real-time terrain mapping.',
-    tags: ['LOCOMOTION', 'TERRAIN MAPPING', 'TACTILE'],
-    status: 'ACTIVE',
+    code: 'MATERIAL HANDLING',
+    name: 'Remote Resource Handling',
+    desc: 'Robotic systems designed to transport and position heavy resources safely at remote worksites and future off-world outposts.',
+    tags: ['TRANSPORT', 'POSITIONING', 'REMOTE OPS'],
+    status: 'R&D',
     path: '/robotics',
-    img: 'https://images.unsplash.com/photo-1581092335397-9583eb92d232?w=1000&q=85',
-    alt: 'Armored ground robotics platform in field test conditions',
+    img: '/assets/space/robotic-arm-lab.jpg',
+    alt: 'Robotic arm in an engineering laboratory, illustrating material-handling systems.',
   },
   {
     id: '003',
-    code: 'EMBEDDED INTELLIGENCE',
-    name: 'On-Device AI Inference',
-    desc: 'Neural network inference on microcontrollers with under 512KB RAM. Quantization, pruning, and distillation pipelines that make large models fit in small chips.',
-    tags: ['QUANTIZATION', 'CORTEX-M7', 'INT8'],
+    code: 'AUTONOMOUS CONSTRUCTION',
+    name: 'Robotic Construction Systems',
+    desc: 'Long-term development of autonomous systems that can build and maintain the physical infrastructure required for lunar and Martian exploration.',
+    tags: ['AUTONOMY', 'INTEGRATION', 'SPACE SYSTEMS'],
     status: 'R&D',
     path: '/systems',
-    img: 'https://images.unsplash.com/photo-1555680202-c86f0e12f086?w=1000&q=85',
-    alt: 'Microprocessor and integrated circuit die under macro lens',
+    img: '/assets/space/outpost-analog.jpg',
+    alt: 'Mars-analog research habitat in a desert, illustrating future outpost development.',
   },
 ];
 
@@ -86,43 +86,43 @@ const CAPABILITIES = [
   {
     num: '01',
     title: 'AUTONOMY',
-    desc: 'SLAM, sensor fusion, path planning, obstacle avoidance. Systems that navigate the world without a pilot.',
-    tags: ['SLAM', 'Sensor Fusion', 'Path Planning', 'Edge AI'],
+    desc: 'Sensing, perception, and control for robots working in remote environments with limited human access.',
+    tags: ['PERCEPTION', 'NAVIGATION', 'CONTROL', 'REMOTE OPS'],
     path: '/research',
   },
   {
     num: '02',
     title: 'ROBOTICS',
-    desc: 'Humanoid, ground, aerial, underwater. Robots designed for real, uncontrolled environments, not controlled labs.',
-    tags: ['UAV', 'Ground Robots', 'Underwater', 'Humanoid'],
+    desc: 'Task-capable robotic platforms for infrastructure maintenance, material handling, and autonomous construction.',
+    tags: ['MAINTENANCE', 'HANDLING', 'CONSTRUCTION'],
     path: '/robotics',
   },
   {
     num: '03',
-    title: 'INTELLIGENCE',
-    desc: 'Computer vision, embedded AI, autonomous agents. Intelligence that runs on the hardware, not in the cloud.',
-    tags: ['Computer Vision', 'Embedded AI', 'Agents', 'Research'],
+    title: 'EXTREME ENVIRONMENTS',
+    desc: 'Engineering systems for dependable operation in harsh, hazardous, and remote environments.',
+    tags: ['DURABILITY', 'VALIDATION', 'FIELD OPS'],
     path: '/research',
   },
   {
     num: '04',
-    title: 'HARDWARE',
-    desc: 'PCB design, power electronics, sensor arrays, structural hardware. We design and build custom boards from schematic to production.',
-    tags: ['PCB Design', 'Power Systems', 'Sensors', 'Firmware'],
+    title: 'SYSTEMS ENGINEERING',
+    desc: 'Robotic platforms bring hardware, controls, sensing, and software together as one dependable system.',
+    tags: ['HARDWARE', 'CONTROL', 'INTEGRATION'],
     path: '/systems',
   },
   {
     num: '05',
-    title: 'SOFTWARE',
-    desc: 'Bare-metal firmware, RTOS, full-stack applications, embedded systems. Software that ships with the hardware, not after.',
-    tags: ['RTOS', 'Bare-Metal', 'Full-Stack', 'Embedded'],
+    title: 'MISSION OPERATIONS',
+    desc: 'Developing robotic systems for remote industrial work on Earth and future lunar and Martian operations.',
+    tags: ['REMOTE WORK', 'LUNAR', 'MARTIAN'],
     path: '/systems',
   },
   {
     num: '06',
-    title: 'RESEARCH',
-    desc: 'Physics, chemistry, materials, astrophysics, oceanography. We study the science because breakthroughs in science become possible in engineering.',
-    tags: ['Materials', 'Physics', 'Astrophysics', 'Oceanography'],
+    title: 'SPACE SYSTEMS',
+    desc: 'A long-term roadmap toward robots that prepare and maintain outposts for lunar and Martian exploration.',
+    tags: ['OUTPOSTS', 'SPACE ROBOTICS', 'ROADMAP'],
     path: '/research',
   },
 ];
@@ -130,22 +130,19 @@ const CAPABILITIES = [
 /* ─── Lab status ────────────────────────────────────────────────────────────── */
 const LAB_STATUS_GROUPS = [
   {
-    group: 'ACTIVE',
+    group: 'APPLICATIONS',
     color: '#4ade80',
-    items: ['Autonomous UAV Navigation Stack', 'SLAM Sensor Fusion Pipeline', 'Carbon Fibre Structural Materials'],
+    items: ['Infrastructure maintenance', 'Remote material handling', 'Autonomous construction'],
   },
   {
-    group: 'IN DEVELOPMENT',
+    group: 'ROADMAP',
     color: '#60a5fa',
-    items: ['On-Device AI Inference (Cortex-M7)', 'Underwater Robotics Chassis', 'Adaptive Ground Locomotion'],
+    items: ['Core development', 'Prototype integration', 'Testing and validation'],
   },
   {
-    group: 'RESEARCH',
+    group: 'OPERATING HORIZON',
     color: '#f59e0b',
-    items: [
-      'Astrophysics & Orbital Mechanics', 'Ocean Environment Mapping', 'General AI Theory',
-      'Power & Energy Systems', 'Biomimetic Structures', 'Game Engine Architecture',
-    ],
+    items: ['Near term: remote operations on Earth', 'Long term: lunar outpost preparation', 'Long term: Martian outpost preparation'],
   },
 ];
 
@@ -153,15 +150,15 @@ const FOUNDERS = [
   {
     initials: 'HJV',
     name: 'Harinandan J V',
-    role: 'Co-Founder',
-    desc: 'Leads overall system architecture. Works across hardware, software, AI, and research. Usually the one who figures out what the project actually needs to be.',
+    role: 'Co-Founder & CEO',
+    desc: 'Drives company strategy, product development, and the long-term vision for AxeomLabs.',
     linkedin: 'https://www.linkedin.com/in/harinandanjv',
   },
   {
     initials: 'AAS',
     name: 'Abhishek A S',
-    role: 'Co-Founder',
-    desc: 'Focuses on hardware. PCB design, power electronics, sensors, physical systems. Makes things that exist in the real world rather than just on a screen.',
+    role: 'Co-Founder & CTO',
+    desc: 'Leads technical strategy and engineering development across the company’s robotic systems.',
     linkedin: 'https://www.linkedin.com/in/abhishek-a-s',
   },
 ];
@@ -226,9 +223,9 @@ export default function App() {
     <div ref={container}>
 
       {/* ═══════════════════════════════════════════════════════════════
-          01 HERO — Split layout: text left, machine right
+          01 HERO - Split layout: text left, machine right
           ═══════════════════════════════════════════════════════════════ */}
-      <section id="hero" aria-label="AxeomLabs: Intelligence built for the physical world">
+      <section id="hero" aria-label="AxeomLabs: Robotics for extreme environments">
         <div className="hero-bg-grid" aria-hidden="true" />
         <div className="container hero-container">
           <div className="hero-grid">
@@ -245,24 +242,23 @@ export default function App() {
               </div>
 
               <h1 className="hero-headline">
-                Intelligence,<br />
-                built for the<br />
-                physical world.
+                Robotics for the<br />
+                next frontier.
               </h1>
 
               <p className="hero-sub">
-                We design and build autonomous drones, robotics platforms, embedded AI,
-                and custom hardware. Everything we ship gets tested in the field.
+                We develop task-capable robotic systems for hazardous and remote work on Earth,
+                building toward the machines that prepare future lunar and Martian outposts.
               </p>
 
               <div className="hero-disciplines" aria-label="Disciplines">
-                <span className="hero-disc-item">AI</span>
+                <span className="hero-disc-item">SPACE ROBOTICS</span>
                 <span className="hero-disc-sep">·</span>
-                <span className="hero-disc-item">ROBOTICS</span>
+                <span className="hero-disc-item">AUTONOMY</span>
                 <span className="hero-disc-sep">·</span>
-                <span className="hero-disc-item">AUTONOMOUS SYSTEMS</span>
+                <span className="hero-disc-item">EXTREME ENVIRONMENTS</span>
                 <span className="hero-disc-sep">·</span>
-                <span className="hero-disc-item">HARDWARE</span>
+                <span className="hero-disc-item">SPACE SYSTEMS</span>
               </div>
 
               <div className="hero-ctas">
@@ -282,20 +278,20 @@ export default function App() {
                 <div className="hero-media-header">
                   <div className="hero-media-title">
                     <span className="hero-status-dot sm" />
-                    <span>SYS // AXL-DRONE-V4</span>
+                    <span>SYS // FIELD ROBOTICS</span>
                   </div>
                   <div className="hero-media-telemetry">
-                    <span>GPS: LOCK</span>
+                    <span>MISSION: ROBOTICS</span>
                   </div>
                 </div>
                 <div className="hero-media-img-box">
                   <img
-                    src="https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=1200&q=85"
-                    alt="Professional drone in flight at golden hour, representing AxeomLabs autonomous aerial systems"
+                    src="/assets/space/planetary-rover-test.jpg"
+                    alt="Mars rover test vehicle at an Earth-based outdoor test facility."
                     className="hero-machine-img"
                     width="1200"
                     height="800"
-                    fetchpriority="high"
+                    fetchPriority="high"
                   />
                   <div className="hero-img-overlay" />
                   <div className="hero-crosshair top-left">+</div>
@@ -304,10 +300,10 @@ export default function App() {
                   <div className="hero-crosshair bottom-right">+</div>
                 </div>
                 <div className="hero-media-footer">
-                  <span>FIELD TEST: SVALBARD / GOA</span>
+                  <span>ROADMAP: EARTH / LUNAR / MARTIAN</span>
                   <span className="hero-img-badge">
                     <span className="hero-status-dot sm" />
-                    ONLINE
+                    IN DEVELOPMENT
                   </span>
                 </div>
               </div>
@@ -334,18 +330,17 @@ export default function App() {
               <div className="lab-intro-meta">
                 <span className="meta-key">FOUNDED</span><span className="meta-val">2024</span>
                 <span className="meta-key">BASE</span><span className="meta-val">INDIA</span>
-                <span className="meta-key">FOCUS</span><span className="meta-val">DEEP TECH</span>
+                <span className="meta-key">FOCUS</span><span className="meta-val">SPACE ROBOTICS</span>
               </div>
             </div>
             <div>
               <p className="lab-intro-statement">
-                We build systems that move, perceive, and act. Not demos. Actual hardware
-                that flies, drives, and navigates uncontrolled environments.
+                We are building robots to prepare the places people may one day live, work, and do research.
+                Our first applications are remote and hazardous operations on Earth.
               </p>
               <p className="lab-intro-sub">
-                AxeomLabs works end-to-end: from the physics research that informs the
-                design, to the firmware that runs on the chip, to the field test that tells
-                us whether it actually works.
+                Our roadmap moves from research and core development through prototype integration
+                and validation, toward robots that can help prepare lunar and Martian outposts.
               </p>
             </div>
           </div>
@@ -432,7 +427,7 @@ export default function App() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════════
-          04 THE STACK — how we build
+          04 THE STACK - how we build
           ═══════════════════════════════════════════════════════════════ */}
       <section id="the-stack" aria-label="How we build" style={{ background: 'var(--bg-secondary)' }}>
         <div className="container">
@@ -442,8 +437,8 @@ export default function App() {
               <h2 style={{ marginTop: 8 }}>How we build.</h2>
             </div>
             <p className="stack-intro-right reveal" style={{ maxWidth: '40ch', color: 'var(--on-bg-dim)', fontSize: 14, lineHeight: 1.7 }}>
-              We work end-to-end. From the first physics calculation to the last field test.
-              Every stage feeds the next. Nothing gets handed off to a different team.
+              The roadmap moves from research and core development through prototype integration
+              and validation, with each phase preparing the systems for more demanding environments.
             </p>
           </div>
 
@@ -465,7 +460,7 @@ export default function App() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════════
-          05 CAPABILITIES — interactive
+          05 CAPABILITIES - interactive
           ═══════════════════════════════════════════════════════════════ */}
       <section id="capabilities" aria-label="Core capabilities">
         <div className="container">
@@ -520,7 +515,7 @@ export default function App() {
               <h2 style={{ marginTop: 8 }}>What's in the lab.</h2>
             </div>
             <span className="section-counter reveal" style={{ alignSelf: 'flex-end', paddingBottom: 4 }}>
-              Last updated · Aug 2026
+              ROADMAP: EARTH / LUNAR / MARTIAN
             </span>
           </div>
 
@@ -530,7 +525,7 @@ export default function App() {
                 <div className="lab-group-header">
                   <span className="lab-group-dot" style={{ background: group.color }} aria-hidden="true" />
                   <span className="lab-group-label" style={{ color: group.color }}>{group.group}</span>
-                  <span className="lab-group-count">{group.items.length} systems</span>
+                  <span className="lab-group-count">{group.items.length} focus areas</span>
                 </div>
                 <ul className="lab-group-items">
                   {group.items.map(item => (
@@ -551,7 +546,7 @@ export default function App() {
           <div className="section-header reveal">
             <div>
               <div className="section-label">FOUNDERS</div>
-              <h2 style={{ marginTop: 8 }}>Built by people<br />who like building things.</h2>
+              <h2 style={{ marginTop: 8 }}>Built for work<br />beyond the frontier.</h2>
             </div>
           </div>
 
@@ -587,7 +582,7 @@ export default function App() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════════
-          08 CTA — Have a hard problem?
+          08 CTA - Have a hard problem?
           ═══════════════════════════════════════════════════════════════ */}
       <section id="cta" aria-label="Start a project" style={{ background: 'var(--bg-secondary)' }}>
         <div className="container">

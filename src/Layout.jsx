@@ -10,24 +10,26 @@ gsap.registerPlugin(ScrollTrigger);
 /* ------------------------------------------------
    Grain overlay (Lightweight GPU-composited tile)
 ------------------------------------------------ */
-function GrainOverlay() {
-  const [dataUrl, setDataUrl] = useState('');
+function generateGrainDataUrl() {
+  if (typeof document === 'undefined') return '';
+  const canvas = document.createElement('canvas');
+  canvas.width = 128;
+  canvas.height = 128;
+  const ctx = canvas.getContext('2d');
+  if (!ctx) return '';
+  const img = ctx.createImageData(128, 128);
+  const d = img.data;
+  for (let i = 0; i < d.length; i += 4) {
+    const v = (Math.random() * 255) | 0;
+    d[i] = d[i + 1] = d[i + 2] = v;
+    d[i + 3] = 255;
+  }
+  ctx.putImageData(img, 0, 0);
+  return canvas.toDataURL();
+}
 
-  useEffect(() => {
-    const canvas = document.createElement('canvas');
-    canvas.width = 128;
-    canvas.height = 128;
-    const ctx = canvas.getContext('2d');
-    const img = ctx.createImageData(128, 128);
-    const d = img.data;
-    for (let i = 0; i < d.length; i += 4) {
-      const v = (Math.random() * 255) | 0;
-      d[i] = d[i + 1] = d[i + 2] = v;
-      d[i + 3] = 255;
-    }
-    ctx.putImageData(img, 0, 0);
-    setDataUrl(canvas.toDataURL());
-  }, []);
+function GrainOverlay() {
+  const [dataUrl] = useState(generateGrainDataUrl);
 
   if (!dataUrl) return null;
 
@@ -107,18 +109,15 @@ function ScrambleLogo({ text }) {
    Telemetry ticker
 ------------------------------------------------ */
 const TICKER_ITEMS = [
-  { key: 'SYS.STATUS', val: 'NOMINAL' },
-  { key: 'UPTIME', val: '99.9%' },
-  { key: 'DRONES', val: '12 BUILT' },
-  { key: 'ROBOTS', val: '5 ACTIVE' },
-  { key: 'DIVISION', val: 'R+D / HARDWARE / SOFTWARE' },
+  { key: 'MISSION', val: 'SPACE ROBOTICS' },
+  { key: 'WORK', val: 'REMOTE OPERATIONS' },
+  { key: 'FOCUS', val: 'EXTREME ENVIRONMENTS' },
+  { key: 'ROADMAP', val: 'EARTH / LUNAR / MARS' },
   { key: 'BASE', val: 'INDIA' },
-  { key: 'BUILD', val: 'STABLE' },
-  { key: 'PROJECTS', val: '27 SHIPPED' },
 ];
 
 function Ticker() {
-  const items = [...TICKER_ITEMS, ...TICKER_ITEMS];
+  const items = [...TICKER_ITEMS, ...TICKER_ITEMS, ...TICKER_ITEMS, ...TICKER_ITEMS];
   return (
     <div className="nav-ticker" aria-hidden="true">
       <div className="nav-ticker-track">
@@ -148,10 +147,6 @@ const NAV_LINKS = [
    Mobile nav overlay
 ------------------------------------------------ */
 function MobileNav({ open, onClose }) {
-  const location = useLocation();
-
-  useEffect(() => { onClose(); }, [location.pathname]);
-
   return (
     <>
       {/* Backdrop */}
@@ -206,7 +201,7 @@ function MobileNav({ open, onClose }) {
           <a href="mailto:founder@axeomlabs.in" className="mobile-nav-email">
             founder@axeomlabs.in
           </a>
-          <span className="mobile-nav-status">SYS.STATUS: NOMINAL</span>
+          <span className="mobile-nav-status">FOCUS: SPACE ROBOTICS</span>
         </div>
       </div>
     </>
@@ -223,6 +218,11 @@ function Layout() {
   const lenisRef = useRef(null);
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [prevPath, setPrevPath] = useState(location.pathname);
+  if (prevPath !== location.pathname) {
+    setPrevPath(location.pathname);
+    setMenuOpen(false);
+  }
 
   // Device detection for zero-collision capability separation
   useEffect(() => {
@@ -254,7 +254,6 @@ function Layout() {
     if (lenisRef.current) lenisRef.current.scrollTo(0, { immediate: true });
     ScrollTrigger.getAll().forEach(t => t.kill());
     ScrollTrigger.refresh();
-    setMenuOpen(false);
 
     const obs = new IntersectionObserver((entries) => {
       entries.forEach(e => {
@@ -319,9 +318,9 @@ function Layout() {
           </nav>
 
           {/* Lab status (desktop) */}
-          <div className="nav-lab-status" aria-label="Lab status: systems online">
+          <div className="nav-lab-status" aria-label="AxeomLabs space robotics focus">
             <span className="nav-status-dot" aria-hidden="true" />
-            <span>SYSTEMS ONLINE</span>
+            <span>SPACE ROBOTICS</span>
           </div>
 
           {/* Hamburger (mobile only) */}
@@ -368,7 +367,7 @@ function Layout() {
           <div className="footer-brand-col">
             <span className="footer-brand">AXEOMLABS<sup className="logo-tm" aria-hidden="true">TM</sup></span>
             <p className="footer-tagline">
-              Autonomous systems. Embedded intelligence.<br />Built from India for what comes next.
+              Robotics for extreme environments.<br />Built in India for Earth and future space operations.
             </p>
             <a href="mailto:founder@axeomlabs.in" className="footer-email">
               founder@axeomlabs.in
@@ -382,9 +381,9 @@ function Layout() {
 
           <nav className="footer-nav-col" aria-label="Work">
             <div className="footer-nav-title">WORK</div>
-            <Link to="/robotics" className="footer-nav-link">Drones</Link>
+            <Link to="/robotics" className="footer-nav-link">Space Robotics</Link>
             <Link to="/robotics" className="footer-nav-link">Robotics</Link>
-            <Link to="/systems" className="footer-nav-link">Software</Link>
+            <Link to="/systems" className="footer-nav-link">Systems Engineering</Link>
             <Link to="/systems" className="footer-nav-link">Hardware</Link>
           </nav>
 
@@ -409,7 +408,11 @@ function Layout() {
             <button
               className="footer-cookie-btn"
               onClick={() => {
-                try { localStorage.removeItem('axeom_cookie_consent'); } catch {}
+                try {
+                  localStorage.removeItem('axeom_cookie_consent');
+                } catch {
+                  /* ignore storage errors */
+                }
                 window.location.reload();
               }}
             >

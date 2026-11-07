@@ -9,7 +9,7 @@ function LegalPage({ title, label, children }) {
       <section className="page-hero" style={{ minHeight: 'auto' }} aria-label={title}>
         <div className="page-hero-bg" aria-hidden="true" />
         <div style={{ maxWidth: 'var(--container-max)', margin: '0 auto', padding: 'calc(80px + var(--margin)) var(--margin) var(--margin)', width: '100%' }}>
-          <div className="page-hero-status">[ LEGAL DOCUMENTATION ]</div>
+          <div className="page-hero-status">[ {label || 'LEGAL DOCUMENTATION'} ]</div>
           <h1 style={{ marginTop: 24, fontSize: 'clamp(28px, 4vw, 52px)' }}>{title}</h1>
           <p className="page-hero-desc" style={{ marginTop: 12 }}>Effective date: {EFFECTIVE_DATE}</p>
         </div>

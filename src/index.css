@@ -1,5 +1,5 @@
 /* ================================================
-   CSS CUSTOM PROPERTIES — AXEOM PROTOCOL v2
+   CSS CUSTOM PROPERTIES - AXEOM PROTOCOL v2
    ================================================ */
 /* Fonts loaded via <link> in index.html for performance (no render-blocking @import) */
 
@@ -13,23 +13,23 @@
 }
 
 :root {
-  /* Core Surface — pure neutral blacks */
+  /* Core Surface - pure neutral blacks */
   --bg:              #0a0a0a;
   --bg-secondary:    #0f0f0f;
   --bg-card:         #151515;
   --bg-glass:        rgba(10, 10, 10, 0.82);
 
-  /* Typography — clean near-white */
+  /* Typography - clean near-white */
   --on-bg:           #e4e4e4;
   --on-bg-dim:       #707070;
   --on-bg-muted:     #363636;
 
-  /* Accent — muted steel blue. Reads almost grey, feels colored */
+  /* Accent - muted steel blue. Reads almost grey, feels colored */
   --accent:          #7d9db5;
   --accent-dim:      rgba(125, 157, 181, 0.11);
   --accent-glow:     rgba(125, 157, 181, 0.20);
 
-  /* Borders — pure neutral */
+  /* Borders - pure neutral */
   --border:          rgba(255, 255, 255, 0.07);
   --border-bright:   rgba(255, 255, 255, 0.13);
   --border-accent:   rgba(125, 157, 181, 0.30);
@@ -342,6 +342,8 @@ section {
 .nav-ticker-track {
   display: flex;
   gap: 0;
+  flex: 0 0 max-content;
+  width: max-content;
   /* duplicate content for seamless loop */
   animation: ticker-scroll 40s linear infinite;
   white-space: nowrap;
@@ -350,26 +352,27 @@ section {
 .nav-ticker:hover .nav-ticker-track { animation-play-state: paused; }
 @keyframes ticker-scroll {
   0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  100% { transform: translateX(-25%); }
 }
 .nav-ticker-item {
   display: inline-flex;
+  flex: 0 0 auto;
   align-items: center;
   gap: 6px;
-  padding: 0 32px;
+  padding: 0 24px;
   font-family: var(--font-mono);
-  font-size: 8.5px;
-  letter-spacing: 0.1em;
-  color: var(--on-bg-muted);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--on-bg-dim);
   text-transform: uppercase;
 }
-.nav-ticker-item .t-key { color: var(--on-bg-dim); }
+.nav-ticker-item .t-key { color: var(--on-bg); }
 .nav-ticker-item .t-val { color: var(--accent); }
 .nav-ticker-sep {
   display: inline-flex;
   padding: 0 8px;
-  color: var(--on-bg-muted);
-  opacity: 0.4;
+  color: var(--on-bg-dim);
+  opacity: 0.75;
   font-size: 8px;
 }
 
@@ -2532,7 +2535,7 @@ a.contact-details-link:hover {
 
 
 /* ================================================
-   404 — NOT FOUND PAGE
+   404 - NOT FOUND PAGE
    ================================================ */
 .not-found {
   display: flex;
@@ -2572,7 +2575,7 @@ a.contact-details-link:hover {
 }
 
 /* ================================================
-   REDUCED MOTION — CSS cross-fade fallback
+   REDUCED MOTION - CSS cross-fade fallback
    When user prefers reduced motion, skip all CSS
    transitions/animations and make reveals instant.
    GSAP is gated separately in JS via useReducedMotion.
@@ -3546,7 +3549,7 @@ a.contact-details-link:hover {
 }
 
 /* ====================================================
-   SELECTED WORK — large feature card + pair
+   SELECTED WORK - large feature card + pair
    ==================================================== */
 
 #selected-work {
@@ -4063,7 +4066,7 @@ a.contact-details-link:hover {
 .founder-brief-link:hover { color: var(--on-bg); }
 
 /* ====================================================
-   CTA — HAVE A HARD PROBLEM?
+   CTA - HAVE A HARD PROBLEM?
    ==================================================== */
 
 #cta {
@@ -4188,7 +4191,7 @@ a.contact-details-link:hover {
 }
 
 /* ====================================================
-   REDUCED MOTION — new sections
+   REDUCED MOTION - new sections
    ==================================================== */
 @media (prefers-reduced-motion: reduce) {
   .hero-status-dot,
@@ -4202,7 +4205,7 @@ a.contact-details-link:hover {
 }
 
 /* ====================================================
-   RESEARCH PAGE — stacked image pair
+   RESEARCH PAGE - stacked image pair
    ==================================================== */
 
 .research-img-stack {
@@ -4228,7 +4231,7 @@ a.contact-details-link:hover {
 }
 
 /* ====================================================
-   SYSTEMS PAGE — OS card image strip
+   SYSTEMS PAGE - OS card image strip
    ==================================================== */
 
 .os-card-img-strip {

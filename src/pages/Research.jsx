@@ -11,53 +11,53 @@ gsap.registerPlugin(ScrollTrigger);
 const techResearch = [
   {
     num: '01',
-    label: 'AUTONOMOUS NAVIGATION',
-    title: 'SLAM & Sensor Fusion',
-    desc: 'We fuse LiDAR, IMU, and stereo cameras to build maps and locate robots within them at the same time. The goal is reliable navigation in places where GPS is unavailable or untrustworthy.',
-    stat: 'Sub-10cm positional accuracy',
+    label: 'CORE DEVELOPMENT',
+    title: 'Task-Capable Robotics',
+    desc: 'Developing robotic platforms and autonomous capabilities for precise work in hazardous and remote environments.',
+    stat: 'PHASE 02',
   },
   {
     num: '02',
-    label: 'COMPUTER VISION',
-    title: 'Edge Perception Systems',
-    desc: 'Object detection, depth estimation, and scene understanding that runs directly on embedded processors. No cloud, no latency dependency. The camera sees, the chip decides.',
-    stat: '<15ms inference on ARM Cortex-A',
+    label: 'PROTOTYPE & INTEGRATION',
+    title: 'Integrated Systems',
+    desc: 'Bringing robotic platforms and autonomous capabilities together as dependable, task-ready systems.',
+    stat: 'PHASE 03',
   },
   {
     num: '03',
-    label: 'MATERIALS SCIENCE',
-    title: 'Structural Hardware Research',
-    desc: 'We work with carbon fibre composites, lattice-infill printed structures, and geometry borrowed from nature to make airframes and chassis that are lighter without being weaker.',
-    stat: '40% weight reduction vs. aluminium baseline',
+    label: 'TESTING & VALIDATION',
+    title: 'Extreme Environment Readiness',
+    desc: 'Validating system performance in simulated extreme environments before pursuing flight qualification and mission partnerships.',
+    stat: 'PHASE 04',
   },
   {
     num: '04',
-    label: 'EMBEDDED AI',
-    title: 'On-Device Intelligence',
-    desc: 'Getting large models to run on tiny chips. Quantization, pruning, knowledge distillation. We want AI that fits inside a microcontroller with under 512KB of RAM.',
-    stat: 'INT8 inference on Cortex-M7',
+    label: 'SPACE DEPLOYMENT',
+    title: 'Outpost Preparation',
+    desc: 'Long-term, robotic systems could help prepare and maintain the infrastructure needed for lunar and Martian exploration.',
+    stat: 'PHASE 05',
   },
 ];
 
 const scienceResearch = [
-  { num: '01', label: 'ASTROPHYSICS & ASTRONOMY', desc: 'How things move and radiate at scales humans will never directly touch. We study signal propagation, cosmic phenomena, and deep-space mechanics because space is where some of our hardware is headed.' },
-  { num: '02', label: 'PHYSICS', desc: 'The foundation. Mechanics, electrodynamics, quantum systems. We go back to physics when an engineering problem stops making sense, because the answer is almost always in there.' },
-  { num: '03', label: 'CHEMISTRY', desc: 'New compounds, better batteries, smarter material coatings. The physical world is made of chemistry and our hardware lives in it.' },
-  { num: '04', label: 'OCEANOGRAPHY', desc: 'Pressure at depth, sonar through seawater, marine ecosystems. Understanding the ocean is necessary if you are building robots that go into it.' },
-  { num: '05', label: 'EARTH & ENVIRONMENTAL', desc: 'Atmospheric data, geological sensing, environmental monitoring. Our autonomous systems operate in the real world and need to understand it.' },
-  { num: '06', label: 'BIOLOGICAL RESEARCH', desc: 'Animals have solved locomotion problems we are still working on. We study how they move, adapt, and sense so we can borrow those solutions for robotics.' },
-  { num: '07', label: 'ROCKETS & SPACE PRODUCTION', desc: 'Propulsion, launch vehicle design, orbital payload integration. This is a long-term direction and we are building toward it deliberately.' },
-  { num: '08', label: 'POWER & ENERGY', desc: 'Dense storage, efficient generation, smart power management. Autonomous systems run out of energy at the worst times. We are trying to fix that.' },
-  { num: '09', label: 'INTERDISCIPLINARY PRODUCTION', desc: 'Most interesting problems sit between fields. This is where we put work that does not fit neatly into one category but still ends up as something real.' },
-  { num: '10', label: 'CREATIVE PRODUCTION', desc: 'Science without communication is just notes. We put effort into how we present our work, through film, interactive media, and design.' },
+  { num: '01', label: 'INFRASTRUCTURE MAINTENANCE', desc: 'Inspecting and repairing essential systems in harsh and remote environments.' },
+  { num: '02', label: 'MATERIAL HANDLING', desc: 'Transporting and positioning heavy resources safely where human access is limited.' },
+  { num: '03', label: 'AUTONOMOUS CONSTRUCTION', desc: 'Building physical structures without requiring people to be present at the worksite.' },
+  { num: '04', label: 'REMOTE INDUSTRIAL OPERATIONS', desc: 'Near-term applications for robotic systems in hazardous and remote operations on Earth.' },
+  { num: '05', label: 'EXTREME ENVIRONMENTS', desc: 'Engineering robotic systems for precision, performance, and dependable operation in demanding conditions.' },
+  { num: '06', label: 'RESEARCH & DEVELOPMENT', desc: 'Establishing the technical foundation and system architecture for future robotic platforms.' },
+  { num: '07', label: 'CORE DEVELOPMENT', desc: 'Developing the robotic platforms and autonomous capabilities required for the mission.' },
+  { num: '08', label: 'PROTOTYPE INTEGRATION', desc: 'Building and demonstrating integrated robotic systems.' },
+  { num: '09', label: 'TESTING & VALIDATION', desc: 'Evaluating performance in simulated extreme environments.' },
+  { num: '10', label: 'LUNAR & MARTIAN OUTPOSTS', desc: 'Long-term preparation and maintenance of infrastructure for lunar and Martian exploration.' },
 ];
 
 function Research() {
   const container = useRef(null);
 
   useSEO(
-    'Applied Research | AxeomLabs',
-    'AxeomLabs conducts applied research spanning astrophysics, oceanography, chemistry, biology, autonomous navigation, computer vision, embedded AI, and materials science.',
+    'Space Robotics Research | AxeomLabs',
+    'AxeomLabs develops task-capable robotic systems for infrastructure maintenance, material handling, and autonomous construction in extreme environments, with a long-term focus on lunar and Martian outposts.',
     'https://www.axeomlabs.in/research'
   );
 
@@ -111,25 +111,25 @@ function Research() {
 
           <div className="page-hero-layout">
             <div className="page-hero-left">
-              <div className="page-hero-status">[ DEPT 04 : RESEARCH ]</div>
-              <h1>GLOBAL<br />IMPACT.</h1>
+              <div className="page-hero-status">[ RESEARCH: MISSION SYSTEMS ]</div>
+              <h1>BUILDING FOR<br />THE FRONTIER.</h1>
               <p className="page-hero-desc">
-                We work across astrophysics, chemistry, oceanography, and biology alongside
-                robotics and AI. The science informs the hardware. The hardware tests the science.
+                Applied engineering for robotic work in harsh and remote environments. Our roadmap
+                moves from Earth operations toward systems for future lunar and Martian outposts.
               </p>
             </div>
             <div className="page-hero-right">
               <div className="page-hero-img-wrap">
                 <img
-                  src="https://images.unsplash.com/photo-1614730321146-b6fa6a46bcb4?w=1200&q=85"
-                  alt="Earth from orbit, representing AxeomLabs global research in astrophysics and space"
+                  src="/assets/space/moon-surface.jpg"
+                  alt="Craters along the Moon's shadowed surface, representing the lunar horizon of the roadmap."
                   className="page-hero-image"
                   width="1200"
                   height="800"
                 />
                 <div className="page-hero-meta">
-                  <span>DOMAINS: 10 ACTIVE</span>
-                  <span>SYS STATE: STABLE</span>
+                  <span>FOCUS: EXTREME ENVIRONMENTS</span>
+                  <span>HORIZON: EARTH / LUNAR / MARTIAN</span>
                 </div>
               </div>
             </div>
@@ -143,8 +143,8 @@ function Research() {
           <div className="research-header reveal">
             <div className="section-label">01 // APPLIED TECHNOLOGY RESEARCH</div>
             <p style={{ marginTop: 12, color: 'var(--on-bg-dim)', fontSize: 14, maxWidth: '60ch' }}>
-              This is research that goes straight into hardware. Algorithms, materials, and control
-              systems that end up in our drones, robots, and embedded products.
+              Research and engineering that move toward dependable, task-capable robotic systems
+              for infrastructure, material handling, and autonomous construction.
             </p>
           </div>
 
@@ -166,15 +166,14 @@ function Research() {
         </div>
       </section>
 
-      {/* SCIENTIFIC RESEARCH DOMAINS */}
-      <section className="page-section" style={{ background: 'var(--bg-secondary)' }} aria-label="Scientific Research Domains">
+      {/* APPLICATIONS AND DEVELOPMENT ROADMAP */}
+      <section className="page-section" style={{ background: 'var(--bg-secondary)' }} aria-label="Applications and development roadmap">
         <div className="container">
           <div className="research-header reveal">
-            <div className="section-label">02 // SCIENTIFIC RESEARCH DOMAINS</div>
+            <div className="section-label">02 // APPLICATIONS & DEVELOPMENT ROADMAP</div>
             <p style={{ marginTop: 12, color: 'var(--on-bg-dim)', fontSize: 14, maxWidth: '60ch' }}>
-              We are genuinely curious about the world. Physics, chemistry, biology, the cosmos.
-              We study these things because breakthroughs in science eventually become possible in engineering,
-              and we want to be ready when they do.
+              Our near-term focus is remote and hazardous work on Earth. The long-term direction is
+              robotic preparation and maintenance of lunar and Martian outposts.
             </p>
           </div>
 
@@ -218,40 +217,39 @@ function Research() {
           <div className="culture-layout">
             <div className="culture-left reveal-left">
               <div className="section-label">03 // OUR APPROACH</div>
-              <h2 style={{ marginTop: 16, color: 'var(--on-bg)' }}>Hardware-First. Field-Validated.</h2>
+              <h2 style={{ marginTop: 16, color: 'var(--on-bg)' }}>Integrated. Built for Extremes.</h2>
               <p>
-                Every research area we work in has a path to something real. Sometimes that is a
-                product. Sometimes it is a fundamental capability that makes a future product possible.
-                Either way, we don't do research for its own sake.
+                We are working toward robotic systems that can perform practical tasks in environments
+                where access is difficult or hazardous, starting with infrastructure and material handling.
               </p>
               <p style={{ marginTop: 16 }}>
-                We test in the field. Open terrain, ocean conditions, actual airspace.
-                If it only works in a controlled environment, it doesn't count.
+                The roadmap includes prototype integration and validation in simulated extreme environments,
+                followed by flight qualification and mission partnerships.
               </p>
               <Link to="/research" className="btn-primary" style={{ marginTop: 32 }}>
-                EXPLORE AI RESEARCH <span aria-hidden="true">→</span>
+                EXPLORE MISSION SYSTEMS <span aria-hidden="true">→</span>
               </Link>
             </div>
             <div className="reveal">
               <div className="research-img-stack">
                 <img
-                  src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=700&q=85"
-                  alt="Engineer working on robotics hardware in a lab environment"
+                  src="/assets/space/industrial-robot-arm.jpg"
+                  alt="Industrial robotic arm on a manufacturing line."
                   className="research-stack-img research-stack-top"
                   loading="lazy"
                   width="700"
                   height="467"
                 />
                 <img
-                  src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=700&q=85"
-                  alt="Close up of a circuit board and electronic components"
+                  src="/assets/space/robot-control-board.jpg"
+                  alt="Microchip and components on a control board."
                   className="research-stack-img research-stack-bot"
                   loading="lazy"
                   width="700"
                   height="467"
                 />
               </div>
-              <div className="culture-meta">[ FIELD TESTING : ACTIVE ]</div>
+              <div className="culture-meta">[ TESTING &amp; VALIDATION : ROADMAP ]</div>
             </div>
           </div>
         </div>

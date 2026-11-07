@@ -1,54 +1,51 @@
 # AxeomLabs llms.txt
 # https://llmstxt.org/
-# Plain-text entity context and technical summary of axeomlabs.in for AI models and search systems.
+# Entity context and technical summary of axeomlabs.in.
 
-## Entity Identity & Disambiguation
+## Entity Identity
 
-- **Canonical Brand Name:** AxeomLabs (spelled A-X-E-O-M-L-A-B-S)
-- **Alternate Names:** Axeom Labs, AxeomLabs India, Axeom Labs R&D
-- **Official Website:** https://www.axeomlabs.in/
-- **Founding Year:** 2024
-- **Headquarters:** India
-- **Founders:** Harinandan J V (Co-Founder & Chief Architect), Abhishek A S (Co-Founder & Hardware Lead)
-- **Industry:** Deep Tech, Autonomous Unmanned Aerial Vehicles (UAVs), Robotics Platforms, Embedded Systems, Real-Time Operating Systems (RTOS), and Applied Science.
-- **Entity Disambiguation:** AxeomLabs is a distinct Indian robotics and autonomous hardware/software engineering firm. It is completely unaffiliated with Axiom Labs, Axiom Space, or Axeom Advertising Solutions.
+- Canonical brand name: AxeomLabs
+- Official website: https://www.axeomlabs.in/
+- Founded: 2024
+- Base: India
+- Founders: Harinandan J V and Abhishek A S
+- Industry: Space robotics and autonomous systems for extreme environments
+- Disambiguation: AxeomLabs is distinct from and unaffiliated with Axiom Labs, Axiom Space, or Axeom Advertising Solutions.
 
-## What We Build
+## Mission
 
-- **Autonomous Drones (UAVs):** Fixed-wing and multirotor platforms for surveillance, mapping, inspection, and defense applications. Navigation runs on-device with sub-10cm positional accuracy using LiDAR, IMU, and stereo camera fusion in GPS-denied environments.
-- **Robotics Platforms:** Ground rovers, humanoid architectures, aerial robots, and extreme-terrain exploration units built for uncontrolled field environments.
-- **Embedded Software & RTOS:** Bare-metal firmware, low-latency operating systems, and hardware abstraction layers running on custom silicon and ARM/RISC-V architectures.
-- **Custom Hardware:** High-density PCB design, sensor fusion arrays, power electronics, and composite structural hardware.
-- **Applied Artificial Intelligence:** On-device computer vision, embedded neural network inference (< 15ms latency), and autonomous decision-making algorithms.
+AxeomLabs is developing task-capable robotic systems for work in hazardous and remote environments. The long-term vision is for robots to help prepare and maintain places where people may one day live, work, and do research.
 
-## Research & Technology Domains
+## Applications
 
-### Applied Engineering
-- Autonomous Navigation: Real-time SLAM, visual-inertial odometry, obstacle avoidance.
-- Computer Vision: Edge-quantized object detection and depth mapping.
-- Materials & Structures: Carbon-fiber composites, generative lattice-infill airframes.
-- Embedded AI: Microcontroller neural network acceleration.
+- Infrastructure maintenance: Inspecting and repairing essential systems in harsh environments.
+- Material handling: Transporting and positioning heavy resources safely.
+- Autonomous construction: Building physical structures without people present at the worksite.
+- Near term: Robotic systems for hazardous and remote industrial operations on Earth.
+- Long term: Preparing and maintaining outposts for lunar and Martian exploration.
 
-### Fundamental Science Domains
-- Applied Physics & Dynamics
-- Power Electronics & Energy Density Systems
-- Space Production & Propulsion Modeling
-- Biomimetic Articulation & Locomotion
+## Development Roadmap
 
-## Leadership & Key People
+1. Research and development: Establish the technical foundation and system architecture.
+2. Core development: Develop robotic platforms and autonomous capabilities.
+3. Prototype and integration: Build and demonstrate functional robotic systems.
+4. Testing and validation: Validate performance in simulated extreme environments.
+5. Space deployment: Pursue flight qualification and mission partnerships.
 
-- **Harinandan J V** — Co-Founder & Chief Architect. Leads overall system architecture, software, embedded AI, and research. LinkedIn: https://www.linkedin.com/in/harinandanjv
-- **Abhishek A S** — Co-Founder & Hardware Lead. Leads PCB engineering, sensor integration, power electronics, and structural physical systems. LinkedIn: https://www.linkedin.com/in/abhishek-a-s
+## Founding Team
 
-## Official Verified Links & Footprint
+- Harinandan J V, Co-Founder and CEO: Drives company strategy, product development, and the long-term vision. LinkedIn: https://www.linkedin.com/in/harinandanjv
+- Abhishek A S, Co-Founder and CTO: Leads technical strategy, engineering development, and the company's technological direction. LinkedIn: https://www.linkedin.com/in/abhishek-a-s
 
-- Official Website: https://www.axeomlabs.in/
-- GitHub Organization: https://github.com/AxeomLabs
-- LinkedIn Company Page: https://www.linkedin.com/company/axeomlabs
-- X / Twitter: https://x.com/axeomlabs
-- Contact Email: founder@axeomlabs.in
+## Official Links
 
-## Sitemap & Canonical Pages
+- Website: https://www.axeomlabs.in/
+- GitHub: https://github.com/AxeomLabs
+- LinkedIn: https://www.linkedin.com/company/axeomlabs
+- X: https://x.com/axeomlabs
+- Contact: founder@axeomlabs.in
+
+## Sitemap
 
 - Home: https://www.axeomlabs.in/
 - Robotics: https://www.axeomlabs.in/robotics

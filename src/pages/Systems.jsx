@@ -9,25 +9,25 @@ import useReducedMotion from '../hooks/useReducedMotion';
 gsap.registerPlugin(ScrollTrigger);
 
 const domains = [
-  { icon: '□', label: 'Web Systems', desc: 'High-throughput distributed interfaces, teleoperation dashboards, and real-time 3D visualization layers.', code: 'REACT / METAL / ROS' },
-  { icon: '□', label: 'Native Desktop', desc: 'High-performance calibration tools, local diagnostics, and heavy-compute simulation environments.', code: 'RUST / C++ / QT' },
-  { icon: '□', label: 'Mobile Field Ops', desc: 'Ruggedized tablet applications for on-site deployment, pairing, and immediate manual override control.', code: 'SWIFT / KOTLIN' },
-  { icon: '□', label: 'Enterprise Cloud', desc: 'Secure data ingestion pipelines, global fleet telemetry and automated machine learning training clusters.', code: 'GO / K8S / AWS' },
+  { icon: '□', label: 'Robotics Control', desc: 'Control and embedded software for dependable, task-capable robotic platforms.', code: 'FIRMWARE / RTOS' },
+  { icon: '□', label: 'Systems Integration', desc: 'Bringing robotic platforms, sensing, and autonomous capabilities into one system.', code: 'HARDWARE / SOFTWARE' },
+  { icon: '□', label: 'Remote Operations', desc: 'Operational interfaces and telemetry for work at hazardous and remote sites.', code: 'FIELD OPS / TELEMETRY' },
+  { icon: '□', label: 'Testing & Validation', desc: 'Validating integrated system performance in simulated extreme environments.', code: 'PROTOTYPE / TEST' },
 ];
 
 const osTable = [
-  { env: 'RTOS (Axeom RT)', primary: 'Motor Control, Safety', chars: 'Strict determinism, hard real-time guarantees' },
-  { env: 'Embedded Linux', primary: 'Vision Processing, Comms', chars: 'Preempt-RT patched, init-time ecosystem' },
-  { env: 'Single User (Bare Metal)', primary: 'Sensors, Microcontrollers', chars: 'No context switching, absolute minimal overhead' },
-  { env: 'Desktop/Server OS', primary: 'Fleet Management, ML', chars: 'High throughput, scalable compute, containerized' },
+  { env: 'Core Development', primary: 'Robotic platforms and autonomy', chars: 'Develop the technical foundation and capabilities' },
+  { env: 'Prototype Integration', primary: 'Robotics and system integration', chars: 'Bring platforms and autonomous systems together' },
+  { env: 'Testing & Validation', primary: 'Simulated extreme environments', chars: 'Validate system performance before deployment' },
+  { env: 'Space Deployment', primary: 'Flight qualification and partnerships', chars: 'Long-term mission direction' },
 ];
 
 function Systems() {
   const container = useRef(null);
 
   useSEO(
-    'Systems and Software | AxeomLabs',
-    'AxeomLabs engineers embedded software, real-time operating systems, bare-metal firmware, and full-stack software platforms optimised for deterministic performance.',
+    'Autonomous Systems Engineering | AxeomLabs',
+    'AxeomLabs develops and integrates robotic platforms and autonomous capabilities for remote and extreme environments, with a long-term focus on space deployment.',
     'https://www.axeomlabs.in/systems'
   );
 
@@ -83,25 +83,25 @@ function Systems() {
 
           <div className="page-hero-layout">
             <div className="page-hero-left">
-              <div className="page-hero-status">[ DIVISION: OS + SYSTEMS ]</div>
-              <h1>SOFTWARE +<br />SYSTEMS</h1>
+              <div className="page-hero-status">[ DIVISION: SYSTEMS ENGINEERING ]</div>
+              <h1>ROBOTIC<br />SYSTEMS</h1>
               <p className="page-hero-desc">
-                Architecting the deterministic logic layers for autonomous operations. We build fault-tolerant
-                environments ranging from ultra-low-latency embedded RTOS to global-scale enterprise data pipelines.
+                Dependable robotics for extreme environments requires integrated platforms, control, and autonomous capabilities.
+                Our roadmap advances from core development through validation toward future space deployment.
               </p>
             </div>
             <div className="page-hero-right">
               <div className="page-hero-img-wrap">
                 <img
-                  src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=900&q=85"
-                  alt="Server rack and data centre infrastructure representing AxeomLabs systems engineering"
+                  src="/assets/space/robotic-arm-lab.jpg"
+                  alt="Industrial robotic arm in a laboratory setting, illustrating integrated robotics systems."
                   className="page-hero-image"
                   width="900"
                   height="600"
                 />
                 <div className="page-hero-meta">
-                  <span>DIVISION: SYSTEMS</span>
-                  <span>STATUS: ACTIVE</span>
+                  <span>DIVISION: ENGINEERING</span>
+                  <span>ROADMAP: DEVELOPMENT</span>
                 </div>
               </div>
             </div>
@@ -109,8 +109,8 @@ function Systems() {
         </div>
       </section>
 
-      {/* AXEOM OS */}
-      <section className="page-section" aria-label="Axeom OS">
+      {/* ROBOTICS CONTROL SYSTEMS */}
+      <section className="page-section" aria-label="Robotics control systems">
         <div className="container">
           <div className="section-header-row reveal">
             <div>
@@ -121,41 +121,40 @@ function Systems() {
           <div className="os-card reveal">
             <div className="os-card-layout">
               <div className="os-card-left">
-                <div className="os-badge">[ PROPRIETARY KERNEL ]</div>
+                <div className="os-badge">[ SYSTEMS ENGINEERING ]</div>
                 <h2 style={{ fontSize: 'clamp(28px, 4vw, 48px)', marginTop: 16, color: 'var(--on-bg)' }}>
-                  Axeom OS
+                  Robotics Control Systems
                 </h2>
                 <p style={{ marginTop: 16, color: 'var(--on-bg-dim)', lineHeight: 1.6, fontSize: 14 }}>
-                  A specialized real-time operating system engineered for absolute determinism.
-                  Built from bare metal to guarantee execution timing for critical industrial
-                  robotics and sensory fusion arrays.
+                  Dependable robotic systems combine physical platforms, sensing, control, and embedded computing.
+                  We are developing and integrating these layers for precision tasks in remote and extreme environments.
                 </p>
                 <Link to="/contact" className="btn-primary" style={{ marginTop: 24 }}>
                   GET IN TOUCH <span aria-hidden="true">→</span>
                 </Link>
                 <div style={{ marginTop: 24, fontFamily: 'var(--font-mono)', fontSize: 10, color: 'var(--on-bg-muted)', lineHeight: 1.8 }}>
-                  BUILD: v0.2.5 stable<br />ARCH: ARM64 / x86_64
+                  FOCUS: CONTROL / INTEGRATION<br />APPLICATION: REMOTE ROBOTICS
                 </div>
               </div>
               <div className="os-card-right">
                 <div className="os-spec-table">
-                  <div className="os-spec-header">SCHEDULING CFG <span aria-hidden="true">+</span></div>
-                  <div className="os-spec-row"><span>Type</span><span>Preemptive</span></div>
-                  <div className="os-spec-row"><span>Jitter</span><span>&lt; 1us</span></div>
-                  <div className="os-spec-row"><span>Certified</span><span>Under review</span></div>
+                  <div className="os-spec-header">SYSTEM DESIGN <span aria-hidden="true">+</span></div>
+                  <div className="os-spec-row"><span>Objective</span><span>Task-capable</span></div>
+                  <div className="os-spec-row"><span>Setting</span><span>Remote / hazardous</span></div>
+                  <div className="os-spec-row"><span>Approach</span><span>Integrated systems</span></div>
                 </div>
                 <div className="os-spec-table" style={{ marginTop: 16 }}>
-                  <div className="os-spec-header">MEMORY MANAGEMENT <span aria-hidden="true">+</span></div>
-                  <div className="os-spec-row"><span>Protection</span><span>Hardware MPU</span></div>
-                  <div className="os-spec-row"><span>Allocation</span><span>Static/Pool</span></div>
-                  <div className="os-spec-row"><span>Footprint</span><span>&lt;64KB Base</span></div>
+                  <div className="os-spec-header">MISSION HORIZON <span aria-hidden="true">+</span></div>
+                  <div className="os-spec-row"><span>Near term</span><span>Earth operations</span></div>
+                  <div className="os-spec-row"><span>Long term</span><span>Lunar outposts</span></div>
+                  <div className="os-spec-row"><span>Long term</span><span>Martian outposts</span></div>
                 </div>
               </div>
             </div>
             <div className="os-card-img-strip">
               <img
-                src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=1400&q=80"
-                alt="Printed circuit board and embedded microcontroller, representing Axeom OS hardware target"
+                src="/assets/space/robot-control-board.jpg"
+                alt="Microchip and components on a control board for embedded robotic systems."
                 loading="lazy"
                 width="1400"
                 height="400"
@@ -171,9 +170,9 @@ function Systems() {
         <div className="container">
           <div className="section-header-row reveal">
             <div>
-              <div className="section-label">02 // ENGINEERING DOMAINS</div>
+              <div className="section-label">02 // SYSTEMS DEVELOPMENT</div>
               <h3 style={{ marginTop: 8, fontWeight: 500, maxWidth: '24ch', color: 'var(--on-bg)' }}>
-                Full-stack hardware integration and interface layers.
+                Integrated robotic systems for demanding environments.
               </h3>
             </div>
             <Link to="/contact" className="btn-secondary">ENQUIRE <span aria-hidden="true">→</span></Link>
@@ -193,22 +192,22 @@ function Systems() {
       </section>
 
       {/* OS CLASSIFICATION TABLE */}
-      <section className="page-section" aria-label="OS Classification">
+      <section className="page-section" aria-label="Robotic systems roadmap">
         <div className="container">
-          <div className="section-label reveal">OPERATING SYSTEM CLASSIFICATION</div>
+          <div className="section-label reveal">ROBOTIC SYSTEMS ROADMAP</div>
           <div className="os-table reveal" style={{ marginTop: 24 }}>
             <div className="os-table-header">
-              <span>ENVIRONMENT</span>
-              <span>PRIMARY USE CASE</span>
-              <span>KEY CHARACTERISTICS</span>
-              <span>STATUS</span>
+                <span>PHASE</span>
+                <span>FOCUS</span>
+                <span>OBJECTIVE</span>
+                <span>HORIZON</span>
             </div>
             {osTable.map((row, i) => (
               <div key={i} className="os-table-row">
                 <span>{row.env}</span>
                 <span>{row.primary}</span>
                 <span>{row.chars}</span>
-                <span>ACTIVE</span>
+                <span>ROADMAP</span>
               </div>
             ))}
           </div>

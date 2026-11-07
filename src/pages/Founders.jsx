@@ -10,7 +10,7 @@ function Founders() {
 
   useSEO(
     'Our Founders | AxeomLabs',
-    'Harinandan J V and Abhishek A S started AxeomLabs to build machines that actually work in the real world. Drones, robots, hardware, software, all of it.',
+    'Harinandan J V and Abhishek A S are building AxeomLabs around task-capable robotics for remote and extreme environments, with a long-term focus on space operations.',
     'https://www.axeomlabs.in/founders'
   );
 
@@ -47,7 +47,7 @@ function Founders() {
           '@type': 'Person',
           '@id': 'https://www.axeomlabs.in/founders#harinandan',
           'name': 'Harinandan J V',
-          'jobTitle': 'Co-Founder',
+          'jobTitle': 'Co-Founder & CEO',
           'worksFor': { '@id': 'https://www.axeomlabs.in/#organization' },
           'url': 'https://www.linkedin.com/in/harinandanjv',
           'sameAs': ['https://www.linkedin.com/in/harinandanjv'],
@@ -57,7 +57,7 @@ function Founders() {
           '@type': 'Person',
           '@id': 'https://www.axeomlabs.in/founders#abhishek',
           'name': 'Abhishek A S',
-          'jobTitle': 'Co-Founder',
+          'jobTitle': 'Co-Founder & CTO',
           'worksFor': { '@id': 'https://www.axeomlabs.in/#organization' },
           'url': 'https://www.linkedin.com/in/abhishek-a-s',
           'sameAs': ['https://www.linkedin.com/in/abhishek-a-s'],
@@ -80,8 +80,8 @@ function Founders() {
               <div className="page-hero-status">[ ABOUT THE FOUNDERS ]</div>
               <h1>THE PEOPLE<br />BEHIND IT.</h1>
               <p className="page-hero-desc">
-                AxeomLabs was founded by two builders who refused to separate
-                hardware from software, or theory from practice.
+                Harinandan J V and Abhishek A S are building robotic systems for hazardous work on Earth
+                and future missions to prepare lunar and Martian outposts.
               </p>
             </div>
             <div className="page-hero-right">
@@ -101,16 +101,16 @@ function Founders() {
                       <div style={{ fontFamily: 'var(--font-mono)', fontSize: '12px', color: 'var(--on-bg)' }}>INDIA</div>
                     </div>
                     <div>
-                      <div style={{ fontFamily: 'var(--font-mono)', fontSize: '9px', color: 'var(--on-bg-muted)', marginBottom: '4px' }}>FOUNDING PHILOSOPHY</div>
-                      <div style={{ fontFamily: 'var(--font-mono)', fontSize: '12px', color: 'var(--on-bg)' }}>PHYSICAL-FIRST COGNITION</div>
+                      <div style={{ fontFamily: 'var(--font-mono)', fontSize: '9px', color: 'var(--on-bg-muted)', marginBottom: '4px' }}>MISSION</div>
+                      <div style={{ fontFamily: 'var(--font-mono)', fontSize: '12px', color: 'var(--on-bg)' }}>SPACE ROBOTICS</div>
                     </div>
                     <div>
-                      <div style={{ fontFamily: 'var(--font-mono)', fontSize: '9px', color: 'var(--on-bg-muted)', marginBottom: '4px' }}>FIELD STATUS</div>
-                      <div style={{ fontFamily: 'var(--font-mono)', fontSize: '12px', color: '#4ade80' }}>ACTIVE DEPLOYMENTS</div>
+                      <div style={{ fontFamily: 'var(--font-mono)', fontSize: '9px', color: 'var(--on-bg-muted)', marginBottom: '4px' }}>ROADMAP</div>
+                      <div style={{ fontFamily: 'var(--font-mono)', fontSize: '12px', color: 'var(--accent)' }}>EARTH TO OFF-WORLD</div>
                     </div>
                   </div>
                   <div style={{ borderTop: '1px solid var(--border)', paddingTop: '12px', fontFamily: 'var(--font-mono)', fontSize: '10px', color: 'var(--on-bg-dim)', lineHeight: 1.6 }}>
-                    "We build systems that operate in the physical world where failure is real and edge cases cannot be simulated away."
+                    "We want robots to prepare the places where people will one day live, work, and do research."
                   </div>
                 </div>
               </div>
@@ -134,9 +134,9 @@ function Founders() {
               <div className="founder-info">
                 <div className="founder-code">CO-FOUNDER</div>
                 <h2 className="founder-name">Harinandan J V</h2>
-                <p className="founder-role">Co-Founder</p>
+                <p className="founder-role">Co-Founder &amp; CEO</p>
                 <p className="founder-bio">
-                  Harinandan co-founded AxeomLabs and leads the overall architecture of our systems. He works across hardware design, software, and research, and is the one who usually figures out what the project actually needs to be.
+                  Harinandan drives company strategy, product development, and the long-term vision of AxeomLabs.
                 </p>
                 <div className="founder-links">
                   <a href="https://www.linkedin.com/in/harinandanjv" target="_blank" rel="noopener noreferrer" className="founder-link" aria-label="Harinandan J V LinkedIn profile">LinkedIn</a>
@@ -154,9 +154,9 @@ function Founders() {
               <div className="founder-info">
                 <div className="founder-code">CO-FOUNDER</div>
                 <h2 className="founder-name">Abhishek A S</h2>
-                <p className="founder-role">Co-Founder</p>
+                <p className="founder-role">Co-Founder &amp; CTO</p>
                 <p className="founder-bio">
-                  Abhishek co-founded AxeomLabs and focuses on the hardware side of things. PCB design, electronics, power systems, and making sure the physical parts of a system don't let the software down.
+                  Abhishek leads technical strategy, engineering development, and the company's technological direction.
                 </p>
                 <div className="founder-links">
                   <a href="https://www.linkedin.com/in/abhishek-a-s" target="_blank" rel="noopener noreferrer" className="founder-link" aria-label="Abhishek A S LinkedIn profile">LinkedIn</a>
@@ -177,13 +177,12 @@ function Founders() {
             </div>
             <div className="story-text-col">
               <p>
-                AxeomLabs started because we kept running into the same problem: software people don't
-                understand hardware, and hardware people don't understand software. We wanted to build a company
-                where those two things were never separate to begin with.
+                AxeomLabs is developing task-capable robotic systems for infrastructure maintenance,
+                material handling, and autonomous construction in extreme environments.
               </p>
               <p>
-                We build drones that think, robots that move through real terrain, and the software that ties
-                it all together. Everything we ship gets tested in the field, not just on a bench.
+                Near-term applications focus on hazardous and remote work on Earth. The long-term mission
+                is to help prepare and maintain outposts for lunar and Martian exploration.
               </p>
               <a href="/#cta" className="btn-primary" style={{ marginTop: 32, display: 'inline-flex', alignItems: 'center', gap: 8 }}>
                 WORK WITH US <span aria-hidden="true">→</span>

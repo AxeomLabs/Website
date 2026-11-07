@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════════════════════
-   AXEOMLABS — UNIVERSAL RESPONSIVE ENGINE (ANY ASPECT RATIO & DEVICE)
+   AXEOMLABS - UNIVERSAL RESPONSIVE ENGINE (ANY ASPECT RATIO & DEVICE)
    Engineered for:
    - Modern Mobile (320px – 480px, tall portrait 9:19.5, 9:20)
    - Narrow / Split Viewports (480px – 640px, e.g. 500x757)
@@ -46,7 +46,7 @@ img, video, canvas, svg {
     box-sizing: border-box !important;
   }
 
-  /* Navigation — Clean Hamburger Transition */
+  /* Navigation - Clean Hamburger Transition */
   #global-nav {
     height: 58px;
     background: rgba(10, 10, 10, 0.92);

@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import useSEO from '../hooks/useSEO';
 
 const EFFECTIVE_DATE = '26 July 2025';

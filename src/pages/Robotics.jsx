@@ -9,17 +9,17 @@ import useReducedMotion from '../hooks/useReducedMotion';
 gsap.registerPlugin(ScrollTrigger);
 
 const roboticsSystems = [
-  { icon: '✦', label: 'AERIAL SYSTEMS', desc: 'UAVs utilizing turbulent airflow adaptation and LiDAR mapping for extreme environments.' },
-  { icon: '≋', label: 'UNDERWATER', desc: 'Submersibles engineered for deep-sea pressure resistance and acoustic sonar navigation.' },
-  { icon: '◎', label: 'ARCHAEOLOGICAL', desc: 'Micro-tread systems with delicate excavation appendages and ground-penetrating radar.' },
+  { icon: '✦', label: 'AUTONOMOUS CONSTRUCTION', desc: 'Robotic systems that can build the structures required for future exploration.' },
+  { icon: '≋', label: 'REMOTE OPERATIONS', desc: 'Near-term applications in hazardous and remote industrial environments on Earth.' },
+  { icon: '◎', label: 'SPACE DEPLOYMENT', desc: 'A long-term direction toward preparing and maintaining lunar and Martian outposts.' },
 ];
 
 function Robotics() {
   const container = useRef(null);
 
   useSEO(
-    'Robotics Platforms | AxeomLabs',
-    'AxeomLabs builds ground, aerial, and aquatic robotics platforms with tactile sensing, real-time navigation, and edge AI for complex unstructured environments.',
+    'Space Robotics | AxeomLabs',
+    'AxeomLabs develops task-capable robotic systems for infrastructure maintenance, material handling, and autonomous construction in extreme environments.',
     'https://www.axeomlabs.in/robotics'
   );
 
@@ -74,26 +74,26 @@ function Robotics() {
 
           <div className="page-hero-layout">
             <div className="page-hero-left">
-              <div className="page-hero-status">[ DIVISION: ROBOTICS + AI ]</div>
-              <h1>INTELLIGENCE<br />EMBODIED.</h1>
+              <div className="page-hero-status">[ DIVISION: SPACE ROBOTICS ]</div>
+              <h1>ROBOTICS FOR<br />EXTREME PLACES.</h1>
               <p className="page-hero-desc">
-                Bridging the gap between raw algorithmic cognition and physical articulation.
-                AxeomLabs pioneers next-generation autonomous systems and proto-AGI architectures.
+                We develop dependable, task-capable systems for operation in harsh and remote environments.
+                Near-term work begins on Earth, with a long-term focus on lunar and Martian outposts.
               </p>
               <Link to="/contact" className="btn-primary page-hero-cta">GET IN TOUCH <span aria-hidden="true">→</span></Link>
             </div>
             <div className="page-hero-right">
               <div className="page-hero-img-wrap">
                 <img
-                  src="https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?w=900&q=85"
-                  alt="Industrial robotic arm in a factory environment"
+                  src="/assets/space/planetary-rover-test.jpg"
+                  alt="Mars rover test vehicle at an Earth-based outdoor test facility."
                   className="page-hero-image"
                   width="900"
                   height="600"
                 />
                 <div className="page-hero-meta">
-                  <span>STATUS: ACTIVE</span>
-                  <span>MODEL: AXL-7 PROTOTYPE</span>
+                  <span>ROADMAP: IN DEVELOPMENT</span>
+                  <span>MISSION: EXTREME ENVIRONMENTS</span>
                 </div>
               </div>
             </div>
@@ -109,41 +109,41 @@ function Robotics() {
               <div className="section-label">01 // KINETIC SYSTEMS</div>
               <h2>APPLIED ROBOTICS</h2>
             </div>
-            <span className="section-counter">TWO FLAGSHIP PLATFORMS</span>
+              <span className="section-counter">CORE APPLICATIONS</span>
           </div>
 
           <div className="applied-grid">
-            {/* Humanoid */}
+            {/* Infrastructure maintenance */}
             <div className="robo-card robo-card-featured reveal">
               <div className="robo-card-inner">
                 <div className="robo-card-content">
-                  <h3>HUMANOID</h3>
-                  <p>Biomimetic articulation designed for complex human environments. Features tactile feedback sensors and real-time gait adaptation.</p>
+                  <h3>INFRASTRUCTURE</h3>
+                  <p>Robotic systems for inspecting and repairing essential infrastructure in harsh and remote environments.</p>
                   <Link to="/contact" className="link-mono">ENQUIRE <span aria-hidden="true">↗</span></Link>
                 </div>
                 <div className="robo-card-visual" style={{ height: '280px' }}>
                   <img
-                    src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=600&q=80"
-                    alt="Humanoid robot with articulated arms in a controlled test environment"
+                    src="/assets/space/industrial-robot-arm.jpg"
+                    alt="Industrial robotic arm on a manufacturing line, illustrating infrastructure maintenance systems."
                     loading="lazy" width="600" height="400"
                   />
                 </div>
               </div>
             </div>
 
-            {/* Military */}
+            {/* Material handling */}
             <div className="robo-card robo-card-featured reveal">
-              <div className="robo-card-badge">[ RESTRICTED ]</div>
+              <div className="robo-card-badge">[ REMOTE OPERATIONS ]</div>
               <div className="robo-card-inner">
                 <div className="robo-card-content">
-                  <h3>MILITARY</h3>
-                  <p>Ruggedized autonomous defense units. High-payload capacity with encrypted swarm communication protocols.</p>
-                  <span className="link-mono" style={{ color: 'var(--on-bg-muted)', cursor: 'default' }}>CLEARANCE REQUIRED</span>
+                  <h3>MATERIAL HANDLING</h3>
+                  <p>Robotic systems for transporting and positioning heavy resources safely in hazardous and remote settings.</p>
+                  <span className="link-mono" style={{ color: 'var(--on-bg-muted)', cursor: 'default' }}>EARTH TO OFF-WORLD</span>
                 </div>
                 <div className="robo-card-visual" style={{ height: '280px' }}>
                   <img
-                    src="https://images.unsplash.com/photo-1581092335397-9583eb92d232?w=600&q=80"
-                    alt="Armored ground robotics platform in field test conditions"
+                    src="/assets/space/robotic-arm-lab.jpg"
+                    alt="Robotic arm in an engineering laboratory, illustrating material-handling systems."
                     loading="lazy" width="600" height="400"
                   />
                 </div>
